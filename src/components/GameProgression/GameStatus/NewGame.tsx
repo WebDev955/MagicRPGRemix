@@ -1,0 +1,30 @@
+//IMPORTS - Hooks
+import { useState } from 'react'
+//IMPORTS - Images
+import WizardEditNoBG from "../../../assets/WizardEditNoBG.png"
+import CastleWall from "../../../assets/CastleWall.jpg"
+import Forest from "../../../assets/Forest.jpg"
+//import backgroundMusic from '../../../assets/MagicBGM.mp3'
+
+//IMPORTS - STyles
+import styles from "./NewGame.module.css"
+
+//IMPORTS - Components
+import PlayerStats from '../../UI/PlayerStats.tsx'
+import Dialogue from "../../UI/Dialogue.tsx"
+
+const NewGame:React.FC = () => {
+    return(
+        <>
+        <PlayerStats/>
+            <div className ={styles.parentDiv}  style={{ backgroundImage: `url(${CastleWall})` }}>
+                    <img className ={styles.imgWizard}src={WizardEditNoBG} />
+                    <Dialogue>"Hello,Lorem ipsum dolor sit    amet, consectetur adipiscing elit. Maecenas aliquet tempus ullamcorper. Fusce fringilla urna ut lacus laoreet, sit amet molestie velit lobortis. Quisque ut dignissim justo, sed dapibus leo. Integer malesuada velit viverra massa cursus, ac cursus metus pulvinar. Quisque nec mi eu sapien porta bibendum eget sit amet ipsum. Etiam eget odio ante. Fusce libero neque, fermentum at mi eget, tristique faucibus urna. Cras non fringilla urna. Nam a fermentum arcu. Quisque ut dignissim justo, sed dapibus leo. Integer malesuada velit viverra massa cursus, ac cursus metus pulvinar.
+                    </Dialogue>
+            </div>
+        </>
+    )
+    
+}
+
+export default NewGame

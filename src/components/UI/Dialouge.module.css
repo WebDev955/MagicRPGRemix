@@ -1,0 +1,19 @@
+.textBox {
+    display: flex;
+    align-items: center;   /* vertically center text */
+    background-image: url("../../assets/Scroll.png");
+    background-size: cover;
+    border: solid black 3px;
+    height: 155px;
+}
+
+.dialouge{
+    text-align: left;
+    margin-top: 25px;
+    margin-left: 52px;
+    max-width: 430px;
+    color: black;
+    font-size: 10px;
+    border: solid green 2px;
+    height: 100%;
+}
