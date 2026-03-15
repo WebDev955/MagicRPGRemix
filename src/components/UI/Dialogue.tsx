@@ -1,4 +1,5 @@
 //HOOKS
+import React, { type ReactNode } from "react"  // ✅ import ReactNode
 //COMPONENT IMPORTS
 //COMPONENT IMPORTS - CONTEXTS
 //STYLES

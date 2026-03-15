@@ -1,9 +1,9 @@
 //IMPORTS - Hooks
-import { useState } from 'react'
+//import { useState } from 'react'
 //IMPORTS - Images
 import WizardEditNoBG from "../../../assets/WizardEditNoBG.png"
 import CastleWall from "../../../assets/CastleWall.jpg"
-import Forest from "../../../assets/Forest.jpg"
+//import Forest from "../../../assets/Forest.jpg"
 //import backgroundMusic from '../../../assets/MagicBGM.mp3'
 
 //IMPORTS - STyles
