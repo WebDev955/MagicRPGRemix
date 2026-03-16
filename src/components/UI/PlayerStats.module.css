@@ -1,27 +1,29 @@
 .parentDiv{
     background-color: brown;
     width: 100%;
-
-
+   
 }
 .statsDiv {
     display: flex;
     justify-content: flex-start; 
     align-items: center; 
     gap: 25px;
-    background-color: whitesmoke;
-    width: 25vw;
-    padding-right: 5px;
+    background-color: lightgray;
+    width: 100%;
+    color: black;
+    font-size: small;
 }
-
 .health{
     color: red;
+    outline: auto;
 }
 
 .magic{
     color: blue;
+    outline: auto;
 }
 
 .gold{
-    color: gold;
+    color: black;
+    outline: auto;
 }

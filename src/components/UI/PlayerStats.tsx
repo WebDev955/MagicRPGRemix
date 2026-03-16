@@ -17,8 +17,8 @@ const PlayerStats:React.FC = () => {
 
     return(
         <div className={styles.parentDiv}>
-            <h2>Player Name</h2>
             <div className={styles.statsDiv}>
+                <h2>Player Name</h2>
                 <h3 className={styles.health}>Hp: 5</h3>
                 <h3 className={styles.health}>Df: 5</h3>
                 <h3 className={styles.magic}>Magic: 10</h3>
