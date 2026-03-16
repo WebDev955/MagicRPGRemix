@@ -23,13 +23,6 @@ const NewGame:React.FC = () => {
             setOpenForest(false)
         }
 
-    const [openForest2, setOpenForest2] = useState(false)
-        function goToForest2(){
-            setOpenForest2(true)
-        }
-
-
-
 
     return(
         <>
