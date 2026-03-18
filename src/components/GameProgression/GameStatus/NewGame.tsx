@@ -12,6 +12,7 @@ import styles from "./NewGame.module.css"
 //IMPORTS - Components
 import PlayerStats from '../../UI/PlayerStats.tsx'
 import Dialogue from "../../UI/Dialogue.tsx"
+import Battle from '../../Battles/Battle.tsx'
 
 const NewGame:React.FC = () => {
     const [openForest, setOpenForest] = useState(false)
@@ -23,6 +24,16 @@ const NewGame:React.FC = () => {
             setOpenForest(false)
         }
 
+    const [openBattle, setOpenBattle] = useState(false)
+        function goToBattle(){
+            setOpenBattle(true)
+        }
+
+        function leaveBattle(){
+            setOpenBattle(false)
+        }
+
+
 
     return(
         <>
@@ -33,11 +44,18 @@ const NewGame:React.FC = () => {
                     </Dialogue>
                     <button onClick={goToForest}>Go To Forest</button>
                     <button onClick={leaveForest}>Close Forest</button>
+                    <button onClick={goToBattle}>BATTLE!</button>
+                    <button onClick={leaveBattle}>Leave Battle</button>
             </div>
                 {openForest 
                     ? <img className ={styles.imgForest}src={Forest}/>
                     : null
                 }
+                {openBattle
+                    ? <Battle/>
+                    : null
+                }
+
 
         </>
     )
