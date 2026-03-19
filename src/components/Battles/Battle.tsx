@@ -25,13 +25,10 @@ const audioRef = useRef<HTMLAudioElement | null>(null)
   useEffect(() => {
     audioRef.current?.play()
   }, [])
-//<audio ref={audioRef} src={BattleTheme} loop />
-
 
     return(
-        
         <div className= {styles.parentDiv}>
-            
+            <audio ref={audioRef} src={BattleTheme} loop />
             <div className= {styles.enemyDiv}>
                 <div className= {styles.enemyStats}>
                     <p>{"Slime"}</p>
