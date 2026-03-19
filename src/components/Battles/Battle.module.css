@@ -3,17 +3,19 @@
     flex-direction: column;
     align-items: stretch;  
     width: 100%;
-    background-color: lightblue;
+    height: 500px;
+    background-color: lightseagreen;
 }
 
 .enemyDiv{
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    height: 250px;
 }
 
 .enemyStats{
+    position: relative;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -21,7 +23,7 @@
     gap: 3px;
     color: black;
     border: solid black 3px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 .enemyImgs{
@@ -34,3 +36,66 @@
 .enemyImgs img:hover{
     transform: scale(1.2);
 }
+
+.playerDiv{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 250px;
+}
+
+.spellImgs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.playerBtlMenu{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    color: black;
+    border-top: solid black 2px;
+    bottom: 1px;
+
+}
+
+.playerOptions {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    gap: 25px;
+    padding: 10px;
+
+}
+
+.playerOptions button {
+    border: solid 1px black;
+    background-color: gold;
+    border-radius: 5px;
+    font-size: large
+}
+
+.playerStats {
+    display: grid;
+    grid-template-columns: 1fr;
+    color: black;
+    gap: 5px;
+    padding: 5px;
+}
+
+.playerStats p {
+    border: solid 1px black;
+    background-color:  pink;
+    border-radius: 5px;
+    margin: 0px;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
