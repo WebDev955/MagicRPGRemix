@@ -2,9 +2,10 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;  
-    width: 100%;
+    max-width: 100%;
     height: 500px;
     background-color: lightseagreen;
+    
 }
 
 .enemyDiv{
@@ -21,9 +22,14 @@
     flex-direction: row;
     justify-content: space-evenly;
     gap: 3px;
+    padding: 10px;
     color: black;
-    border: solid black 3px;
+    background-color: antiquewhite;
+    border-bottom: solid black 1px;
     margin-bottom: 20px;
+}
+.enemyStats p {
+    margin: 0;
 }
 
 .enemyImgs{
@@ -37,7 +43,7 @@
     transform: scale(1.2);
 }
 
-.playerDiv{
+.playerDiv {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -51,6 +57,13 @@
     align-items: center;
     gap: 8px;
 }
+
+.spellImgs img:hover{
+    border-radius: 10px;
+    border: 3px solid whitesmoke 
+
+}
+
 
 .playerBtlMenu{
     position: absolute;
@@ -79,7 +92,7 @@
     border: solid 1px black;
     background-color: gold;
     border-radius: 5px;
-    font-size: large
+    font-size: 22px;
 }
 
 .playerStats {
@@ -95,7 +108,7 @@
     background-color:  pink;
     border-radius: 5px;
     margin: 0px;
-    padding-left: 5px;
-    padding-right: 5px
+    padding-left: 10px;
+    padding-right: 10px;
 }
 

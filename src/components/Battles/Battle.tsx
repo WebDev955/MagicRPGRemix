@@ -1,5 +1,5 @@
 //IMPORTS - Hooks
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 //IMPORTS - Images
 import Slime from "../../assets/Slime.png"
 import StoneTablet from "../../assets/StoneTablet.png"
@@ -12,24 +12,32 @@ import styles from "./Battle.module.css"
 
 
 const Battle:React.FC = () => {
+
+const [showSpells, setShowSpells] = useState(false)
+
+    function displaySpells(){
+        setShowSpells(!showSpells)   
+    }
+
+
 const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
     audioRef.current?.play()
   }, [])
-
+//<audio ref={audioRef} src={BattleTheme} loop />
 
 
     return(
         
         <div className= {styles.parentDiv}>
-            <audio ref={audioRef} src={BattleTheme} loop />
+            
             <div className= {styles.enemyDiv}>
                 <div className= {styles.enemyStats}>
                     <p>{"Slime"}</p>
-                    <p>Element: None</p>
-                    <p>HP: 10</p> 
-                    <p>Lv: 3</p>
+                    <p>Element: {"None"}</p>
+                    <p>HP: {"10"}</p> 
+                    <p>Lv: {"3"}</p>
                 </div>
                 <div className={styles.enemyImgs}>
                     <img src={Slime} width = "75px"/>
@@ -39,22 +47,26 @@ const audioRef = useRef<HTMLAudioElement | null>(null)
             <div className= {styles.playerDiv}> 
                 <div className= {styles.playerBtlMenu}>
                     <div className= {styles.playerOptions}>
-                        <button>Cast</button>
+                        <button onClick={displaySpells}>Cast</button>
                         <button>Def</button>
                         <button>Bag</button>
                         <button>Run</button>
                     </div>
                     <div className= {styles.playerStats}>
-                        <p>HP: 10</p>
-                        <p>MP: 15</p>
-                        <p>Channeling: Fire</p> 
+                        <p>HP: {"10"}</p>
+                        <p>MP: {"15"}</p>
+                        <p>Channeling: {"Fire"}</p> 
                     </div>
-                </div>                     
-                <div className={styles.spellImgs}>
-                    <img src={StoneTablet} width = "100px"/>
-                    <img src={StoneTablet} width = "100px"/>
-                    <img src={StoneTablet} width = "100px"/>
-                </div>
+                </div> 
+
+                {showSpells && (
+                    <div className={styles.spellImgs}>
+                        <img src={StoneTablet} width = "100px"/>
+                        <img src={StoneTablet} width = "100px"/>
+                        <img src={StoneTablet} width = "100px"/>
+                        <img src={StoneTablet} width = "100px"/>
+                    </div>
+                )}
             </div>
            
 
