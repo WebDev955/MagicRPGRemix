@@ -1,5 +1,5 @@
-import { createContext, useState, ReactNode} from "react";
-
+import { createContext, useState} from "react";
+import type { ReactNode } from "react";
 type UserAccount = {
     playerName: string | undefined;
     password: string | undefined;
@@ -9,7 +9,7 @@ type UserAccount = {
 type AccountContextType = {
     userAccount: UserAccount;
     isCreatingAccount: boolean;
-    isLoggingIn: boolean;
+    //isLoggingIn: boolean;
     isLoggedIn: boolean;
     createAccount: (data: UserAccount) => void;
     startCreatingAccount: () => void;
@@ -23,6 +23,7 @@ type Props = {
 
 //NO SATE/HOOKS when creating context
 //its just a template
+// eslint-disable-next-line react-refresh/only-export-components
 export const AccountContext = createContext<AccountContextType>({
     userAccount: {
         playerName: undefined,
@@ -31,7 +32,7 @@ export const AccountContext = createContext<AccountContextType>({
     },
 
     isCreatingAccount: false,
-    isLoggingIn: false,
+    //isLoggingIn: false,
     isLoggedIn: false,
     createAccount: () => {},
     startCreatingAccount: () => {},
@@ -66,7 +67,7 @@ const AccountContextProvider = ({children}:Props) => {
 
     //Function - create and store user account info, login user 
     function createAccount(newAccountData: UserAccount){
-        setUserAccount(newAccountData)
+        setUserAccount(userAccount)
         localStorage.setItem("user", JSON.stringify(newAccountData))
         setIsLoggedIn(true)
     }
@@ -76,7 +77,7 @@ const AccountContextProvider = ({children}:Props) => {
 ***********************/
     
     //STATE - open/closes Login  Modal
-    const [isLoggingIn, setIsLoggingIn] = useState(false)
+    //const [isLoggingIn, setIsLoggingIn] = useState(false)
     
     //STATE - display current player location/Tutorial at start
     const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -91,7 +92,7 @@ const AccountContextProvider = ({children}:Props) => {
         userAccount,
         isCreatingAccount,
         isLoggedIn,
-        isLoggingIn,
+        //isLoggingIn,
         startCreatingAccount,
         stopCreatingAccount,
         createAccount,

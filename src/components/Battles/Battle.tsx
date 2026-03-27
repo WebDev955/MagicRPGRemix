@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from "react"
 //IMPORTS - Images
 import Slime from "../../assets/Slime.png"
 import StoneTablet from "../../assets/StoneTablet.png"
-import BattleTheme from "../../assets/Normal  Battle.mp3"
+//import BattleTheme from "../../assets/Normal  Battle.mp3"
 import BattleTheme2 from "../../assets/Battle.mp3"
 //IMPORTS - STyles
 import styles from "./Battle.module.css"
