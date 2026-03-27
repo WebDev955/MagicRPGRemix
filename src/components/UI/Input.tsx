@@ -1,5 +1,5 @@
 //IMORTS - Global React
-import {InputHTMLAttributes} from "react"
+import type {InputHTMLAttributes} from "react"
 
 //STYLES
 //import styles from './Input.module.css'
