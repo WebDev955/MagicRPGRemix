@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from "react"
 import Slime from "../../assets/Slime.png"
 import StoneTablet from "../../assets/StoneTablet.png"
 import BattleTheme from "../../assets/Normal  Battle.mp3"
+import BattleTheme2 from "../../assets/Battle.mp3"
 //IMPORTS - STyles
 import styles from "./Battle.module.css"
 
@@ -13,14 +14,13 @@ import styles from "./Battle.module.css"
 
 const Battle:React.FC = () => {
 
-const [showSpells, setShowSpells] = useState(false)
+    const [showSpells, setShowSpells] = useState(false)
 
     function displaySpells(){
         setShowSpells(!showSpells)   
     }
 
-
-const audioRef = useRef<HTMLAudioElement | null>(null)
+    const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
     audioRef.current?.play()
@@ -28,7 +28,7 @@ const audioRef = useRef<HTMLAudioElement | null>(null)
 
     return(
         <div className= {styles.parentDiv}>
-            <audio ref={audioRef} src={BattleTheme} loop />
+            <audio ref={audioRef} src={BattleTheme2} loop />
             <div className= {styles.enemyDiv}>
                 <div className= {styles.enemyStats}>
                     <p>{"Slime"}</p>
