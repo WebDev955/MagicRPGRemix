@@ -1,5 +1,5 @@
 //IMPORTS - Hooks
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect} from "react"
 
 //IMPORTS - Components
 import EnemyUI from "./EnemyUI"
