@@ -2,15 +2,17 @@ import {useRef, useEffect} from "react";
 import type { ReactNode } from "react";
 import { createPortal } from "react-dom";
 
+import style from "./Modal.module.css";
 
 type Props = {
     children: ReactNode;
     open: boolean;
     onClose?: () => void
+    className?: string;
 };
 
 //useRef => 
-const Modal = ({children, open, onClose}: Props) => {
+const Modal = ({children, open, onClose, className}: Props) => {
     const dialog =  useRef<HTMLDialogElement | null>(null)
     
     useEffect(() => {
@@ -30,7 +32,8 @@ const Modal = ({children, open, onClose}: Props) => {
     }, [open]);
 
     return createPortal (
-        <dialog onClose={onClose} ref={dialog}> 
+        <dialog onClose={onClose} ref={dialog} className={`${style.dialog} ${className || ""}`}
+>
             {children} 
         </dialog>,
         document.getElementById('modal') as HTMLElement

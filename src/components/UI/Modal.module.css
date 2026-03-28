@@ -1,0 +1,13 @@
+.dialog {
+    width:80%;   
+}
+
+.signUpModal {
+    border: solid 5px red;
+}
+
+.inventoryModal {
+    border: solid 5px blue;
+    height:90vh;
+    overflow-y: auto;
+}

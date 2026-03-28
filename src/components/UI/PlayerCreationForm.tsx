@@ -3,12 +3,14 @@ import { useContext} from "react"
 import * as React from "react";
 //IMPORT - CONTEXT
 //import { PlayerContext } from "../../Contexts/PlayerContext"
-import { AccountContext } from "../contexts/AccountContext"
+import { AccountContext } from "../contexts/AccountContext";
 //IMPORT - COMPONENTS
 import Button from "../UI/Button"
 import Input from "../UI/Input"
 import Modal from "../UI/Modal"
 //IMPORT - Styles
+import style from "../UI/Modal.module.css"
+
 
 const PlayerCreationForm = () => {
     //const playerContext = useContext(PlayerContext)
@@ -34,7 +36,7 @@ const PlayerCreationForm = () => {
 
     return(
         <>
-            <Modal open={accountCtx.isCreatingAccount}>
+            <Modal open={accountCtx.isCreatingAccount} className={style.signUpModal}>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <Button>Close</Button>

@@ -1,20 +1,26 @@
 //IMPORTS - Hooks
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 //IMPORTS - Images
 import WizardEditNoBG from "../../../assets/WizardEditNoBG.png"
 import CastleWall from "../../../assets/CastleWall.jpg"
 import Forest from "../../../assets/Forest.jpg"
 //import backgroundMusic from '../../../assets/MagicBGM.mp3'
 
-//IMPORTS - STyles
+//IMPORTS - Syles
 import styles from "./NewGame.module.css"
 
 //IMPORTS - Components
 import PlayerStats from '../../UI/PlayerStats.tsx'
 import Dialogue from "../../UI/Dialogue.tsx"
-import Battle from '../../Battles/Battle.tsx'
+import BattleTest from "../../Battles/BattleTest.tsx"
+import {BattleContext}  from '../../contexts/BattleContext.tsx'
 
-const NewGame:React.FC = () => {
+
+//import Battle from '../../Battles/Battle.tsx'
+
+const NewGame = () => {
+    const battleCtx = useContext(BattleContext)
+
     const [openForest, setOpenForest] = useState(false)
         function goToForest(){
             setOpenForest(true)
@@ -24,7 +30,12 @@ const NewGame:React.FC = () => {
             setOpenForest(false)
         }
 
-    const [openBattle, setOpenBattle] = useState(false)
+    const startBattleHandler = () => {
+        battleCtx.startBattle()
+    }
+
+    /*{
+        const [openBattle, setOpenBattle] = useState(false)
         function goToBattle(){
             setOpenBattle(true)
         }
@@ -33,7 +44,10 @@ const NewGame:React.FC = () => {
             setOpenBattle(false)
         }
 
+            button onClick={goToBattle}>BATTLE!</button>
+            <button onClick={leaveBattle}>Leave Battle</button>
 
+    }*/
 
     return(
         <>
@@ -44,19 +58,16 @@ const NewGame:React.FC = () => {
                     </Dialogue>
                     <button onClick={goToForest}>Go To Forest</button>
                     <button onClick={leaveForest}>Close Forest</button>
-                    <button onClick={goToBattle}>BATTLE!</button>
-                    <button onClick={leaveBattle}>Leave Battle</button>
+                    <button onClick={startBattleHandler}>Start Battle!</button>
             </div>
                 {openForest 
                     ? <img className ={styles.imgForest}src={Forest}/>
                     : null
                 }
-                {openBattle
-                    ? <Battle/>
+                {battleCtx.battle
+                    ? <BattleTest/>
                     : null
                 }
-
-
         </>
     )
     

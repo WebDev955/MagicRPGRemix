@@ -1,0 +1,22 @@
+.parentDiv {
+    font-size: x-small;
+    width: 100%;
+    background-color: lightgray;
+}
+
+li {
+    list-style: none;
+    line-height: 5px;
+    margin-bottom: 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-color:brown;
+
+}
+
+.armor {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start;  
+    flex-direction: column 
+}

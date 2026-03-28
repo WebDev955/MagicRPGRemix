@@ -1,5 +1,6 @@
 import { createContext, useState} from "react";
 import type { ReactNode } from "react";
+
 type UserAccount = {
     playerName: string | undefined;
     password: string | undefined;
@@ -69,7 +70,7 @@ const AccountContextProvider = ({children}:Props) => {
     function createAccount(newAccountData: UserAccount){
         setUserAccount(userAccount)
         localStorage.setItem("user", JSON.stringify(newAccountData))
-        setIsLoggedIn(true)
+        setIsLoggedIn(!isLoggedIn)
     }
     
 /**********************

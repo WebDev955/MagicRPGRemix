@@ -3,8 +3,11 @@ import NewGame from "../src/components/GameProgression/GameStatus/NewGame"
 import TitleScreen from './components/TitleScreen'
 
 //Imports - Context
-import AccountContextProvider from './components/contexts/AccountContext' 
-import { AccountContext } from './components/contexts/AccountContext' 
+import AccountContextProvider, { AccountContext } from './components/contexts/AccountContext' 
+import BattleContextProvider from "./components/contexts/BattleContext"
+import PlayerContextProvider from './components/contexts/PlayerContext'
+
+
 import { useContext } from 'react'
 
 function AppContent() {
@@ -23,7 +26,11 @@ function AppContent() {
   function App() {
     return (
       <AccountContextProvider>
-        <AppContent />
+        <PlayerContextProvider>
+          <BattleContextProvider>
+            <AppContent />
+          </BattleContextProvider>
+        </PlayerContextProvider>
       </AccountContextProvider>
     )
 }
