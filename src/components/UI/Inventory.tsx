@@ -6,6 +6,8 @@ import styles from "./Inventory.module.css"
 import style from "./Modal.module.css"
 import Button from "./Button"
 
+import type { EquipableItem } from "../contexts/PlayerContext"
+
 const Inventory = () => {
 const playerContext = useContext(PlayerContext)!
 

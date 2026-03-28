@@ -5,7 +5,7 @@ import type {ReactNode} from "react"
 //IMPORTS - CONEXT
 import { AccountContext } from "./AccountContext";
 
-type EquipableItem = {
+export type EquipableItem = {
     type?: string
     def?: number
     powerBoost?: number
