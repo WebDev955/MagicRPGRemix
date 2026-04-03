@@ -3,7 +3,7 @@ import { createContext, useState, useContext, useCallback, useMemo } from "react
 import type {ReactNode} from "react"
 
 //IMPORTS - CONEXT
-import { AccountContext } from "./AccountContext";
+import { AccountContext} from "./AccountContext";
 
 export type EquipableItem = {
     type?: string
@@ -13,8 +13,8 @@ export type EquipableItem = {
     id: string
 }
 
-type playerContextType = {
-    player: object,
+export type playerContextType = {
+    playerName: string,
     equipedItems: EquipableItem[],
     inventory: {
         gold: number,
@@ -23,9 +23,9 @@ type playerContextType = {
             name: string,
             element: string,
             mp: number,
-            power: string, 
+            power: number, 
             buff: string,
-            debuf: string,
+            debuff: string,
             effect: string,
             description: string
         }[],
@@ -52,6 +52,16 @@ type playerContextType = {
             bonusEffect: string
         }[]
     },
+    stats : {
+        hp: number,
+        mp: number,
+        def: number,
+        speed: number,
+        channeledElement: string,
+        buffs: string[],
+        debuffs: string[],
+    },
+
 
     inventoryTest: {
         gold: number,
@@ -62,7 +72,7 @@ type playerContextType = {
             mp: number,
             power: number, 
             buff: string,
-            debuf: string,
+            debuff: string,
             effect: string,
             description: string
 
@@ -91,15 +101,6 @@ type playerContextType = {
         }[]
     },
 
-    stats : {
-        hp: number,
-        mp: number,
-        def: number,
-        channeledElement: string,
-        buffs: string[],
-        debuffs: string[],
-    },
-
     isInventoryOpen: boolean,
     openInventory: () => void,
     //closeInventory: () => void,
@@ -111,11 +112,13 @@ type Props = {
     children: ReactNode
 }
 
+
+
+
 //Template for Player
 export const PlayerContext = createContext<playerContextType>({
-    player: {
-        playerName: undefined,
-    },
+    
+    playerName: "",
 
     equipedItems: [],
 
@@ -139,6 +142,7 @@ export const PlayerContext = createContext<playerContextType>({
         hp: 25,
         mp: 30,
         def: 0,
+        speed: 5,
         channeledElement: "",
         buffs: [],
         debuffs: []
@@ -154,10 +158,10 @@ export const PlayerContext = createContext<playerContextType>({
 
 //Only in Provider is where you create functions and estbalish state
 export function PlayerContextProvider({children}:Props){
-    const playerName = useContext(AccountContext)
-    const player = {
-        playerName: playerName.userAccount.playerName
-    };
+    const acctCtx = useContext(AccountContext)
+    const playerName = acctCtx.userAccount.playerName || "player"
+
+    
 
 /****************************************
     EQUIP - UNEQUIP ITEMS                         
@@ -190,6 +194,7 @@ const contextStats = useMemo(() => {
             hp: 25,
             mp: 30,
             def: totalDef,
+            speed: 5,
             channeledElement: "",
             buffs: [],
             debuffs: [],
@@ -217,7 +222,7 @@ const contextStats = useMemo(() => {
                 mp: 0, 
                 power: 10, 
                 buff: "None",
-                debuf: "None",
+                debuff: "None",
                 description: "A basic magic spell.",
                 effect: "None", 
                 
@@ -229,7 +234,7 @@ const contextStats = useMemo(() => {
                 mp: 3,
                 power: 10, 
                 buff: "None",
-                debuf: "None",
+                debuff: "None",
                 description: "A basic Waterspell.",
                 effect: "flood"
             }, 
@@ -240,7 +245,7 @@ const contextStats = useMemo(() => {
                 mp: 5, 
                 power: 15,
                 buff: "None",
-                debuf: "None",
+                debuff: "None",
                 description: "A basic firespell", 
                 effect: "burn"
             },
@@ -267,7 +272,7 @@ const contextStats = useMemo(() => {
 ***********************/
 
     const playerCtx: playerContextType = {
-        player,
+        playerName,
         stats: contextStats,
         inventory,
         inventoryTest,

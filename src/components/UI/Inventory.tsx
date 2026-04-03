@@ -13,8 +13,6 @@ const playerContext = useContext(PlayerContext)!
 
     const [viewArmor, setViewArmor] = useState(false)
 
-
-
     function equipItem(item:EquipableItem){
         playerContext.equipItem(item)
     }

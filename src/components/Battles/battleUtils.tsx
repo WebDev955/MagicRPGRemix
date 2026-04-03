@@ -1,48 +1,82 @@
+//import Context
 
-const battleUtils = () => {
+import type { playerContextType } from "../contexts/PlayerContext"
+import type { enemy } from "../../data/Enemies"
 
 
-{/* type battler = {
+
+export type spell = { 
+    id: string, 
     name: string,
     element: string,
+    mp: number,
+    power: number, 
+    buff: string,
+    debuff: string,
+    effect: string,
+    description: string 
+}
+
+
+export type battlerType = {
+    name: string,
+    element: string | undefined,
     stats: {
         hp: number,
-        df: number,
+        def: number,
         mp: number,
+        speed: number,
+        buffs: string[],
+        debuffs: string[] 
     },
-    spells: [string],
+    spells: spell[],
+    potions: {
+        id: string, 
+        type: string,
+        restorePts: number,
+        bonusEffect: string
+    }[]
 }
 
     //Function - pull in data for battlers, playerCtx and enemy data 
-    const createBattlers = (player:Object, enemy:Object) => {
+export const createBattler = (player:playerContextType, enemy:enemy) => {
         const btlrPlayer = {
-            name: player.name,
-            element: player.element,
+            name: player.playerName,
+            element: player.stats.channeledElement,
             stats: {...player.stats},
             spells: [...player.inventory.spells],
-            calculateDamage(),
-        },
+            potions: [...player.inventory.potions]
+  
+        };
         const btlrEnemy = {
-            name: enemy.name,
+            name: enemy.monsterName,
             element: enemy.element,
             stats: {...enemy.stats},
-            spells: [...enemy.inventory.spells],
-            calculateDamage();
+            spells: [...enemy.spells],
+            potions:[...enemy.recovery]
         }
         
-        return btlrPlayer, btlrEnemy
+        return { player: btlrPlayer, enemy: btlrEnemy}
     }
-}
 
-const castSpell = (caster:Object, target:Object, spell:string) => {
-    calculateDamage(spell, target)
+
+export const castSpell = (caster: battlerType, target: battlerType, spellId: string) => {
+    const spell = caster.spells.find(s => s.id === spellId);
+    
+    if(!spell) return
+
+    //calculateDamage(spell, target)
     
     //apply buffs and debuffs
-    target.debuff = spell?.debuff;
-    caster.buff = spell?.buff;
+    target.stats.debuffs.push(spell?.debuff) 
+    caster.stats.buffs.push(spell?.buff) 
     caster.element = spell?.element;
+    alert(`${target.name} took ${spell?.power}pts of damage!`)
+    alert(`${caster.name} is now chanelling ${spell.element}!`)
 }
 
+
+{/*
 const calculateDamage = (spell:Object, target:Object) => {
     if (spell.element > target.element){
         spell.damage x 1.5 -= target.hp
@@ -57,7 +91,7 @@ const calculateDamage = (spell:Object, target:Object) => {
         alert(`{target} took Xpts damage`)
       }
     }
-}
+/*}
 
 const isBattleOver = (btlrPlayer:Object, btlrEnemy:Object) => {
     if (btlrPlayer.HP === 0){
@@ -73,9 +107,8 @@ const isBattleOver = (btlrPlayer:Object, btlrEnemy:Object) => {
         return 
       }
     }  
-    
-*/} 
+ */}
 
-}
 
-export default battleUtils
+//}
+
