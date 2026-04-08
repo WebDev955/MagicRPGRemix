@@ -6,15 +6,19 @@ import StoneTablet from "../../assets/StoneTablet.png"
 import styles from "./PlayerUI.module.css"
 
 //IMPORTS - Components
-import { PlayerContext } from "../contexts/PlayerContext"
 import { BattleContext } from "../contexts/BattleContext"
 import type { spell } from "./battleUtils"
 
 
 const PlayerUI:React.FC = () => {   
-    const playerCtx = useContext(PlayerContext)
-    
     const battleCtx = useContext(BattleContext)
+    const player = battleCtx.battleState.player
+    const playerElement = player.element
+    const spells = player.spells
+    //const potions = player.potions
+
+
+
     const [showSpells, setShowSpells] = useState(false)
 
     function displaySpells(){
@@ -39,19 +43,17 @@ const PlayerUI:React.FC = () => {
                     <button>Run</button>
                 </div>
                 <div className= {styles.playerStats}>
-                    <p>HP: {playerCtx.stats.hp}</p>
-                    <p>MP: {playerCtx.stats.mp}</p>
-                    <p>Channeling: {playerCtx.stats.channeledElement} </p> 
+                    <p>HP: {player.stats.hp}</p>
+                    <p>MP: {player.stats.mp}</p>
+                    <p>Channeling: {playerElement} </p> 
                 </div>
-            </div> 
-            {showSpells && playerCtx.inventoryTest.spells.map((spell) =>
-                <div className={styles.spellImgs}>
-                    <img onClick = {() =>handleCastHandler(spell)} id={spell.id} src={StoneTablet} width = "100px"/>
+            </div>
+                <div className={styles.spellImgs}> 
+                    {showSpells && spells.map((spell) =>
+                        <img onClick = {() =>handleCastHandler(spell)} id={spell.id} src={StoneTablet} width = "100px"/>  
+                    )}
                 </div>
-        )}
-        </div>
-    )
-    
+            </div>
+    ) 
 }
-
 export default PlayerUI

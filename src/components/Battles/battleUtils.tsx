@@ -44,7 +44,7 @@ export const createBattler = (player:playerContextType, enemy:enemy) => {
             name: player.playerName,
             element: player.stats.channeledElement,
             stats: {...player.stats},
-            spells: [...player.inventory.spells],
+            spells: [...player.inventoryTest.spells],
             potions: [...player.inventory.potions]
   
         };

@@ -27,8 +27,6 @@ const playerContext = useContext(PlayerContext)!
     const closeInventoryHandler = () => {
         playerContext.openInventory()
     }
-
-    console.log("Item Equiped:", playerContext.equipedItems)
     
     return(
     <>

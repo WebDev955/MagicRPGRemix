@@ -112,7 +112,6 @@ const startBattle = (player:playerContextType, enemy:enemy) => {
 
 }
 
-
 const castSpell = (spell:spell) => {
     const caster = battleState.currentTurn === "player"
         ? battleState.player
@@ -145,7 +144,7 @@ const castSpell = (spell:spell) => {
         }
     };
 
-    alert(  `${caster.name} cast ${spellName}! 
+    alert( `${caster.name} cast ${spellName}! 
             ${target.name} took ${spellPower} pts of damage!
             ${caster.name} is now channeling ${spellElement}!`
         );
