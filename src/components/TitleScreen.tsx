@@ -2,7 +2,7 @@
 import {useContext} from "react";
 
 //COMPONENT IMPORTS
-import PlayerCreationForm from "../components/UI/PlayerCreationForm"
+import PlayerCreationForm from "./UI/Forms/PlayerCreationForm"
 import Button from "./UI/Button";
 //CONTEXT
 import { AccountContext } from "../components/contexts/AccountContext"

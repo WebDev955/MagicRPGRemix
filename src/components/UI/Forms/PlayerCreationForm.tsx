@@ -3,13 +3,13 @@ import { useContext} from "react"
 import * as React from "react";
 //IMPORT - CONTEXT
 //import { PlayerContext } from "../../Contexts/PlayerContext"
-import { AccountContext } from "../contexts/AccountContext";
+import { AccountContext } from "../../contexts/AccountContext";
 //IMPORT - COMPONENTS
-import Button from "../UI/Button"
-import Input from "../UI/Input"
-import Modal from "../UI/Modal"
+import Button from "../Button"
+import Input from "../Input"
+import Modal from "../Modal"
 //IMPORT - Styles
-import style from "../UI/Modal.module.css"
+import style from "../../UI/Modal.module.css"
 
 
 const PlayerCreationForm = () => {

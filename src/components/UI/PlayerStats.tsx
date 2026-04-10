@@ -1,7 +1,7 @@
 //HOOKS
 import { useContext, useState} from "react"
 //COMPONENT IMPORTS
-import Inventory from "../UI/Inventory"
+import Inventory from "./Bag/Inventory"
 import Button from "./Button"
 //import Modal from "./Modal"
 

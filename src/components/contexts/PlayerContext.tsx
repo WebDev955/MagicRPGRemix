@@ -78,9 +78,10 @@ export type playerContextType = {
 
         }[],
 
-        armor: {
+        armor: {  
             id: string
-            type: string, 
+            name: string,
+            category: string, 
             def: number, 
             ability: string,
             description: string
@@ -88,14 +89,16 @@ export type playerContextType = {
 
         weapons: {
             id: string,
-            type: string,
+            name: string, 
+            category: string,
             powerBoost: number,
             ability: string
         }[],
 
         potions: {
             id: string, 
-            type: string,
+            name: string,
+            category: string,
             restorePts: number,
             bonusEffect: string
         }[]
@@ -253,17 +256,21 @@ const contextStats = useMemo(() => {
 
         ],
         armor : [
-            {type: "Glasses", def: 2, ability: "None", id:"face_1",  description: "basic wand"},
-            {type: "School hat", def: 5, ability: "None", id:"head_1", description: "basic wand"}, 
-            {type: "School robe", def: 5, ability: "None", id:"body_1", description: "basic wand"}, 
-            {type: "School boots", def: 5, ability: "None", id:"feet_1", description: "basic wand"}
+            {name: "Basic Glasses", category: "Glasses", def: 2, ability: "None", id:"face_1",  description: "basic wand"},
+            {name: "School hat", category: "Hats", def: 5, ability: "None", id:"head_1", description: "basic wand"}, 
+            {name: "School hat", category: "Hats", def: 5, ability: "None", id:"head_1", description: "basic wand"}, 
+            {name: "School hat", category: "Hats", def: 5, ability: "None", id:"head_1", description: "basic wand"}, 
+            {name: "School hat", category: "Hats", def: 5, ability: "None", id:"head_1", description: "basic wand"}, 
+            {name: "School hat", category: "Hats", def: 5, ability: "None", id:"head_1", description: "basic wand"}, 
+            {name: "School robe", category: "Robes",  def: 5, ability: "None", id:"body_1", description: "basic wand"}, 
+            {name: "School boots", category: "Boots", def: 5, ability: "None", id:"feet_1", description: "basic wand"}
         ],
         weapons : [
-            {type: "Starter Wand", powerBoost: 0.2, ability: "None", id:"wand_1"},
+            {name: "Starter Wand", category: "Wand", powerBoost: 0.2, ability: "None", id:"wand_1"},
         ],
         potions : [
-            {type: "Basic Health Potion", restorePts: 10 , bonusEffect: "None", id:"healthPot_1"},
-            {type: "Basic Magic Potion", restorePts: 10, bonusEffect: "None", id:"MagicPot_1"}
+            {name: "Basic Health Potion", type: "Hp Restore", restorePts: 10 , bonusEffect: "None", id:"healthPot_1"},
+            {name: "Basic Magic Potion", type: "Magic Restore", restorePts: 10, bonusEffect: "None", id:"MagicPot_1"}
         ]
     };
 

@@ -1,5 +1,6 @@
 .dialog {
-    width:80%;   
+    width: 99%;
+    overflow-x: hidden
 }
 
 .signUpModal {
@@ -7,7 +8,9 @@
 }
 
 .inventoryModal {
-    border: solid 5px blue;
-    height:90vh;
-    overflow-y: auto;
+    border: solid 3px black;
+    height: 90vh;
+    background-color: lightgray;
+    
+
 }
