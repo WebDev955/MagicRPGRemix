@@ -3,8 +3,8 @@ import { useState, useContext } from 'react'
 //IMPORTS - Images
 import WizardEditNoBG from "../../../assets/WizardEditNoBG.png"
 import CastleWall from "../../../assets/CastleWall.jpg"
-import Forest from "../../../assets/Forest.jpg"
-import ForestMap from "../../../assets/MagicRPGMapDraft.png"
+//import Forest from "../../../assets/Forest.jpg"
+//import ForestMap from "../../../assets/MagicRPGMapDraft.png"
 //import backgroundMusic from '../../../assets/MagicBGM.mp3'
 //IMPORTS - Syles
 import styles from "./NewGame.module.css"
@@ -18,7 +18,7 @@ import {PlayerContext} from '../../contexts/PlayerContext.tsx'
 
 import{slime} from "../../../data/Enemies.tsx"
 
-import MapForest from "../../../data/mapForest.tsx"
+import MapForest from "../../../data/MapForest.tsx"
 
 
 

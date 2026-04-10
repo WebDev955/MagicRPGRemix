@@ -1,11 +1,11 @@
 .parentDiv {
     position: relative;
-    width: 430px;
-    height: 491px;
-    border: 1px solid black;     
+    width: 435px;
+    height: 491px;   
     background: url("../assets/MagicRPGMapDraft.png");
     background-size: cover;
     background-repeat: no-repeat;
+    overflow-x: visible;
 
 }
 
@@ -23,7 +23,7 @@
 }
 
 .cell {
-    width: 62px;
+    width: 61px;
     height: 61px;
     flex-shrink: 0;
     border: solid black 2px;
