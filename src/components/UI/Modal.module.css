@@ -11,6 +11,12 @@
     border: solid 3px black;
     height: 90vh;
     background-color: lightgray;
-    
+}
 
+.monsterLogModal {
+    border: solid 3px black;
+    height: 90vh;
+    background: url("../../assets/LeatherTexture.jpg");
+    background-size: cover;
+    
 }

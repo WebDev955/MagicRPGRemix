@@ -1,3 +1,6 @@
+import slimeImg from "../assets/Slime.png"
+
+
 type enemyListType = {
 	monsterName: string, 
 	id: string,
@@ -77,7 +80,7 @@ export const enemyList:enemyListType = [
   {
     monsterName: "Slime",
 	id: "enemy_1",
-	img: "",
+	img: slimeImg,
 	description: "A weak slimy blob without much fight in it.",
 	level: 2,
 	spawnLoc: ["Forest"],
@@ -111,7 +114,7 @@ export const enemyList:enemyListType = [
 export const slime:enemy = {
     monsterName: "Slime",
 	id: "enemy_1",
-	img: "",
+	img: slimeImg,
 	description: "A weak slimy blob without much fight in it.",
 	level: 2,
 	spawnLoc: ["Forest"],

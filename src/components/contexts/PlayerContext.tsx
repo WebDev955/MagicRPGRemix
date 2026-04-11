@@ -2,6 +2,8 @@
 import { createContext, useState, useContext, useCallback, useMemo } from "react";
 import type {ReactNode} from "react"
 
+import slimeImg from "../../assets/Slime.png"
+
 //IMPORTS - CONEXT
 import { AccountContext} from "./AccountContext";
 
@@ -230,7 +232,7 @@ const contextStats = useMemo(() => {
 			  id: "Mon_001",
               monsterNum: "001",
 			  bio: "A weak slimy blob without much fight in it.",
-			  img: "ImgLink",
+			  img: slimeImg,
 			  element: "Neutral",
 			  description: "A slimey, goopy, slippery creature of little concern.",
 			  spawnLoc: ["Castle", "Forest"],

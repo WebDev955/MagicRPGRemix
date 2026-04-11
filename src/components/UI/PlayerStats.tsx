@@ -38,12 +38,14 @@ const PlayerStats:React.FC = () => {
 
         {viewStats &&
         <div className={styles.parentDiv}>
-            <div className={styles.statsDiv}>
-                <h2>Player Name</h2>
+            <div className={styles.menuDivButtons}>
+                <h2>{playerContext.playerName}</h2>
                 <Button onClick={openInventoryHandler}>Open Bag</Button>
                 <Button onClick={openMonsterLog}>View Monster Log</Button>
                 <Inventory/>
                 <MonsterLog/>
+            </div>
+            <div className={styles.menuStatsDiv}>
                 <h3 className={styles.health}>Hp: {playerContext.stats.hp}</h3>
                 <h3 className={styles.health}>Df: {playerContext.stats.def}</h3>
                 <h3 className={styles.magic}>Magic: {playerContext.stats.mp}</h3>

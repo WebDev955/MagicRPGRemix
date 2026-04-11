@@ -36,6 +36,7 @@ const displayArmor = (value:string) => {
 
  return (
    <div className={style.itemsWrapperDiv}>
+        <p>Gold: {playerCtx.inventoryTest.gold}</p>
         <div className={style.categorySelctionDiv}>
             <Button onClick={closeInventoryHandler}>Close</Button>
             <p onClick={()=>displayItems("armor")}>Armor</p>

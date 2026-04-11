@@ -1,33 +1,52 @@
 .parentDiv{
-    display: flex;
-    justify-content: flex-start; 
-    align-items: center; 
     width: 100%;
+    display: flex;    
+    flex-direction: column;
+    align-items: center; 
+    border: solid 1px black;
+    padding: 10px;
+    background-color: burlywood;
    
 }
-.statsDiv {
+.menuDivButtons {
     display: flex;
+    flex-direction: row; 
     justify-content: flex-start; 
     align-items: center; 
     width: 100%;
     gap: 25px;
-    background-color: lightgray;
-    color: black;
+    color: rgb(228, 77, 77);
     font-size: small;
     padding-right: 10px;
-    border: solid 1px black;
+    border-bottom: solid 2px black;
 }
+
+.menuStatsDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    gap: 10px;
+    align-items: center; 
+    color: rgb(228, 77, 77);
+    font-size: small;
+    padding-right: 10px;
+}
+
 .health{
     color: red;
     outline: auto;
+    padding: 5px;
 }
 
 .magic{
     color: blue;
     outline: auto;
+    padding: 5px;
 }
 
 .gold{
     color: black;
     outline: auto;
+    padding: 5px;
 }
