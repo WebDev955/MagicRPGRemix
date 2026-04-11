@@ -2,6 +2,7 @@
 import { useContext, useState} from "react"
 //COMPONENT IMPORTS
 import Inventory from "./Bag/Inventory"
+import MonsterLog from "./MonsterLog"
 import Button from "./Button"
 //import Modal from "./Modal"
 
@@ -23,6 +24,9 @@ const PlayerStats:React.FC = () => {
         playerContext.openInventory()
     }
 
+    const openMonsterLog = () => {
+        playerContext.openMonsterLog()
+    }
     const viewStatsHandler = () => {
         setViewStats(!viewStats)
     }
@@ -37,7 +41,9 @@ const PlayerStats:React.FC = () => {
             <div className={styles.statsDiv}>
                 <h2>Player Name</h2>
                 <Button onClick={openInventoryHandler}>Open Bag</Button>
+                <Button onClick={openMonsterLog}>View Monster Log</Button>
                 <Inventory/>
+                <MonsterLog/>
                 <h3 className={styles.health}>Hp: {playerContext.stats.hp}</h3>
                 <h3 className={styles.health}>Df: {playerContext.stats.def}</h3>
                 <h3 className={styles.magic}>Magic: {playerContext.stats.mp}</h3>

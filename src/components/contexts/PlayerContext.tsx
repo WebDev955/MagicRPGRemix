@@ -16,6 +16,21 @@ export type EquipableItem = {
 export type playerContextType = {
     playerName: string,
     equipedItems: EquipableItem[],
+    monsterLog: {  
+	  	name: string,
+		id: string,
+        monsterNum: string,
+		bio: string,
+		img: string,
+		element: string,
+		description: string,
+		spawnLoc: string[],
+		lootDrops: {
+			name: string,
+			id: string,
+			desc: string
+	    }[],
+    }[],  
     inventory: {
         gold: number,
         spells: {
@@ -75,9 +90,7 @@ export type playerContextType = {
             debuff: string,
             effect: string,
             description: string
-
         }[],
-
         armor: {  
             id: string
             name: string,
@@ -86,7 +99,6 @@ export type playerContextType = {
             ability: string,
             description: string
         }[],
-
         weapons: {
             id: string,
             name: string, 
@@ -94,7 +106,6 @@ export type playerContextType = {
             powerBoost: number,
             ability: string
         }[],
-
         potions: {
             id: string, 
             name: string,
@@ -103,10 +114,12 @@ export type playerContextType = {
             bonusEffect: string
         }[]
     },
-
-    isInventoryOpen: boolean,
     openInventory: () => void,
-    //closeInventory: () => void,
+    isInventoryOpen: boolean,
+
+    openMonsterLog: () => void,
+    isMonsterLogOpen: boolean,
+
     equipItem: (item: EquipableItem) => void;
     unequipItem: (item: EquipableItem) => void;
 }
@@ -115,15 +128,12 @@ type Props = {
     children: ReactNode
 }
 
-
-
-
 //Template for Player
 export const PlayerContext = createContext<playerContextType>({
     
     playerName: "",
-
     equipedItems: [],
+    monsterLog: [],
 
     inventory: {
         gold: 0,
@@ -150,10 +160,12 @@ export const PlayerContext = createContext<playerContextType>({
         buffs: [],
         debuffs: []
     },
-
-    isInventoryOpen: false,
     openInventory: () => {},
-    //loseInventory: () => {},
+    isInventoryOpen: false,
+
+    openMonsterLog: () => {},
+    isMonsterLogOpen: false,
+
     equipItem: () => {},
     unequipItem: () => {},
 
@@ -171,10 +183,15 @@ export function PlayerContextProvider({children}:Props){
 ***************************************/ 
     const [equipedItems, setEquipedItems] = useState<EquipableItem[]>([])
     const [isInventoryOpen, setIsInventoryOpen] = useState(false)
+    const [isMonsterLogOpen, setIsMonsterLogOpen] = useState(false)
 
     const openInventory = () => {
         setIsInventoryOpen(!isInventoryOpen)
     }
+    const openMonsterLog= () => {
+        setIsMonsterLogOpen(!isMonsterLogOpen)
+    }
+
 
     const equipItem = (item: EquipableItem) => {
         setEquipedItems(prevItems => {
@@ -208,6 +225,23 @@ const contextStats = useMemo(() => {
 /**************************************
     END EQUP-UNEQUIP ITMES
 **************************************/
+    const monsterLog = [
+		 {    name: "Slime",
+			  id: "Mon_001",
+              monsterNum: "001",
+			  bio: "A weak slimy blob without much fight in it.",
+			  img: "ImgLink",
+			  element: "Neutral",
+			  description: "A slimey, goopy, slippery creature of little concern.",
+			  spawnLoc: ["Castle", "Forest"],
+			  lootDrops: [{   
+                name: "Slime Goo",
+				id: "MonLoot_Slime_001",
+				desc: "An elementless goopy substance. Mixed with the right elements, its chemistry could be reforged into something more useful."
+            }],
+}]
+
+
     const inventory = {
         gold: 0,
         spells: [],
@@ -269,8 +303,8 @@ const contextStats = useMemo(() => {
             {name: "Starter Wand", category: "Wand", powerBoost: 0.2, ability: "None", id:"wand_1"},
         ],
         potions : [
-            {name: "Basic Health Potion", type: "Hp Restore", restorePts: 10 , bonusEffect: "None", id:"healthPot_1"},
-            {name: "Basic Magic Potion", type: "Magic Restore", restorePts: 10, bonusEffect: "None", id:"MagicPot_1"}
+            {name: "Basic Health Potion", category: "Hp Restore", restorePts: 10 , bonusEffect: "None", id:"healthPot_1"},
+            {name: "Basic Magic Potion", category: "Magic Restore", restorePts: 10, bonusEffect: "None", id:"MagicPot_1"}
         ]
     };
 
@@ -281,11 +315,14 @@ const contextStats = useMemo(() => {
     const playerCtx: playerContextType = {
         playerName,
         stats: contextStats,
+        monsterLog,
         inventory,
         inventoryTest,
         equipedItems,
         isInventoryOpen,
         openInventory,
+        openMonsterLog,
+        isMonsterLogOpen,
         equipItem,
         unequipItem
     }

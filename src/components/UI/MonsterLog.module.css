@@ -1,0 +1,25 @@
+.parentDiv{
+    width: 100%;
+    height: 80%;
+}
+
+.sortDiv{
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    width: 100%;
+}
+
+.monsterBar {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    width: 100%;
+    background-color: lightgreen;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.info {
+    width: 100%
+}
