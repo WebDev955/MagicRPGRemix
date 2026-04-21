@@ -1,0 +1,51 @@
+.dialogueParentDiv{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.dialogueRow {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 100%;
+
+}
+.scrollContainer {
+    position: relative;
+    flex: 1;
+    padding-top: 70px
+}
+
+.portrait {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    background-color: burlywood;
+    border: solid black 2px;
+    z-index: 1;
+}
+    
+.textBox {
+    display: flex;
+    align-items: center;   /* vertically center text */
+    background-image: url("../../assets/Scroll.png");
+    background-size: cover;
+    height: 145px;
+  
+}
+
+.dialougeText{
+    text-align: left;
+    margin-top: 25px;
+    margin-left: 52px;
+    max-width: 430px;
+    color: black;
+    font-size: 15px;
+    height: 100%;
+}
+
+
+

@@ -1,9 +1,15 @@
 //IMPORTS - Hooks
-import { useRef, useEffect} from "react"
+import { useRef, useEffect, useContext} from "react"
 
 //IMPORTS - Components
 import EnemyUI from "./EnemyUI"
 import PlayerUI from "./PlayerUI"
+
+//IMPORT - Context
+import { BattleContext } from "../contexts/BattleContext"
+import { PlayerContext } from "../contexts/PlayerContext"
+import { SceneContext } from "../contexts/SceneContext"
+import {EnemyList} from "../../data/EnemyData"
 
 //IMPORTS - Images
 
@@ -13,9 +19,7 @@ import BattleTheme2 from "../../assets/Battle.mp3"
 //IMPORTS - STyles
 import styles from "./Battle.module.css"
 
-
 //IMPORTS - Components
-
 //! How Battles Work
     //* 1. A player selects a battle grid space 
         //TODO <Div onClick={() = startBattle(player, enemy)}/>
@@ -32,27 +36,37 @@ import styles from "./Battle.module.css"
         //* 7 Reward / Level up
             //TODO const levelUpReward()
 
+const Battle:React.FC = () => { 
+    //Context Data   
+    const battleCtx = useContext(BattleContext)
+    const playerCtx = useContext(PlayerContext)
+    const sceneCtx = useContext (SceneContext)
 
-
-
-
-
-const Battle:React.FC = () => {    
+    //Data to run battle
+    const runBattle = battleCtx.startBattle
+    const battleReady = battleCtx.battleReady
+    const battleEnemy = sceneCtx.battle
+    const enemyFound = EnemyList.find((monster) => monster.monsterId === battleEnemy.enemyId)
 
     //Audio
     const audioRef = useRef<HTMLAudioElement | null>(null)
 
     useEffect(() => {
+        runBattle(playerCtx, enemyFound)
         audioRef.current?.play()
     }, [])
 
-
     return(
-        <div className= {styles.parentDiv}>
-            <audio ref={audioRef} src={BattleTheme2} loop />
-            <EnemyUI/>
-            <PlayerUI/>
-        </div>
+        <>
+        {battleReady === true &&
+            <div className= {styles.parentDiv}>
+                <audio ref={audioRef} src={BattleTheme2} loop />
+                <EnemyUI/>
+                <PlayerUI/>
+            </div>
+        }
+        </>
+
     )
     
 }

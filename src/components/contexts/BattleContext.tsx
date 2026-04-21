@@ -7,7 +7,7 @@ import {createBattler} from "../Battles/battleUtils"
 //IMPORT - TYPES
 import type {battlerType} from "../Battles/battleUtils"
 import type {playerContextType} from "./PlayerContext";
-import type {enemy} from "../../data/Enemies"
+import type {EnemyType} from "../../data/EnemyData"
 import type { spell } from "../Battles/battleUtils";
 
 // -------------------------
@@ -21,11 +21,12 @@ type BattleState = {
 
 type BattleContextType = {
     battle: boolean;  
+    battleReady: boolean,
     battleState: BattleState,
     activeBattler: battlerType;
 
-    startBattle: (player: playerContextType, enemy:enemy ) => void;
-    createBattler: (player: playerContextType, enemy: enemy) => {
+    startBattle: (player: playerContextType, enemy:EnemyType ) => void;
+    createBattler: (player: playerContextType, enemy: EnemyType) => {
         player: battlerType; 
         enemy: battlerType 
     };
@@ -45,6 +46,7 @@ type BattleContextType = {
 // -------------------------
 export const BattleContext = createContext<BattleContextType>({
     battle: false,
+    battleReady: false,
     battleState: {
         player: {} as battlerType,
         enemy: {} as battlerType,
@@ -76,6 +78,7 @@ type Props = {
 const BattleContextProvider = ({children}:Props) => {
 
 const [battle, setBattle] = useState(false)
+const [battleReady, setBattleReady] = useState(false)
 
 const [battleState, setBattleState] = useState<BattleState>({
         player: {} as battlerType,
@@ -98,7 +101,7 @@ const determineTurn = (btlrPlayer:battlerType, btlrEnemy:battlerType) => {
     }
 
 /*** 1. START BATTLE *****/    
-const startBattle = (player:playerContextType, enemy:enemy) => {
+const startBattle = (player:playerContextType, enemy:EnemyType) => {
     setBattle(true)
     const {player: btlrPlayer, enemy: btlrEnemy} = createBattler(player, enemy);
     
@@ -109,7 +112,7 @@ const startBattle = (player:playerContextType, enemy:enemy) => {
         enemy: btlrEnemy,
         currentTurn: firstTurn
     })
-
+    setBattleReady(true)
 }
 
 const castSpell = (spell:spell) => {
@@ -124,7 +127,7 @@ const castSpell = (spell:spell) => {
     //const spellCast = caster.spells.find(s => s.id === spell.id);
     
     const spellPower = spell.power
-    const spellName = spell.name
+    const spellName = spell.spellName
     const spellElement = spell?.element
 
     const updatedCaster = {
@@ -181,6 +184,7 @@ const castSpell = (spell:spell) => {
 ***********************/
     const battleCtx: BattleContextType = {
         battle,
+        battleReady,
         battleState,
         activeBattler,
         startBattle,

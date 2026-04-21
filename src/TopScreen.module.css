@@ -1,0 +1,12 @@
+.parentDiv {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+
+.tutorial{
+    background-image: url("./assets/CastleWall.jpg");
+    background-size: cover;
+}

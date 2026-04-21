@@ -16,7 +16,7 @@ import BattleTest from "../../Battles/BattleTest.tsx"
 import {BattleContext}  from '../../contexts/BattleContext.tsx'
 import {PlayerContext} from '../../contexts/PlayerContext.tsx'
 
-import{slime} from "../../../data/Enemies.tsx"
+import{slime} from "../../../data/EnemyData.tsx"
 
 import MapForest from "../../../data/MapForest.tsx"
 

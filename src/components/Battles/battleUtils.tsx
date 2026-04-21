@@ -1,13 +1,11 @@
 //import Context
 
 import type { playerContextType } from "../contexts/PlayerContext"
-import type { enemy } from "../../data/Enemies"
-
-
+import type { EnemyType } from "../../data/EnemyData"
 
 export type spell = { 
-    id: string, 
-    name: string,
+	spellName: string,
+	spellId: string,
     element: string,
     mp: number,
     power: number, 
@@ -39,7 +37,7 @@ export type battlerType = {
 }
 
     //Function - pull in data for battlers, playerCtx and enemy data 
-export const createBattler = (player:playerContextType, enemy:enemy) => {
+export const createBattler = (player:playerContextType, enemy:EnemyType) => {
         const btlrPlayer = {
             name: player.playerName,
             element: player.stats.channeledElement,
@@ -61,7 +59,7 @@ export const createBattler = (player:playerContextType, enemy:enemy) => {
 
 
 export const castSpell = (caster: battlerType, target: battlerType, spellId: string) => {
-    const spell = caster.spells.find(s => s.id === spellId);
+    const spell = caster.spells.find(s => s.spellId === spellId);
     
     if(!spell) return
 

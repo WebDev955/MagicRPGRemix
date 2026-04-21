@@ -17,8 +17,6 @@ const PlayerUI:React.FC = () => {
     const spells = player.spells
     //const potions = player.potions
 
-
-
     const [showSpells, setShowSpells] = useState(false)
 
     function displaySpells(){
@@ -50,7 +48,7 @@ const PlayerUI:React.FC = () => {
             </div>
                 <div className={styles.spellImgs}> 
                     {showSpells && spells.map((spell) =>
-                        <img onClick = {() =>handleCastHandler(spell)} id={spell.id} src={StoneTablet} width = "100px"/>  
+                        <img onClick = {() =>handleCastHandler(spell)} id={spell.spellId} src={StoneTablet} width = "100px"/>  
                     )}
                 </div>
             </div>

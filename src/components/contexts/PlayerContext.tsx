@@ -7,6 +7,8 @@ import slimeImg from "../../assets/Slime.png"
 //IMPORTS - CONEXT
 import { AccountContext} from "./AccountContext";
 
+//import type { Quest } from "../../data/questData";
+
 export type EquipableItem = {
     type?: string
     def?: number
@@ -33,11 +35,16 @@ export type playerContextType = {
 			desc: string
 	    }[],
     }[],  
+
+    //questLog: {
+        //quest: Quest
+    //}[]
+
     inventory: {
         gold: number,
         spells: {
-            id: string,
-            name: string,
+            spellId: string,
+            spellName: string,
             element: string,
             mp: number,
             power: number, 
@@ -79,12 +86,11 @@ export type playerContextType = {
         debuffs: string[],
     },
 
-
     inventoryTest: {
         gold: number,
         spells: {
-            id: string, 
-            name: string,
+            spellId: string, 
+            spellName: string,
             element: string,
             mp: number,
             power: number, 
@@ -122,6 +128,8 @@ export type playerContextType = {
     openMonsterLog: () => void,
     isMonsterLogOpen: boolean,
 
+    //addNewQuest: (quest:object) => void;
+
     equipItem: (item: EquipableItem) => void;
     unequipItem: (item: EquipableItem) => void;
 }
@@ -136,6 +144,7 @@ export const PlayerContext = createContext<playerContextType>({
     playerName: "",
     equipedItems: [],
     monsterLog: [],
+    //questLog: [],
 
     inventory: {
         gold: 0,
@@ -168,6 +177,8 @@ export const PlayerContext = createContext<playerContextType>({
     openMonsterLog: () => {},
     isMonsterLogOpen: false,
 
+    //addNewQuest: () => {},
+    
     equipItem: () => {},
     unequipItem: () => {},
 
@@ -178,6 +189,10 @@ export function PlayerContextProvider({children}:Props){
     const acctCtx = useContext(AccountContext)
     const playerName = acctCtx.userAccount.playerName || "player"
 
+    //const addNewQuest = (quest:object) => {
+        
+    //}
+
     
 
 /****************************************
@@ -186,6 +201,7 @@ export function PlayerContextProvider({children}:Props){
     const [equipedItems, setEquipedItems] = useState<EquipableItem[]>([])
     const [isInventoryOpen, setIsInventoryOpen] = useState(false)
     const [isMonsterLogOpen, setIsMonsterLogOpen] = useState(false)
+    
 
     const openInventory = () => {
         setIsInventoryOpen(!isInventoryOpen)
@@ -193,7 +209,6 @@ export function PlayerContextProvider({children}:Props){
     const openMonsterLog= () => {
         setIsMonsterLogOpen(!isMonsterLogOpen)
     }
-
 
     const equipItem = (item: EquipableItem) => {
         setEquipedItems(prevItems => {
@@ -227,6 +242,7 @@ const contextStats = useMemo(() => {
 /**************************************
     END EQUP-UNEQUIP ITMES
 **************************************/
+
     const monsterLog = [
 		 {    name: "Slime",
 			  id: "Mon_001",
@@ -241,8 +257,7 @@ const contextStats = useMemo(() => {
 				id: "MonLoot_Slime_001",
 				desc: "An elementless goopy substance. Mixed with the right elements, its chemistry could be reforged into something more useful."
             }],
-}]
-
+    }]  
 
     const inventory = {
         gold: 0,
@@ -255,8 +270,8 @@ const contextStats = useMemo(() => {
     const inventoryTest = {
         gold: 500,
         spells : [
-            {   id: "BasicCast_1",
-                name: "Basic Cast", 
+            {   spellId: "BasicCast_1",
+                spellName: "Basic Cast", 
                 element:"None", 
                 mp: 0, 
                 power: 10, 
@@ -267,8 +282,8 @@ const contextStats = useMemo(() => {
                 
             }, 
             {
-                id: "BasicWater_1",
-                name: "Waterspell", 
+                spellId: "BasicWater_1",
+                spellName: "Waterspell", 
                 element:"Water",  
                 mp: 3,
                 power: 10, 
@@ -278,8 +293,8 @@ const contextStats = useMemo(() => {
                 effect: "flood"
             }, 
             {
-                id: "BasicFire_1",
-                name: "Firespell", 
+                spellId: "BasicFire_1",
+                spellName: "Firespell", 
                 element:"Fire", 
                 mp: 5, 
                 power: 15,
@@ -325,6 +340,7 @@ const contextStats = useMemo(() => {
         openInventory,
         openMonsterLog,
         isMonsterLogOpen,
+        //addNewQuest,
         equipItem,
         unequipItem
     }

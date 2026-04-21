@@ -7,7 +7,7 @@ import { createBattler } from "../Battles/battleUtils";
 // IMPORT - TYPES
 import type { battlerType } from "../Battles/battleUtils";
 import type { playerContextType } from "./PlayerContext";
-import type { enemy } from "../../data/Enemies";
+import type { enemy } from "../../data/EnemyData";
 
 // -------------------------
 // TYPES
