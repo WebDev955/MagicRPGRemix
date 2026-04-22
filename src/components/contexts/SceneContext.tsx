@@ -29,9 +29,9 @@ export type SceneProviderType = {
         villageId: string  | null 
         ) => void;
     
-    renderBattle : (
-        enemyId: string,
-    ) => void,
+    renderBattle : (enemyId: string) => void,
+
+    exitBattle: () => void,
 
     scene: sceneType
     battle: battleType
@@ -41,6 +41,7 @@ export type SceneProviderType = {
 export const SceneContext = createContext<SceneProviderType>({
 	renderScene: () => {},
     renderBattle: () => {},
+    exitBattle: () => {},
 
     scene: {
         eventType: "",
@@ -91,6 +92,13 @@ export function SceneContextProvider({children}:Props){
         }
         setBattle(newBattle)
     }
+
+    const exitBattle = () => {
+        setBattle({
+            enemyId:"",
+            battleActive: false
+        })
+    } 
 	
 /**********************
  PLAYER CONTEXT OBJECT
@@ -98,6 +106,7 @@ export function SceneContextProvider({children}:Props){
 	const sceneCtx:SceneProviderType = {
         scene,
         battle,
+        exitBattle,
         renderScene,
         renderBattle,
 	}

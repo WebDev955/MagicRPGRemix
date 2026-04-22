@@ -29,19 +29,22 @@ const TopScreen = () => {
       {scene?.eventType === "npc" &&
         <div className={styles[sceneFound?.theme] || styles.default}>
           <Dialogue
-            defaultText = {npcFound?.dialogue?.default || "No Text Found"}
-            questOfferText =  {npcFound?.dialogue?.questOffer|| "No Text Found"}
-            questComplete =  {npcFound?.dialogue?.questComplete|| "No Text Found"}
+            npc = {npcFound || null}
+            defaultText = {npcFound?.dialogue?.defaultText || "No Text Found"}
+            loreText =  {npcFound?.dialogue?.loreText|| "No Text Found"}
+            questOfferText =  {npcFound?.dialogue?.questOfferText|| "No Text Found"}
+            questAcceptedText =  {npcFound?.dialogue?.questAcceptedText|| "No Text Found"}
+            questComplete =  {npcFound?.dialogue?.questCompleteText|| "No Text Found"}
             npcPortrait = {npcFound?.portrait}
           />
         </div>
       }
       
-      {scene?.eventType === "village" &&
+      {scene?.eventType === "village" && 
         "Village Scene Content"
       }
       
-      {battle?.battleActive === true &&
+      {battle?.battleActive === true && 
         <Battle/>
       }
     </div>

@@ -8,6 +8,7 @@ import type { ReactNode } from "react";
 type mapsUnlocked = string[];
 type npcsMet = string[];
 type monstersFought = string[];
+type questsActive = string[];
 type questsComplete = string[];
 
 type TutorialFlags = {
@@ -24,6 +25,7 @@ type GlobalProgressType ={
     mapsUnlocked: mapsUnlocked;
     npcsMet: npcsMet;
     monstersFought: monstersFought;
+    questsActive: questsActive,
     questsComplete: questsComplete
     gameFlags: GameFlags;
     setFlag: <C extends keyof GameFlags>(chapter: C, flagName: keyof GameFlags[C]) => void;
@@ -31,6 +33,7 @@ type GlobalProgressType ={
     addNewMap: (mapId: string) => void;
     addMetNpc: (npcId: string) => void;
     addNewMons: (monsterId: string) => void;
+    addActiveQuest: (questId: string) => void;
     addCompletedQuest: (questId: string) => void;
 };
 
@@ -43,6 +46,7 @@ export const GlobalProgress =  createContext<GlobalProgressType>({
     mapsUnlocked: [],
     npcsMet: [],
     monstersFought: [],
+    questsActive: [],
     questsComplete: [],
     gameFlags: [],
 
@@ -50,6 +54,7 @@ export const GlobalProgress =  createContext<GlobalProgressType>({
     addNewMap:() => {},
     addMetNpc: () => {},
     addNewMons: () => {},
+    addActiveQuest: () => {},
     addCompletedQuest : () => {}
 });
 
@@ -62,6 +67,7 @@ export const GlobalProgressContextProvider = ({children}:Props) => {
     const [mapsUnlocked, setMapsUnlocked] = useState<mapsUnlocked>([])
     const [npcsMet, setMetNpcs] = useState<npcsMet>([])
     const [monstersFought, setMonstersFought] = useState<monstersFought>([])
+    const [questsActive, setQuestsActive] = useState<questsActive>([])
     const [questsComplete, setQuestsComplete] = useState<questsComplete>([])
     
     const [gameFlags, setGameFlags] = useState<GameFlags>({
@@ -87,10 +93,20 @@ export const GlobalProgressContextProvider = ({children}:Props) => {
             [...prevMons, monsId]
         )
     }
+
+    const addActiveQuest = (questId: string) => {
+        setQuestsActive(prevQuest => 
+            [...prevQuest, questId]
+        )
+    }
     const addCompletedQuest = (questId: string) => {
         setQuestsComplete(prevQuest => 
-        [...prevQuest, questId]
+            [...prevQuest, questId]
         )
+        //remove a previously active quest from the Activelist
+        const foundActiveQuest = questsActive.find((id) => quest.id === questId.id)
+        questsActive.filter((quest) => quest.id === foundActiveQuest)
+        
     }
 
     const setFlag = <C extends keyof GameFlags> (chapter: C, flagName: keyof GameFlags[C]) => {
@@ -105,7 +121,7 @@ export const GlobalProgressContextProvider = ({children}:Props) => {
 /**************************************
     END UPDATE FUNCTIONS
 **************************************/
-    const GlobalProgressCtx = {
+    const GlobalProgressCtx:GlobalProgressType = {
         gameFlags,
         setFlag,
 
@@ -117,6 +133,9 @@ export const GlobalProgressContextProvider = ({children}:Props) => {
 
         monstersFought,
         addNewMons, 
+
+        questsActive,
+        addActiveQuest,
 
         questsComplete,
         addCompletedQuest,

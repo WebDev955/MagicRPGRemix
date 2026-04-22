@@ -1,5 +1,4 @@
 //import Context
-
 import type { playerContextType } from "../contexts/PlayerContext"
 import type { EnemyType } from "../../data/EnemyData"
 
@@ -14,7 +13,6 @@ export type spell = {
     effect: string,
     description: string 
 }
-
 
 export type battlerType = {
     name: string,
@@ -72,6 +70,8 @@ export const castSpell = (caster: battlerType, target: battlerType, spellId: str
     alert(`${target.name} took ${spell?.power}pts of damage!`)
     alert(`${caster.name} is now chanelling ${spell.element}!`)
 }
+
+
 
 
 {/*

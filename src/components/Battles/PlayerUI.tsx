@@ -7,14 +7,17 @@ import styles from "./PlayerUI.module.css"
 
 //IMPORTS - Components
 import { BattleContext } from "../contexts/BattleContext"
+import { SceneContext } from "../contexts/SceneContext"
 import type { spell } from "./battleUtils"
 
 
 const PlayerUI:React.FC = () => {   
     const battleCtx = useContext(BattleContext)
+    const sceneCtx = useContext(SceneContext)
     const player = battleCtx.battleState.player
     const playerElement = player.element
     const spells = player.spells
+    const exitBattle = sceneCtx.exitBattle
     //const potions = player.potions
 
     const [showSpells, setShowSpells] = useState(false)
@@ -24,11 +27,13 @@ const PlayerUI:React.FC = () => {
     }
 
     function handleCastHandler(spell: spell){
-        battleCtx.castSpell(
-            spell
-        )
+        battleCtx.castSpell(spell)
         setShowSpells(!showSpells)
         alert("Enemy Turn!")
+    }
+
+    const runHandler = () => {
+        exitBattle()
     }
 
     return (
@@ -38,7 +43,7 @@ const PlayerUI:React.FC = () => {
                     <button onClick={displaySpells}>Cast</button>
                     <button>Def</button>
                     <button>Bag</button>
-                    <button>Run</button>
+                    <button onClick={runHandler}>Run</button>
                 </div>
                 <div className= {styles.playerStats}>
                     <p>HP: {player.stats.hp}</p>

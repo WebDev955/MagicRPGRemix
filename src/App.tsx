@@ -7,6 +7,7 @@ import AccountContextProvider, { AccountContext } from './components/contexts/Ac
 import BattleContextProvider from "./components/contexts/BattleContext"
 import PlayerContextProvider from './components/contexts/PlayerContext'
 import SceneContextProvider from "./components/contexts/SceneContext"
+import ConversationContextProvider from './components/contexts/ConversationContext'
 
 import Game from './components/Game'
 
@@ -31,9 +32,11 @@ function AppContent() {
       <AccountContextProvider>
         <PlayerContextProvider>
           <SceneContextProvider>
+          <ConversationContextProvider>
           <BattleContextProvider>
             <AppContent />
           </BattleContextProvider>
+          </ConversationContextProvider>
           </SceneContextProvider>
         </PlayerContextProvider>
       </AccountContextProvider>

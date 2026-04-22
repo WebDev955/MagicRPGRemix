@@ -1,29 +1,45 @@
-//HOOKS
-import { type ReactNode, useState} from "react"
-
-//COMPONENT IMPORTS
-//COMPONENT IMPORTS - CONTEXTS
-//STYLES
+import { useContext } from "react"
+//import { PlayerContext } from "../contexts/PlayerContext";
+//import { GlobalContext } from "../contexts/GlobalPrgressContext";
+import { ConversationContext } from "../contexts/ConversationContext"
 import styles from "../UI/ConversationMenu.module.css"
 
-//type ConversationProps = {}
-
-// 1. A Box with dialogue options
-// 2. Selecting an option will display relvant NPC text
-// 3. picking "Any Quests"
-    // a. NPC quest relevant dialouge is displayed
-    // b. a button to "Accpt Quest" is displayed
-        // c. a quest linked to that NPC is given to player
-        // d. addQuest runs, adding to player and updating a GameProgress context
-
 const ConversationMenu = () => {
+    //const globalCtx = useContext(GlobalContext);
+    //const playerCtx = useContext(PlayerContext);
+    const convoCtx = useContext(ConversationContext);
+
+    const ifQuestDialogue = convoCtx.renderDialogue === "quest"
+    const questAccepted = convoCtx.renderDialogue === "questAccepted"
+
+    const acceptQuestHandler = () => {
+        // playerCtx.addQuest(questId)
+        // globalCtx.acceptedQuests(questId)
+        convoCtx.displayDialogue("questAccepted")
+        alert("Quest Added!")
+        //globalCtx.setFlag(true)
+    }
+
     return (
-        <div className = {styles.parentDiv}>
-            <div className = {styles.conversationMenu}>
-                <p>"Tell me about this place"</p>
-                <p>"Do you have any quests for me?</p>
+        <div className={styles.parentDiv}>
+            <div className={styles.conversationMenu}>
+
+                <p onClick={() => convoCtx.displayDialogue("default")}>
+                    "Hello!"
+                </p>
+                <p onClick={() => convoCtx.displayDialogue("lore")}>
+                    "Tell me about this place"
+                </p>
+                <p onClick={() => convoCtx.displayDialogue("quest")}>
+                    "Do you have any quests for me?"
+                </p>
+
+                {ifQuestDialogue && 
+                    <p onClick={acceptQuestHandler}>Accept Quest</p>
+                }
+
             </div>
-    </div>
+        </div>
     )
 }
 
