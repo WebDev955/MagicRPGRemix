@@ -12,14 +12,25 @@ type questsActive = string[];
 type questsComplete = string[];
 
 type TutorialFlags = {
-   wizSpokenTo: boolean,
-   castleMapAccess: boolean,
-   tutorialBattleDone: boolean
+    tutorialQuestAcquired: boolean,
+    castleMapAccess: boolean,
+    tutorialBattleDone: boolean,
+    tutorialQuestComplete: boolean,
+    forestMapAcquired: boolean,
+    tutorialCompleted: boolean,
 };
 
+type Chapter1Flags = {
+   foundVillage: boolean,
+   acceptedCaveQuest: boolean,
+   caveBossDefeated: boolean,
+   chapter1Complete: boolean,
+}
+
 type GameFlags = {
-  tutorial: TutorialFlags
-  }[];
+    tutorialFlags: TutorialFlags,
+    chapter1Flags: Chapter1Flags 
+  };
 
 type GlobalProgressType ={
     mapsUnlocked: mapsUnlocked;
@@ -48,7 +59,22 @@ export const GlobalProgress =  createContext<GlobalProgressType>({
     monstersFought: [],
     questsActive: [],
     questsComplete: [],
-    gameFlags: [],
+    gameFlags: {
+        tutorialFlags: {
+            tutorialQuestAcquired: false,
+            castleMapAccess: false,
+            tutorialBattleDone: false,
+            tutorialQuestComplete: false,
+            forestMapAcquired: false,
+            tutorialCompleted: false,
+        },
+        chapter1Flags: {
+            foundVillage: false,
+            acceptedCaveQuest: false,
+            caveBossDefeated: false,
+            chapter1Complete: false,
+        },
+    },
 
     setFlag: () => {},
     addNewMap:() => {},
@@ -71,11 +97,20 @@ export const GlobalProgressContextProvider = ({children}:Props) => {
     const [questsComplete, setQuestsComplete] = useState<questsComplete>([])
     
     const [gameFlags, setGameFlags] = useState<GameFlags>({
-        tutorial: {
-            wizSpokenTo: false,
+        tutorialFlags: {
+            tutorialQuestAcquired: false,
             castleMapAccess: false,
-            tutorialBattleDone: false
-        }
+            tutorialBattleDone: false,
+            tutorialQuestComplete: false,
+            forestMapAcquired: false,
+            tutorialCompleted: false,
+        },
+        chapter1Flags: {
+            foundVillage: false,
+            acceptedCaveQuest: false,
+            caveBossDefeated: false,
+            chapter1Complete: false,
+        },
     })
     
     const addNewMap = (mapId:string) => {
@@ -103,10 +138,9 @@ export const GlobalProgressContextProvider = ({children}:Props) => {
         setQuestsComplete(prevQuest => 
             [...prevQuest, questId]
         )
+
         //remove a previously active quest from the Activelist
-        const foundActiveQuest = questsActive.find((id) => quest.id === questId.id)
-        questsActive.filter((quest) => quest.id === foundActiveQuest)
-        
+        setQuestsActive(prev => prev.filter(id => id !== questId))
     }
 
     const setFlag = <C extends keyof GameFlags> (chapter: C, flagName: keyof GameFlags[C]) => {
