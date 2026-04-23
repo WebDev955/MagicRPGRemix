@@ -26,7 +26,7 @@ type BattleContextType = {
     battleState: BattleState,
     activeBattler: battlerType;
 
-    startBattle: (player: playerContextType, enemy:EnemyType ) => void;
+    startBattle: (player: playerContextType, enemy: EnemyType) => void;
     createBattler: (player: playerContextType, enemy: EnemyType) => {
         player: battlerType; 
         enemy: battlerType 

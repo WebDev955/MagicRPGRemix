@@ -8,9 +8,7 @@ const ConversationMenu = () => {
     //const globalCtx = useContext(GlobalContext);
     //const playerCtx = useContext(PlayerContext);
     const convoCtx = useContext(ConversationContext);
-
     const ifQuestDialogue = convoCtx.renderDialogue === "quest"
-    const questAccepted = convoCtx.renderDialogue === "questAccepted"
 
     const acceptQuestHandler = () => {
         // playerCtx.addQuest(questId)

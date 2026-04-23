@@ -9,7 +9,7 @@ type DialogueProps = {
     questOfferText: string;
     questAcceptedText: string,
     questCompleteText: string;
-    npcPortrait: string;
+    npcPortrait: string | undefined;
 }
 
 const Dialogue: React.FC<DialogueProps> = ({

@@ -22,19 +22,18 @@ const TopScreen = () => {
 
   const npcFound = NpcList.find((npc) => npc.id === scene.npcId)
   const sceneFound = ScenesList.find((s) => s.sceneId === scene.sceneId)
-
+  const theme = sceneFound?.theme || "default"
 
   return (
     <div className={styles.parentDiv}>
       {scene?.eventType === "npc" &&
-        <div className={styles[sceneFound?.theme] || styles.default}>
+        <div className={styles[theme] || styles.default}>
           <Dialogue
-            npc = {npcFound || null}
             defaultText = {npcFound?.dialogue?.defaultText || "No Text Found"}
             loreText =  {npcFound?.dialogue?.loreText|| "No Text Found"}
             questOfferText =  {npcFound?.dialogue?.questOfferText|| "No Text Found"}
             questAcceptedText =  {npcFound?.dialogue?.questAcceptedText|| "No Text Found"}
-            questComplete =  {npcFound?.dialogue?.questCompleteText|| "No Text Found"}
+            questCompleteText =  {npcFound?.dialogue?.questCompleteText|| "No Text Found"}
             npcPortrait = {npcFound?.portrait}
           />
         </div>

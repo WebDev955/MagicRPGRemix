@@ -52,9 +52,13 @@ const Battle:React.FC = () => {
     const audioRef = useRef<HTMLAudioElement | null>(null)
 
     useEffect(() => {
+        if (!enemyFound) {
+            console.warn("Enemy not found:", battleEnemy.enemyId)
+            return
+        }
         runBattle(playerCtx, enemyFound)
         audioRef.current?.play()
-    }, [])
+    })
 
     return(
         <>

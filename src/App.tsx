@@ -34,7 +34,7 @@ function AppContent() {
           <SceneContextProvider>
           <ConversationContextProvider>
           <BattleContextProvider>
-            <AppContent />
+            <AppContent/>
           </BattleContextProvider>
           </ConversationContextProvider>
           </SceneContextProvider>
