@@ -4,6 +4,7 @@ import { ConversationContext } from "../contexts/ConversationContext";
 import styles from "../UI/Dialogue.module.css"
 
 type DialogueProps = {
+    npcQuest: string | undefined
     defaultText: string;
     loreText: string;
     questOfferText: string;
@@ -13,6 +14,7 @@ type DialogueProps = {
 }
 
 const Dialogue: React.FC<DialogueProps> = ({
+    npcQuest,
     defaultText,
     loreText,
     questOfferText,
@@ -25,7 +27,9 @@ const Dialogue: React.FC<DialogueProps> = ({
 
     return (
         <div className={styles.dialogueParentDiv}>
-            <ConversationMenu />
+            <ConversationMenu
+                npcQuest = {npcQuest}
+            />
             <div className={styles.dialogueRow}>
                 <div className={styles.scrollContainer}>
                     <img className={styles.portrait} src={npcPortrait} />

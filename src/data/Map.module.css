@@ -1,13 +1,21 @@
-.parentDiv {
+.parentDiv_Castle {
     position: relative;
-    
     width: 435px;
     height: 491px;   
     background: url("../assets/MagicRPGMapDraft.png");
     background-size: cover;
     background-repeat: no-repeat;
     overflow-x: visible;
+}
 
+.parentDiv_Forest {
+    position: relative;
+    width: 435px;
+    height: 491px;   
+    background: url("../assets/MagicRPGMapDraftForest.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: visible;
 }
 
 .gridDiv {

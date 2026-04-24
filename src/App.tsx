@@ -8,6 +8,7 @@ import BattleContextProvider from "./components/contexts/BattleContext"
 import PlayerContextProvider from './components/contexts/PlayerContext'
 import SceneContextProvider from "./components/contexts/SceneContext"
 import ConversationContextProvider from './components/contexts/ConversationContext'
+import { GlobalProgressContextProvider } from './components/contexts/GlobalPrgressContext'
 
 import Game from './components/Game'
 
@@ -29,17 +30,19 @@ function AppContent() {
 
   function App() {
     return (
-      <AccountContextProvider>
-        <PlayerContextProvider>
+  <AccountContextProvider>
+    <GlobalProgressContextProvider>
+      <PlayerContextProvider>
           <SceneContextProvider>
-          <ConversationContextProvider>
-          <BattleContextProvider>
-            <AppContent/>
-          </BattleContextProvider>
+            <ConversationContextProvider>
+              <BattleContextProvider>
+                  <AppContent/>
+            </BattleContextProvider>
           </ConversationContextProvider>
-          </SceneContextProvider>
-        </PlayerContextProvider>
-      </AccountContextProvider>
+        </SceneContextProvider>
+      </PlayerContextProvider>
+    </GlobalProgressContextProvider>
+  </AccountContextProvider>
     )
 }
   

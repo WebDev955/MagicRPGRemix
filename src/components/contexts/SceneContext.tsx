@@ -10,6 +10,7 @@ type sceneType = {
     npcId: string | null,
     villageId: string | null,
 };
+type currentMapType = string 
 
 type battleType = {
     enemyId: string,
@@ -26,13 +27,15 @@ export type SceneProviderType = {
         sceneId: string, 
         bgImg: string,
         npcId:string  | null, 
-        villageId: string  | null 
+        villageId: string  | null,
+        mapType: string,
         ) => void;
     
     renderBattle : (enemyId: string) => void,
 
     exitBattle: () => void,
 
+    currentMap: currentMapType,
     scene: sceneType
     battle: battleType
 };
@@ -42,6 +45,8 @@ export const SceneContext = createContext<SceneProviderType>({
 	renderScene: () => {},
     renderBattle: () => {},
     exitBattle: () => {},
+    
+    currentMap: "castle",
 
     scene: {
         eventType: "",
@@ -68,13 +73,17 @@ export function SceneContextProvider({children}:Props){
         villageId: null,
      })
 
+     const [currentMap, setCurrentMap] = useState<currentMapType>(
+        "castle"
+     )
+
     const [battle, setBattle] = useState<battleType>({
         enemyId: "",
         battleActive: false,
      })     
 	 
 	const renderScene = (eventType: string|null, sceneId: string, bgImg: string, 
-        npcId: string | null, villageId: string | null) => {
+        npcId: string | null, villageId: string | null, mapType:string) => {
         
         const newScene:sceneType = {
             eventType: eventType,
@@ -84,6 +93,8 @@ export function SceneContextProvider({children}:Props){
             villageId: villageId
         }
         setScene(newScene)
+        setCurrentMap(mapType)
+        
 	}
     const renderBattle = (enemyId: string) => {
         const newBattle:battleType = {
@@ -91,6 +102,7 @@ export function SceneContextProvider({children}:Props){
             battleActive: true 
         }
         setBattle(newBattle)
+        setCurrentMap(currentMap)
     }
 
     const exitBattle = () => {
@@ -105,6 +117,7 @@ export function SceneContextProvider({children}:Props){
 ***********************/
 	const sceneCtx:SceneProviderType = {
         scene,
+        currentMap,
         battle,
         exitBattle,
         renderScene,

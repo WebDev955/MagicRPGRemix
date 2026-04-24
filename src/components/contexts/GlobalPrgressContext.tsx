@@ -138,7 +138,6 @@ export const GlobalProgressContextProvider = ({children}:Props) => {
         setQuestsComplete(prevQuest => 
             [...prevQuest, questId]
         )
-
         //remove a previously active quest from the Activelist
         setQuestsActive(prev => prev.filter(id => id !== questId))
     }
@@ -152,6 +151,8 @@ export const GlobalProgressContextProvider = ({children}:Props) => {
         }
         }))
     }
+
+    
 /**************************************
     END UPDATE FUNCTIONS
 **************************************/

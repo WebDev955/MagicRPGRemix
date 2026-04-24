@@ -29,6 +29,7 @@ const TopScreen = () => {
       {scene?.eventType === "npc" &&
         <div className={styles[theme] || styles.default}>
           <Dialogue
+            npcQuest = {npcFound?.questId}
             defaultText = {npcFound?.dialogue?.defaultText || "No Text Found"}
             loreText =  {npcFound?.dialogue?.loreText|| "No Text Found"}
             questOfferText =  {npcFound?.dialogue?.questOfferText|| "No Text Found"}

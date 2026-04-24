@@ -17,13 +17,12 @@ type Position = {
 
 type NPC = {
   id: string;
-  questId: string;
+  questId?: string;
   name: string;
   sprite: string,
   portrait: string,
   type: "villager" | "merchant" | "enemy";
   position: Position;
-
   dialogue?: dialogueOptions,
   interactionType?: "talk" | "shop" | "battle";
   movementType?: "static" | "random";
@@ -34,14 +33,14 @@ type NPC = {
 export const NpcList:NPC[] = [
 	{
 		id: "NPC_001",
+    questId: "quest_000",
 		name: "Wise Wizard",
 		sprite: WizardImg,
     portrait: portrait,
 		type: "villager",
-		questId: "quest_000",
 		position: {x: 10, y: 3},
 		dialogue: {
-            defaultText: "Hello there! Welcome to the Magic School! To get started, I asked that accept me question!",
+            defaultText: "Hello there! Welcome to the Magic School! To get started, I asked accept my quest!",
             loreText: "This is lore text about the game.",
             questOfferText: "I offer you a quest. Please take this map of the school and explore it. A Slime is moving",
             questAcceptedText: "Thanks for accepting!",

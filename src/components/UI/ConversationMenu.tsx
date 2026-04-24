@@ -1,22 +1,34 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 //import { PlayerContext } from "../contexts/PlayerContext";
-//import { GlobalContext } from "../contexts/GlobalPrgressContext";
+import { GlobalProgress } from "../contexts/GlobalPrgressContext";
 import { ConversationContext } from "../contexts/ConversationContext"
 import styles from "../UI/ConversationMenu.module.css"
 
-const ConversationMenu = () => {
-    //const globalCtx = useContext(GlobalContext);
+
+type ConversationProps = {
+    npcQuest: string | undefined
+}
+
+const ConversationMenu: React.FC<ConversationProps> = ({
+        npcQuest
+}) => {
+
+
+    const globalCtx = useContext(GlobalProgress);
     //const playerCtx = useContext(PlayerContext);
     const convoCtx = useContext(ConversationContext);
     const ifQuestDialogue = convoCtx.renderDialogue === "quest"
 
-    const acceptQuestHandler = () => {
+    const acceptQuestHandler = (npcQuest:string) => {
+        globalCtx.addActiveQuest(npcQuest)
         // playerCtx.addQuest(questId)
-        // globalCtx.acceptedQuests(questId)
         convoCtx.displayDialogue("questAccepted")
         alert("Quest Added!")
         //globalCtx.setFlag(true)
     }
+useEffect(() => {
+    console.log("Active quests updated:", globalCtx.questsActive)
+}, [globalCtx.questsActive])
 
     return (
         <div className={styles.parentDiv}>
@@ -32,8 +44,8 @@ const ConversationMenu = () => {
                     "Do you have any quests for me?"
                 </p>
 
-                {ifQuestDialogue && 
-                    <p onClick={acceptQuestHandler}>Accept Quest</p>
+                {ifQuestDialogue && npcQuest &&
+                    <p onClick={() => acceptQuestHandler(npcQuest)}>Accept Quest</p>
                 }
 
             </div>
