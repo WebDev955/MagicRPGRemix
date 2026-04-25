@@ -2,7 +2,7 @@
     position: relative;
     width: 435px;
     height: 491px;   
-    background: url("../assets/MagicRPGMapDraft.png");
+    background: url("../assets/CastleMap.png");
     background-size: cover;
     background-repeat: no-repeat;
     overflow-x: visible;
@@ -12,7 +12,7 @@
     position: relative;
     width: 435px;
     height: 491px;   
-    background: url("../assets/MagicRPGMapDraftForest.png");
+    background: url("../assets/ForestMap.png");
     background-size: cover;
     background-repeat: no-repeat;
     overflow-x: visible;
@@ -35,7 +35,7 @@
     width: 61px;
     height: 61px;
     flex-shrink: 0;
-    border: solid black 2px;
+    border: solid black 1px;
     box-sizing: border-box;
     cursor: pointer;
 }

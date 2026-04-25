@@ -26,7 +26,6 @@ export const CastleMap:React.FC = () => {
         } else {
             scene.renderScene(eventType, sceneId, bgImg, npcId, villageId, mapType)
         }
-        alert(`Cell event ${eventType} with ${sceneId || enemyId} activated. Check new scene on TopScreen`)
     }
 
     return (
