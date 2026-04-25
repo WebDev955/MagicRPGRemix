@@ -57,8 +57,11 @@ const Battle:React.FC = () => {
             return
         }
         runBattle(playerCtx, enemyFound)
-        audioRef.current?.play()
-    })
+        if (audioRef.current) {
+            audioRef.current.volume = 0.1
+            audioRef.current.play()
+        }
+    },[battleReady])
 
     return(
         <>

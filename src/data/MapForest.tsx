@@ -62,14 +62,10 @@ export const ForestMap:React.FC = () => {
         if (eventType === "battle"){
             if (enemyId) {
                 scene.renderBattle(enemyId)
-            } else {console.log("Battle cell has no enemyId assigned")
-                
-            }
-            
+            } else {console.log("Battle cell has no enemyId assigned")}
         } else {
             scene.renderScene(eventType, sceneId, bgImg, npcId, villageId, mapType)
         }
-        alert(`Cell event ${eventType} with ${sceneId || enemyId} activated. Check new scene on TopScreen`)
     }
 
     return (

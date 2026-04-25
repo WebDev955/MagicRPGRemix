@@ -18,6 +18,7 @@ import Dialogue from "./UI/Dialogue.tsx"
 const TopScreen = () => {
   const sceneCtx = useContext(SceneContext)
   const scene = sceneCtx.scene
+  //const currentMap = sceneCtx.currentMap
   const battle = sceneCtx.battle
 
   const npcFound = NpcList.find((npc) => npc.id === scene.npcId)

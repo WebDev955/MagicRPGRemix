@@ -6,12 +6,12 @@ export type EnemyType = {
 	img: string,
 	description: string,
 	level: number,
-	spawnLoc: [string],
+	spawnLoc: string[],
 	lootDrops: {
 		name: string,
 		id: string,
 		desc: string,
-	},
+	}[],
 	element: string,
 	stats: {
 		hp: number,
@@ -27,9 +27,9 @@ export type EnemyType = {
 		element: string,
 		power: number,
 		mp: number,
-		buff: string,
-		debuff: string,
-		effect: string,
+		buff?: string,
+		debuff?: string,
+		effect?: string,
         description: string
 	}[],	
 	recovery: {
@@ -37,10 +37,9 @@ export type EnemyType = {
 		name: string,
 		restorePts: number,
 		type: string,
-        bonusEffect: string
+        bonusEffect?: string
 	}[],
 }
-
 
 
 export const EnemyList:EnemyType[] = [
@@ -51,11 +50,13 @@ export const EnemyList:EnemyType[] = [
 		description: "A weak slimy blob without much fight in it.",
 		level: 2,
 		spawnLoc: ["Forest"],
-		lootDrops: {
-			name: "Slime Goo",
-			id: "EnemyLoot_Slime_1",
-			desc: "An elementless goopy substance. Under the right elements, its chemistry could be reforgedinto something more useful."
-		},
+		lootDrops: [
+			{
+				name: "Slime Goo",
+				id: "EnemyLoot_Slime_1",
+				desc: "An elementless goopy substance. Under the right elements, its chemistry could be reforgedinto something more useful."
+			}
+		],
 		element: "",
 		stats: {
 			hp: 5,
@@ -71,13 +72,10 @@ export const EnemyList:EnemyType[] = [
 			element: "",
 			power: 3,
 			mp: 1,
-			buff: "None",
-			debuff: "None",
-			effect: "None",
 			description: "A splash of slime"
 		}],
 		recovery: [],			
-	}
+	},
 ]
 
 export const enemy:EnemyType = {
@@ -87,11 +85,13 @@ export const enemy:EnemyType = {
 		description: "A weak slimy blob without much fight in it.",
 		level: 2,
 		spawnLoc: ["Forest"],
-		lootDrops: {
-			name: "Slime Goo",
-			id: "EnemyLoot_Slime_1",
-			desc: "An elementless goopy substance. Under the right elements, its chemistry could be reforgedinto something more useful."
-		},
+		lootDrops: [
+			{
+				name: "Slime Goo",
+				id: "EnemyLoot_Slime_1",
+				desc: "An elementless goopy substance. Under the right elements, its chemistry could be reforgedinto something more useful."
+			}
+		],
 		element: "",
 		stats: {
 			hp: 5,
@@ -113,5 +113,5 @@ export const enemy:EnemyType = {
 			description: "A splash of slime"
 		}],
 		recovery: [],			
-	}
+}
 

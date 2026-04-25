@@ -40,13 +40,14 @@ export const NpcList:NPC[] = [
 		type: "villager",
 		position: {x: 10, y: 3},
 		dialogue: {
-            defaultText: "Hello there! Welcome to the Magic School! To get started, I asked accept my quest!",
+            defaultText: "Hello there! Welcome to the Magic School! To get started, ask me for a quest!",
             loreText: "This is lore text about the game.",
-            questOfferText: "I offer you a quest. Please take this map of the school and explore it. A Slime is moving",
+            questOfferText: "I offer you a quest. Please take this map of the school and explore it. A Slime is moving.",
             questAcceptedText: "Thanks for accepting!",
             questCompleteText: "You did it! You defeated the slime. I present you with the Forest Map. Head to the forest and find the forest village."
 	    },
     movementType: "static",
 		interactionType: "talk",
-	}
+	},
+  
 ]
