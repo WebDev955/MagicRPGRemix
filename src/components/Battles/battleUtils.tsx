@@ -1,22 +1,14 @@
 //import Context
-import type { playerContextType } from "../contexts/PlayerContext"
-import type { EnemyType } from "../../data/EnemyData"
-
-export type spell = { 
-	spellName: string,
-	spellId: string,
-    element: string,
-    mp: number,
-    power: number, 
-    buff: string,
-    debuff: string,
-    effect: string,
-    description: string 
-}
+import type { PlayerContextType} from "../../data/PlayerData"
+import type { EnemyType, LootDropType } from "../../types/EnemyTypes"
+import type { ElementType } from "../../types/ElementTypes"
+import type { SpellType } from "../../types/SpellTypes"
+import type { potionType } from "../../types/ItemTypes"
+import type { RecoveryType } from "../../types/EnemyTypes"
 
 export type battlerType = {
     name: string,
-    element: string | undefined,
+    element: ElementType | undefined,
     stats: {
         hp: number,
         def: number,
@@ -25,53 +17,48 @@ export type battlerType = {
         buffs: string[],
         debuffs: string[] 
     },
-    spells: spell[],
-    potions: {
-        id: string, 
-        type: string,
-        restorePts: number,
-        bonusEffect: string
-    }[]
+    spells: SpellType[],
+    potions: potionType[] | RecoveryType[]
+    lootDrops: LootDropType[] | null
 }
 
     //Function - pull in data for battlers, playerCtx and enemy data 
-export const createBattler = (player:playerContextType, enemy:EnemyType) => {
-        const btlrPlayer = {
-            name: player.playerName,
-            element: player.stats.channeledElement,
-            stats: {...player.stats},
-            spells: [...player.inventoryTest.spells],
-            potions: [...player.inventory.potions]
-  
-        };
-        const btlrEnemy = {
-            name: enemy.monsterName,
-            element: enemy.element,
-            stats: {...enemy.stats},
-            spells: [...enemy.spells],
-            potions:[...enemy.recovery]
-        }
+export const createBattler = (player:PlayerContextType, enemy:EnemyType) => {
+    const btlrPlayer = {
+        name: player.playerName,
+        element: player.stats.channeledElement,
+        stats: {...player.stats},
+        spells: [...player.bagTest.spells],
+        potions: [...player.bagTest.potions],
+        lootDrops: null
+    };
+    const btlrEnemy = {
+        name: enemy.name,
+        element: enemy.element,
+        stats: {...enemy.stats},
+        spells: [...enemy.spells],
+        potions:[...enemy.recovery],
+        lootDrops: [...enemy.lootDrops]
+    }
         
         return { player: btlrPlayer, enemy: btlrEnemy}
     }
 
 
 export const castSpell = (caster: battlerType, target: battlerType, spellId: string) => {
-    const spell = caster.spells.find(s => s.spellId === spellId);
+    const spell = caster.spells.find(s => s.id === spellId);
     
     if(!spell) return
 
     //calculateDamage(spell, target)
     
     //apply buffs and debuffs
-    target.stats.debuffs.push(spell?.debuff) 
-    caster.stats.buffs.push(spell?.buff) 
+    if (spell.debuff) target.stats.debuffs.push(spell.debuff)
+    if (spell.buff) caster.stats.buffs.push(spell.buff)
     caster.element = spell?.element;
     alert(`${target.name} took ${spell?.power}pts of damage!`)
     alert(`${caster.name} is now chanelling ${spell.element}!`)
 }
-
-
 
 
 {/*
