@@ -65,14 +65,14 @@ export const enemy:EnemyType = {
 		debuffs: [],
 		},
 
-		spells: [{
-			name: "Slime Splash",
-			id: "attack_slime_1",
-			element: arcaneElement,
-			power: 3,
-			mp: 1,
-			description: "A splash of slime"
-		}],
+	spells: [{
+		name: "Slime Splash",
+		id: "attack_slime_1",
+		element: arcaneElement,
+		power: 3,
+		mp: 1,
+		description: "A splash of slime"
+	}],
 	recovery: [],			
 }
 

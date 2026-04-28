@@ -8,14 +8,13 @@ import styles from "./PlayerUI.module.css"
 //IMPORTS - Components
 import { BattleContext } from "../contexts/BattleContext"
 import { SceneContext } from "../contexts/SceneContext"
-import type { spell } from "./battleUtils"
+import type { SpellType } from "../../types/SpellTypes"
 
 
 const PlayerUI:React.FC = () => {   
     const battleCtx = useContext(BattleContext)
     const sceneCtx = useContext(SceneContext)
     const player = battleCtx.battleState.player
-    const playerElement = player.element
     const spells = player.spells
     const exitBattle = sceneCtx.exitBattle
     //const potions = player.potions
@@ -26,7 +25,7 @@ const PlayerUI:React.FC = () => {
         setShowSpells(!showSpells)   
     }
 
-    function handleCastHandler(spell: spell){
+    function handleCastHandler(spell: SpellType){
         battleCtx.castSpell(spell)
         setShowSpells(!showSpells)
         alert("Enemy Turn!")
@@ -48,12 +47,12 @@ const PlayerUI:React.FC = () => {
                 <div className= {styles.playerStats}>
                     <p>HP: {player.stats.hp}</p>
                     <p>MP: {player.stats.mp}</p>
-                    <p>Channeling: {playerElement} </p> 
+                    <p>Channeling: {player.element?.element ?? "None"}</p> 
                 </div>
             </div>
                 <div className={styles.spellImgs}> 
                     {showSpells && spells.map((spell) =>
-                        <img onClick = {() =>handleCastHandler(spell)} id={spell.spellId} src={StoneTablet} width = "100px"/>  
+                        <img onClick = {() =>handleCastHandler(spell)} id={spell.id} src={StoneTablet} width = "100px"/>  
                     )}
                 </div>
             </div>

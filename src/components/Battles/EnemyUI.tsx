@@ -17,7 +17,7 @@ const EnemyUI:React.FC = () => {
         <div className= {styles.enemyDiv}>
             <div className= {styles.enemyStats}>
                 <p>{enemy.name}</p>
-                <p>Element: {enemy.element}</p>
+                <p>Element: {enemy.element?.element ?? "None" }</p>
                 <p>HP: {enemy.stats.hp}</p> 
                 <p>Lv: {"3"}</p>
             </div>

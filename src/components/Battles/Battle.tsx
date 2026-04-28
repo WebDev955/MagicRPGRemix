@@ -46,7 +46,7 @@ const Battle:React.FC = () => {
     const runBattle = battleCtx.startBattle
     const battleReady = battleCtx.battleReady
     const battleEnemy = sceneCtx.battle
-    const enemyFound = EnemyList.find((monster) => monster.monsterId === battleEnemy.enemyId)
+    const enemyFound = EnemyList.find((monster) => monster.id === battleEnemy.enemyId)
 
     //Audio
     const audioRef = useRef<HTMLAudioElement | null>(null)

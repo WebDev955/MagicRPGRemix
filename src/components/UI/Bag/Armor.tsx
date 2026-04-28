@@ -1,7 +1,7 @@
 import {useState, useContext } from "react"
 import {PlayerContext} from "../../contexts/PlayerContext"
 import style from "../../UI/Bag/Inventory.module.css"
-import type { EquipableItem } from "../../contexts/PlayerContext"
+import type { EquipableItem } from "../../../data/PlayerData"
 import Button from "../Button"
 
 const InventoryItems = () => {
@@ -10,7 +10,7 @@ const [renderContent, setRenderContent] = useState("")
 const [renderArmor, setRenderArmor] = useState("")
 
 const playerCtx = useContext(PlayerContext)
-const armor = playerCtx.inventoryTest.armor
+const armor = playerCtx.bagTest.armor
 //const weapons = playerCtx.inventoryTest.weapons
 //const spells = playerCtx.inventoryTest.spells
 //const potions = playerCtx.inventoryTest.potions
@@ -36,7 +36,7 @@ const displayArmor = (value:string) => {
 
  return (
    <div className={style.itemsWrapperDiv}>
-        <p>Gold: {playerCtx.inventoryTest.gold}</p>
+        <p>Gold: {playerCtx.bagTest.gold}</p>
         <div className={style.categorySelctionDiv}>
             <Button onClick={closeInventoryHandler}>Close</Button>
             <p onClick={()=>displayItems("armor")}>Armor</p>

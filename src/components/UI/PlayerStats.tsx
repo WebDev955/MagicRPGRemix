@@ -49,7 +49,7 @@ const PlayerStats:React.FC = () => {
                 <h3 className={styles.health}>Hp: {playerContext.stats.hp}</h3>
                 <h3 className={styles.health}>Df: {playerContext.stats.def}</h3>
                 <h3 className={styles.magic}>Magic: {playerContext.stats.mp}</h3>
-                <h3 className={styles.gold}>Gold: {playerContext.inventoryTest.gold}</h3>
+                <h3 className={styles.gold}>Gold: {playerContext.bagTest.gold}</h3>
             </div>
         </div>
         }
