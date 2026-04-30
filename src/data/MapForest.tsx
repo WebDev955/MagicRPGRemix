@@ -63,7 +63,7 @@ export const ForestMap:React.FC = () => {
 
     const cellEvent = (eventType:string|null, sceneId: string, bgImg: string,
 	    npcId:string|null, enemyId: string|null, villageId: string|null, mapType:string, gridCord: string) => {
-       
+ 
         if (eventType === "battle"){
             if (enemyId) {
                 scene.renderBattle(enemyId, gridCord)
@@ -81,12 +81,14 @@ return (
                         {row.map((cell) =>
                             <div 
                                 key = {cell.gridCord} 
-                                onClick = {() => cellEvent (
-                                    cell.eventType, cell.sceneId, cell.bgImg, cell.npcId,
-                                    cell.enemyId, cell.villageId, cell.mapType, cell.gridCord
-                                )} 
                                 className={style.cell}
-                                >
+                                onClick = {(e) =>{
+                                e.preventDefault()
+                                cellEvent (cell.eventType, cell.sceneId, cell.bgImg, cell.npcId,
+                                    cell.enemyId, cell.villageId, cell.mapType, cell.gridCord
+                                    )
+                                }}
+                            >
                             {cell.gridCord === playerLocation && ( 
                                 <img src={PlayerIcon} width={24} height={24} />
                             )}

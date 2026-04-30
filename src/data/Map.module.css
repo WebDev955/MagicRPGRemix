@@ -40,10 +40,3 @@
 
 }
 
-.cell:hover {
-    background-image: url("../assets/PlayerIcon.png");
-    background-size: 24px 24px;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
