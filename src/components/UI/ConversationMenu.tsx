@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react"
 //import { PlayerContext } from "../contexts/PlayerContext";
 import { GlobalProgress } from "../contexts/GlobalPrgressContext";
 import { ConversationContext } from "../contexts/ConversationContext"
+import { PlayerContext } from "../contexts/PlayerContext";
 import styles from "../UI/ConversationMenu.module.css"
 
 
@@ -13,22 +14,24 @@ const ConversationMenu: React.FC<ConversationProps> = ({
         npcQuest
 }) => {
 
-
     const globalCtx = useContext(GlobalProgress);
-    //const playerCtx = useContext(PlayerContext);
+    const playerCtx = useContext(PlayerContext);
     const convoCtx = useContext(ConversationContext);
     const ifQuestDialogue = convoCtx.renderDialogue === "quest"
 
-    const acceptQuestHandler = (npcQuest:string) => {
+    const acceptQuestHandler = (npcQuest:string,  ) => {
         globalCtx.addActiveQuest(npcQuest)
-        // playerCtx.addQuest(questId)
+        playerCtx.addNewQuest(npcQuest)
         convoCtx.displayDialogue("questAccepted")
-        alert("Quest Added!")
-        //globalCtx.setFlag(true)
+        globalCtx.setFlag("tutorialFlags", "tutorialQuestAcquired")
+         
     }
 useEffect(() => {
     console.log("Active quests updated:", globalCtx.questsActive)
-}, [globalCtx.questsActive])
+    console.log("Quest Log Updated:", playerCtx.questLog)
+    console.log("Flags set:", )
+    
+}, [playerCtx.questLog, globalCtx.questsActive, globalCtx.gameFlags])
 
     return (
         <div className={styles.parentDiv}>

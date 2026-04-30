@@ -11,9 +11,8 @@ export type EquipableItem = {
     powerBoost?: number
     ability?: string
 }
-export type QuestLogType = {
-    quest: QuestType
-}
+export type QuestLogType = QuestType
+
 export type MonsterLogType = {
     name: string,
 	id: string,
@@ -59,7 +58,7 @@ export type PlayerContextType = {
     playerName: string,
     equipedItems: EquipableItem[],
     monsterLog: MonsterLogType[],  
-    questLog?: QuestLogType[],
+    questLog: QuestLogType[],
     bag: BagType,
     bagTest: BagTestType,
     stats: StatsType
@@ -74,5 +73,7 @@ export type PlayerContextType = {
     openMonsterLog: () => void,
     isMonsterLogOpen: boolean,
     
-    addNewQuest?: (questId:string) => void;
+    addNewQuest: (questId:string) => void;
+    openQuestLog: () => void,
+    isQuestLogOpen: boolean
 }

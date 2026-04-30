@@ -3,6 +3,7 @@ import { useContext, useState} from "react"
 //COMPONENT IMPORTS
 import Inventory from "./Bag/Inventory"
 import MonsterLog from "./MonsterLog"
+import QuestLog from "./QuestLog"
 import Button from "./Button"
 //import Modal from "./Modal"
 
@@ -23,9 +24,11 @@ const PlayerStats:React.FC = () => {
     const openInventoryHandler = () =>{
         playerContext.openInventory()
     }
-
     const openMonsterLog = () => {
         playerContext.openMonsterLog()
+    }
+    const openQuestLog = () => {
+        playerContext.openQuestLog()
     }
     const viewStatsHandler = () => {
         setViewStats(!viewStats)
@@ -34,7 +37,7 @@ const PlayerStats:React.FC = () => {
 
     return(
         <>
-        <p onClick = {viewStatsHandler}>View Stats</p>
+        <p onClick = {viewStatsHandler}>Adventure Log</p>
 
         {viewStats &&
         <div className={styles.parentDiv}>
@@ -42,8 +45,10 @@ const PlayerStats:React.FC = () => {
                 <h2>{playerContext.playerName}</h2>
                 <Button onClick={openInventoryHandler}>Open Bag</Button>
                 <Button onClick={openMonsterLog}>View Monster Log</Button>
+                <Button onClick={openQuestLog}>View Quest Log</Button>
                 <Inventory/>
                 <MonsterLog/>
+                <QuestLog/>
             </div>
             <div className={styles.menuStatsDiv}>
                 <h3 className={styles.health}>Hp: {playerContext.stats.hp}</h3>

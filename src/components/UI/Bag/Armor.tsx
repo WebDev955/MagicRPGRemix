@@ -26,15 +26,15 @@ const armor = playerCtx.bagTest.armor
       const closeInventoryHandler = () => {
           playerCtx.openInventory()
       }
-const displayItems = (value:string) => {
- setRenderContent(value)
-}
+    const displayItems = (value:string) => {
+    setRenderContent(value)
+    }
 
-const displayArmor = (value:string) => {
- setRenderArmor(value)
-} 
+    const displayArmor = (value:string) => {
+    setRenderArmor(value)
+    } 
 
- return (
+return (
    <div className={style.itemsWrapperDiv}>
         <p>Gold: {playerCtx.bagTest.gold}</p>
         <div className={style.categorySelctionDiv}>

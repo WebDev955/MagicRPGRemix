@@ -1,11 +1,11 @@
 //IMPORTS - HOOK
 import { createContext, useState, useContext, useCallback, useMemo } from "react";
 import type {ReactNode} from "react"
-
 //IMPORT - TYPES
-import type { EquipableItem, PlayerContextType } from "../../data/PlayerData";
+import { type QuestLogType, type EquipableItem, type PlayerContextType } from "../../data/PlayerData";
 import { basicCast, Splash, Flames } from "../../data/SpellsData";
-
+//IMPORT - DATA
+import { QuestList } from "../../data/QuestData";
 
 
 import slimeImg from "../../assets/Slime.png"
@@ -60,7 +60,9 @@ export const PlayerContext = createContext<PlayerContextType>({
     openMonsterLog: () => {},
     isMonsterLogOpen: false,
 
-    //addNewQuest: (questid: string) => {},
+    addNewQuest: () => {},
+    openQuestLog: () => {},
+    isQuestLogOpen: false,
     
     equipItem: () => {},
     unequipItem: () => {},
@@ -72,24 +74,23 @@ export function PlayerContextProvider({children}:Props){
     const acctCtx = useContext(AccountContext)
     const playerName = acctCtx.userAccount.playerName || "player"
 
-    //const addNewQuest = (quest:object) => {  
-    //}
-
-    
-
 /****************************************
     EQUIP - UNEQUIP ITEMS                         
 ***************************************/ 
     const [equipedItems, setEquipedItems] = useState<EquipableItem[]>([])
     const [isInventoryOpen, setIsInventoryOpen] = useState(false)
     const [isMonsterLogOpen, setIsMonsterLogOpen] = useState(false)
+    const [questLog, setQuestLog] = useState<QuestLogType[]>([])
+    const [isQuestLogOpen, setIsQuestLogOpen] = useState(false)
     
-
     const openInventory = () => {
         setIsInventoryOpen(!isInventoryOpen)
     }
-    const openMonsterLog= () => {
+    const openMonsterLog = () => {
         setIsMonsterLogOpen(!isMonsterLogOpen)
+    }
+    const openQuestLog = () =>{
+        setIsQuestLogOpen(!isQuestLogOpen)
     }
 
     const equipItem = (item: EquipableItem) => {
@@ -106,6 +107,20 @@ export function PlayerContextProvider({children}:Props){
         );
     }, []);
 
+
+    const addNewQuest = (questId:string) => {
+        const foundQuest = QuestList.find(quest=> quest.id === questId)
+        if (!foundQuest) return 
+
+        setQuestLog (prevQuests => {
+             const alreadyAdded = prevQuests.some(quest => quest.id === questId)
+             if (alreadyAdded) return prevQuests 
+             return [...prevQuests, foundQuest]
+        })
+        alert(`${foundQuest.name} added to Quest Log!`)
+      
+    }
+ 
 /****** TOTAL DEFENSE FROM EQUIPPED ITEMS**************/
 const contextStats = useMemo(() => {
     const totalDef = equipedItems.reduce((sum, item) => sum + (item.def || 0), 0);
@@ -154,9 +169,13 @@ const contextStats = useMemo(() => {
         gold: 500,
         spells : [basicCast, Splash, Flames],
         armor : [
-            {id: "face_1", name: "Glasses",  category: "glasses", description: "basic wand", def: 2},
+            {id: "hat_1", name: "Novice Mage Hat",  category: "Hats", description: "Well worn mage hat.", def: 2},
+            {id: "hat_1", name: "Novice Mage Hat",  category: "Hats", description: "Well worn mage hat.", def: 2},
+            {id: "hat_1", name: "Novice Mage Hat",  category: "Hats", description: "Well worn mage hat.", def: 2},
+            {id: "hat_1", name: "Novice Mage Hat",  category: "Hats", description: "Well worn mage hat.", def: 2},
         ],
         weapons : [
+            {id: "wand_1", name: "Starter Wand", description: "Starter wand for novice mages.", category:"wand", powerBoost: 0.2},
             {id: "wand_1", name: "Starter Wand", description: "Starter wand for novice mages.", category:"wand", powerBoost: 0.2},
         ],
         potions : [
@@ -173,16 +192,24 @@ const contextStats = useMemo(() => {
     const playerCtx: PlayerContextType = {
         playerName,
         stats: contextStats,
-        monsterLog,
         bag,
         bagTest,
         equipedItems,
         isInventoryOpen,
         openInventory,
+        
+        monsterLog,
         openMonsterLog,
         isMonsterLogOpen,
+        
         equipItem,
-        unequipItem
+        unequipItem,
+        
+        questLog,
+        addNewQuest,
+        isQuestLogOpen,
+        openQuestLog,
+        
     }
 
     return (
@@ -193,4 +220,3 @@ const contextStats = useMemo(() => {
 }
 
 export default PlayerContextProvider
-
