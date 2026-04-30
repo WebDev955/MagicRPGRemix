@@ -37,10 +37,13 @@
     flex-shrink: 0;
     border: solid black 1px;
     box-sizing: border-box;
-    cursor: pointer;
+
 }
 
 .cell:hover {
-    background-color: lightslategray;
+    background-image: url("../assets/PlayerIcon.png");
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 

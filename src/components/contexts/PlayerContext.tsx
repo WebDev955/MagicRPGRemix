@@ -82,6 +82,7 @@ export function PlayerContextProvider({children}:Props){
     const [isMonsterLogOpen, setIsMonsterLogOpen] = useState(false)
     const [questLog, setQuestLog] = useState<QuestLogType[]>([])
     const [isQuestLogOpen, setIsQuestLogOpen] = useState(false)
+
     
     const openInventory = () => {
         setIsInventoryOpen(!isInventoryOpen)

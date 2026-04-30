@@ -89,7 +89,7 @@ export const castleMapArray: mapArrayType = [
     { gridCord: "7,0", gridType: "Tree", mapType: "castle", passable: false, eventType: null, sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null },
     { gridCord: "7,1", gridType: "Tree", mapType: "castle", passable: false, eventType: null, sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null },
     { gridCord: "7,2", gridType: "Tree", mapType: "castle", passable: false, eventType: null, sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null },
-    { gridCord: "7,3", gridType: "Door", mapType: "forest", passable: true, eventType: null, sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null },
+    { gridCord: "7,3", gridType: "Door", mapType: "forest", passable: true, eventType: "newMap", sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null },
     { gridCord: "7,4", gridType: "Tree", mapType: "castle", passable: false, eventType: null, sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null },
     { gridCord: "7,5", gridType: "Tree", mapType: "castle", passable: false, eventType: null, sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null },
     { gridCord: "7,6", gridType: "Tree", mapType: "castle", passable: false, eventType: null, sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null },

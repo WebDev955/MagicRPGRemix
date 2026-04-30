@@ -76,4 +76,5 @@ export type PlayerContextType = {
     addNewQuest: (questId:string) => void;
     openQuestLog: () => void,
     isQuestLogOpen: boolean
+
 }

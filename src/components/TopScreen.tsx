@@ -18,17 +18,21 @@ import Dialogue from "./UI/Dialogue.tsx"
 const TopScreen = () => {
   const sceneCtx = useContext(SceneContext)
   const scene = sceneCtx.scene
-  //const currentMap = sceneCtx.currentMap
   const battle = sceneCtx.battle
 
   const npcFound = NpcList.find((npc) => npc.id === scene.npcId)
   const sceneFound = ScenesList.find((s) => s.sceneId === scene.sceneId)
   const theme = sceneFound?.theme || "default"
 
+  const exitSceneHandler = () => {
+    sceneCtx.exitScene()
+  }
+
   return (
     <div className={styles.parentDiv}>
       {scene?.eventType === "npc" &&
         <div className={styles[theme] || styles.default}>
+          <p onClick = {exitSceneHandler}>Leave</p>
           <Dialogue
             npcQuest = {npcFound?.questId}
             defaultText = {npcFound?.dialogue?.defaultText || "No Text Found"}

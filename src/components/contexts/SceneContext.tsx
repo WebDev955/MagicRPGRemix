@@ -10,12 +10,15 @@ type sceneType = {
     npcId: string | null,
     villageId: string | null,
 };
-type currentMapType = string 
 
 type battleType = {
     enemyId: string,
     battleActive: boolean,
 };
+
+type currentMapType = string
+
+type playerLocationType = string
 
 type Props = {
     children: ReactNode;
@@ -29,15 +32,18 @@ export type SceneProviderType = {
         npcId:string  | null, 
         villageId: string  | null,
         mapType: string,
+        gridCord: string,
         ) => void;
     
-    renderBattle : (enemyId: string) => void,
+    renderBattle : (enemyId: string, playerLocation: string) => void,
 
     exitBattle: () => void,
+    exitScene: () => void,
 
     currentMap: currentMapType,
     scene: sceneType
     battle: battleType
+    playerLocation: playerLocationType
 };
 
 //Template for Scenes
@@ -45,8 +51,10 @@ export const SceneContext = createContext<SceneProviderType>({
 	renderScene: () => {},
     renderBattle: () => {},
     exitBattle: () => {},
+    exitScene: () => {},
     
     currentMap: "castle",
+    playerLocation: "6,3",
 
     scene: {
         eventType: "",
@@ -76,6 +84,9 @@ export function SceneContextProvider({children}:Props){
      const [currentMap, setCurrentMap] = useState<currentMapType>(
         "castle"
      )
+    const [playerLocation, setPlayerLocation] = useState<playerLocationType>(
+        "6,3"
+     )
 
     const [battle, setBattle] = useState<battleType>({
         enemyId: "",
@@ -83,7 +94,7 @@ export function SceneContextProvider({children}:Props){
      })     
 	 
 	const renderScene = (eventType: string|null, sceneId: string, bgImg: string, 
-        npcId: string | null, villageId: string | null, mapType:string) => {
+        npcId: string | null, villageId: string | null, mapType:string,  gridCord: string) => {
         
         const newScene:sceneType = {
             eventType: eventType,
@@ -93,16 +104,18 @@ export function SceneContextProvider({children}:Props){
             villageId: villageId
         }
         setScene(newScene)
+        setPlayerLocation(gridCord)
         setCurrentMap(mapType)
-        
 	}
-    const renderBattle = (enemyId: string) => {
+
+    const renderBattle = (enemyId: string, gridCord: string) => {
         const newBattle:battleType = {
             enemyId: enemyId,
             battleActive: true 
         }
         setBattle(newBattle)
         setCurrentMap(currentMap)
+        setPlayerLocation(gridCord)
     }
 
     const exitBattle = () => {
@@ -111,6 +124,16 @@ export function SceneContextProvider({children}:Props){
             battleActive: false
         })
     } 
+
+    const exitScene = () => {
+        setScene({
+            eventType: null,
+            sceneId: "",
+            bgImg: "",
+            npcId: null,
+            villageId: null,
+        })
+    }
 	
 /**********************
  PLAYER CONTEXT OBJECT
@@ -119,15 +142,16 @@ export function SceneContextProvider({children}:Props){
         scene,
         currentMap,
         battle,
-        exitBattle,
-        renderScene,
+        playerLocation,
         renderBattle,
+        exitBattle,
+        renderScene,  
+        exitScene,
 	}
     return (
         <SceneContext.Provider value={sceneCtx}>
             {children}
         </SceneContext.Provider>
     )
-	 
 }
 export default SceneContextProvider;
