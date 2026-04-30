@@ -74,7 +74,7 @@ export const ForestMap:React.FC = () => {
         }
     }
 return (
-           <div className={style.parentDiv_Forest}>
+        <div className={style.parentDiv_Forest}>
             <div className={style.gridDiv}>
                 {forestMapArray.map((row)=> 
                     <div className = {style.row}>

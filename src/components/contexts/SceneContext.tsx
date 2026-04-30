@@ -17,8 +17,8 @@ type battleType = {
 };
 
 type currentMapType = string
-
 type playerLocationType = string
+type isSceneOpenType = boolean
 
 type Props = {
     children: ReactNode;
@@ -44,6 +44,7 @@ export type SceneProviderType = {
     scene: sceneType
     battle: battleType
     playerLocation: playerLocationType
+    isSceneOpen: isSceneOpenType
 };
 
 //Template for Scenes
@@ -55,6 +56,7 @@ export const SceneContext = createContext<SceneProviderType>({
     
     currentMap: "castle",
     playerLocation: "6,3",
+    isSceneOpen: false,
 
     scene: {
         eventType: "",
@@ -88,6 +90,10 @@ export function SceneContextProvider({children}:Props){
         "6,3"
      )
 
+    const [isSceneOpen, setIsSceneOpen] = useState<isSceneOpenType>(
+        false
+    )
+
     const [battle, setBattle] = useState<battleType>({
         enemyId: "",
         battleActive: false,
@@ -103,6 +109,7 @@ export function SceneContextProvider({children}:Props){
             npcId: npcId,
             villageId: villageId
         }
+        setIsSceneOpen(!isSceneOpen)
         setScene(newScene)
         setPlayerLocation(gridCord)
         setCurrentMap(mapType)
@@ -143,6 +150,7 @@ export function SceneContextProvider({children}:Props){
         currentMap,
         battle,
         playerLocation,
+        isSceneOpen,
         renderBattle,
         exitBattle,
         renderScene,  

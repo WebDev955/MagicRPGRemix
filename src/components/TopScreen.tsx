@@ -1,20 +1,14 @@
 //Import - HOOKS
 import { useContext } from "react"
 import styles from "../TopScreen.module.css"
-
-
 //Import - CONTEXT
 import {SceneContext} from "../components/contexts/SceneContext.tsx"
-
 //IMPORT - DATA 
 import {ScenesList} from "../data/SceneData.tsx"
 import {NpcList} from "../data/NpcData.tsx"
-//import {QuestList} from "../data/QuestData.tsx"
-
 //IMORT - COMPNENTS 
 import Battle from "./Battles/Battle.tsx"
 import Dialogue from "./UI/Dialogue.tsx"
-import Modal from "./UI/Modal.tsx"
 
 
 const TopScreen = () => {
@@ -29,6 +23,7 @@ const TopScreen = () => {
   const exitSceneHandler = () => {
     sceneCtx.exitScene()
   }
+
 
 
   return (
