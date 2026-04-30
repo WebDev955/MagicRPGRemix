@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import ConversationMenu from "./ConversationMenu";
 import { ConversationContext } from "../contexts/ConversationContext";
-import { GlobalProgress } from "../contexts/GlobalPrgressContext";
+//import { GlobalProgress } from "../contexts/GlobalPrgressContext";
 import styles from "../UI/Dialogue.module.css"
 
 type DialogueProps = {
@@ -25,7 +25,7 @@ const Dialogue: React.FC<DialogueProps> = ({
 }) => {
 
     const convoCtx = useContext(ConversationContext)
-    const globalCtx = useContext(GlobalProgress);
+    //const globalCtx = useContext(GlobalProgress);
     //const gameFlag = globalCtx.gameFlags
 
     return (
