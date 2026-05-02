@@ -6,7 +6,7 @@ export const basicCast:SpellType = {
     name: "Basic Cast", 
     element: arcaneElement,
     mp: 0, 
-    power: 10, 
+    power: 1, 
     buff: "None",
     debuff: "None",
     description: "A basic magic spell.",

@@ -45,54 +45,49 @@ export const createBattler = (player:PlayerContextType, enemy:EnemyType) => {
     }
 
 
-export const castSpell = (caster: battlerType, target: battlerType, spellId: string) => {
+export const castSpell = (caster: battlerType,  spellId: string) => {
     const spell = caster.spells.find(s => s.id === spellId);
-    
     if(!spell) return
-
-    //calculateDamage(spell, target)
-    
-    //apply buffs and debuffs
-    if (spell.debuff) target.stats.debuffs.push(spell.debuff)
-    if (spell.buff) caster.stats.buffs.push(spell.buff)
-    caster.element = spell?.element;
-    alert(`${target.name} took ${spell?.power}pts of damage!`)
-    alert(`${caster.name} is now chanelling ${spell.element}!`)
+    calculateDamage(spell)
 }
 
 
-{/*
-const calculateDamage = (spell:Object, target:Object) => {
-    if (spell.element > target.element){
-        spell.damage x 1.5 -= target.hp
-        alert(`{target} took Xpts damage`)
+ 
 
-    } else if { (spell.element < target.element){
-        spell.damage x 0.5 -= target.hp
-        alert(`{target} took Xpts damage`)
-      }
-    } else if { (spell.element = target.element){
-        spell.damage -= target.hp
-        alert(`{target} took Xpts damage`)
-      }
-    }
-/*}
+export const calculateDamage = (spell:SpellType) => {
+    return spell.power
+   {/*  COMARING ELEMENTS FOR DAMAGE
 
-const isBattleOver = (btlrPlayer:Object, btlrEnemy:Object) => {
-    if (btlrPlayer.HP === 0){
-        return btlrPlayer
+        if (spell.element > target.element){
+            spell.damage x 1.5 -= target.hp
+            alert(`{target} took Xpts damage`)
+
+        } else if { (spell.element < target.element){
+            spell.damage x 0.5 -= target.hp
+            alert(`{target} took Xpts damage`)
+        }
+        } else if { (spell.element = target.element){
+            spell.damage -= target.hp
+            alert(`{target} took Xpts damage`)
+        }
+        }
+    */}
+}
+
+
+export const determineBattleOver = (caster:battlerType, target:battlerType) => {
+    if (caster.stats.hp <= 0){
+        return true
     }
-    if (btlrEnemy.HP === 0){
-        //determineXp()
-        //determineRewards() 
-        return btlrEnemy
+
+    if (target.stats.hp <= 0){
+        return true
     }
-    else { 
-        (btlrPlayer.HP && btlrEnemy.HP > 0){
-        return 
-      }
-    }  
- */}
+    else {
+        return false
+    }
+}
+        
 
 
 //}

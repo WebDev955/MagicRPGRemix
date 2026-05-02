@@ -17,18 +17,20 @@ const PlayerUI:React.FC = () => {
     const player = battleCtx.battleState.player
     const spells = player.spells
     const exitBattle = sceneCtx.exitBattle
-    //const potions = player.potions
+    //const lastAction = battleCtx.battleState.lastAction
 
     const [showSpells, setShowSpells] = useState(false)
 
+    //const [playerAction, setPlayerAction]  = useState(false)
+
     function displaySpells(){
-        setShowSpells(!showSpells)   
+        setShowSpells(!showSpells)
     }
 
     function handleCastHandler(spell: SpellType){
         battleCtx.castSpell(spell)
         setShowSpells(!showSpells)
-        alert("Enemy Turn!")
+        //setPlayerAction(!playerAction)
     }
 
     const runHandler = () => {
