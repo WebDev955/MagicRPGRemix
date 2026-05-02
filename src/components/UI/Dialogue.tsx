@@ -37,7 +37,6 @@ const Dialogue: React.FC<DialogueProps> = ({
                 <div className={styles.scrollContainer}>
                     <img className={styles.portrait} src={npcPortrait} />
                     <div className={styles.textBox}>
-
                         {convoCtx.renderDialogue === "default" &&
                             <p className={styles.dialougeText}>{defaultText}</p>
                         }
@@ -56,10 +55,6 @@ const Dialogue: React.FC<DialogueProps> = ({
 
                     </div>
                 </div>
-            </div>
-            <div>
-                <button>previous</button>
-                <button>next</button>
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 //HOOKS
-import { useContext, useState} from "react"
+import { useContext} from "react"
 //COMPONENT IMPORTS
 import Inventory from "./Bag/Inventory"
 import MonsterLog from "./MonsterLog"
@@ -17,7 +17,7 @@ import styles from "./PlayerStats.module.css"
 import { PlayerContext } from "../contexts/PlayerContext"
 
 const PlayerStats:React.FC = () => {
-    const [viewStats, setViewStats] = useState(false)
+    //const [viewStats, setViewStats] = useState(false)
     
     const playerContext = useContext(PlayerContext)
 
@@ -30,34 +30,25 @@ const PlayerStats:React.FC = () => {
     const openQuestLog = () => {
         playerContext.openQuestLog()
     }
-    const viewStatsHandler = () => {
-        setViewStats(!viewStats)
-    }
-
-
+    
     return(
         <>
-        <p onClick = {viewStatsHandler}>Adventure Log</p>
-
-        {viewStats &&
         <div className={styles.parentDiv}>
-            <div className={styles.menuDivButtons}>
-                <h2>{playerContext.playerName}</h2>
-                <Button onClick={openInventoryHandler}>Open Bag</Button>
-                <Button onClick={openMonsterLog}>View Monster Log</Button>
-                <Button onClick={openQuestLog}>View Quest Log</Button>
-                <Inventory/>
-                <MonsterLog/>
-                <QuestLog/>
-            </div>
-            <div className={styles.menuStatsDiv}>
+             <div className={styles.menuStatsDiv}>
+                <h2>{"Harry Potter"}</h2>
                 <h3 className={styles.health}>Hp: {playerContext.stats.hp}</h3>
                 <h3 className={styles.health}>Df: {playerContext.stats.def}</h3>
                 <h3 className={styles.magic}>Magic: {playerContext.stats.mp}</h3>
-                <h3 className={styles.gold}>Gold: {playerContext.bagTest.gold}</h3>
             </div>
-        </div>
-        }
+            <div className={styles.menuDivButtons}>
+                <Button className={styles.menuButton} onClick={openInventoryHandler}>Bag</Button> 
+                    <Inventory/>
+                <Button className={styles.menuButton} onClick={openMonsterLog}>Monster Log</Button>
+                    <MonsterLog/>
+                <Button className={styles.menuButton} onClick={openQuestLog}>Quests</Button>
+                    <QuestLog/>
+            </div>
+        </div>         
         </>
     )
 }

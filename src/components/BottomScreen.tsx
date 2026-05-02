@@ -12,6 +12,7 @@ const BottomScreen = () => {
 
   return (
     <div>
+      
       {activeMap === "castle" &&
         <>
           <h3>The Castle</h3>

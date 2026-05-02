@@ -98,7 +98,7 @@ const determineTurn = (btlrPlayer:battlerType, btlrEnemy:battlerType) => {
             return "enemy"
         }
     }
-
+    
 /*** 1. START BATTLE *****/    
 const startBattle = (player:PlayerContextType, enemy:EnemyType) => {
     setBattle(true)

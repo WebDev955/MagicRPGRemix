@@ -8,45 +8,56 @@
     background-color: burlywood;
    
 }
-.menuDivButtons {
-    display: flex;
-    flex-direction: row; 
-    justify-content: flex-start; 
-    align-items: center; 
-    width: 100%;
-    gap: 25px;
-    color: rgb(228, 77, 77);
-    font-size: small;
-    padding-right: 10px;
-    border-bottom: solid 2px black;
-}
-
 .menuStatsDiv {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: center; 
+    justify-content: space-evenly;
     gap: 10px;
     align-items: center; 
     color: rgb(228, 77, 77);
     font-size: small;
     padding-right: 10px;
+
 }
 
 .health{
     color: red;
     outline: auto;
     padding: 5px;
+    background-color: aliceblue;
 }
 
 .magic{
     color: blue;
     outline: auto;
     padding: 5px;
+    background-color: aliceblue;
 }
 
-.gold{
-    color: black;
-    outline: auto;
+.menuDivButtons {
+    width: 100%;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-evenly;
+    align-items: center; 
     padding: 5px;
+    font-size: small;
+}
+
+.menuButton{
+    background-color: lightskyblue;
+    border-radius: 10%;
+    padding: 10px;
+    font-weight: 600;
+    box-shadow: -2px 8px 19px 1px rgba(0,0,0,0.42);
+    -webkit-box-shadow: -2px 8px 19px 1px rgba(0,0,0,0.42);
+    -moz-box-shadow: -2px 8px 19px 1px rgba(0,0,0,0.42);
+}
+
+.menuButton{
+    background-color: lightskyblue;
+    border-radius: 10%;
+    padding: 10px;
+    font-weight: 600;
 }

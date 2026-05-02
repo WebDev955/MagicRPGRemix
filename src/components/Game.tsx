@@ -8,8 +8,8 @@ const Game = () => {
 
  return (
   <div className = {styles.parentDiv}>
-    <TopScreen/>
     <PlayerStats/>
+    <TopScreen/>
     <BottomScreen/>
   </div>
 )

@@ -18,8 +18,9 @@ const ConversationMenu: React.FC<ConversationProps> = ({
     const playerCtx = useContext(PlayerContext);
     const convoCtx = useContext(ConversationContext);
     const ifQuestDialogue = convoCtx.renderDialogue === "quest"
+    const questInProgress = globalCtx.gameFlags.tutorialFlags.tutorialQuestAcquired
 
-    const acceptQuestHandler = (npcQuest:string,  ) => {
+    const acceptQuestHandler = (npcQuest:string) => {
         globalCtx.addActiveQuest(npcQuest)
         playerCtx.addNewQuest(npcQuest)
         convoCtx.displayDialogue("questAccepted")
@@ -36,19 +37,22 @@ useEffect(() => {
     return (
         <div className={styles.parentDiv}>
             <div className={styles.conversationMenu}>
-
-                <p onClick={() => convoCtx.displayDialogue("default")}>
+                <p className={styles.conversationOption} onClick={() => convoCtx.displayDialogue("default")}>
                     "Hello!"
                 </p>
-                <p onClick={() => convoCtx.displayDialogue("lore")}>
+                <p className={styles.conversationOption} onClick={() => convoCtx.displayDialogue("lore")}>
                     "Tell me about this place"
                 </p>
-                <p onClick={() => convoCtx.displayDialogue("quest")}>
+                <p className={styles.conversationOption} onClick={() => convoCtx.displayDialogue("quest") }>
                     "Do you have any quests for me?"
                 </p>
 
+                {questInProgress === true  &&
+                    <p>"What do I need to do again?"</p>
+                }
+
                 {ifQuestDialogue && npcQuest &&
-                    <p onClick={() => acceptQuestHandler(npcQuest)}>Accept Quest</p>
+                    <p className={styles.acceptQuest}onClick={() => acceptQuestHandler(npcQuest)}>Accept Quest</p>
                 }
 
             </div>

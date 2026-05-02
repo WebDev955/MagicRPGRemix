@@ -30,7 +30,7 @@ const TopScreen = () => {
     <div className={styles.parentDiv}>
       {scene?.eventType === "npc" &&
         <div className={styles[theme] || styles.default}>
-          <p onClick = {exitSceneHandler}>Leave</p>
+          <p className={styles.exit}onClick = {exitSceneHandler}>Leave</p>
           <Dialogue
             npcQuest = {npcFound?.questId}
             defaultText = {npcFound?.dialogue?.defaultText || "No Text Found"}
