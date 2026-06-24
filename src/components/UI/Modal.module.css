@@ -13,6 +13,12 @@
     background-color: lightgray;
 }
 
+.questModal {
+    border: solid 3px black;
+    height: 90vh;
+    background-color: rgba(245, 245, 245, 0.407)
+}
+
 .monsterLogModal {
     border: solid 3px black;
     height: 90vh;

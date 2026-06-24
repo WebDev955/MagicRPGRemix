@@ -4,9 +4,9 @@ import {PlayerContext} from "../contexts/PlayerContext"
 import styles from "../UI/QuestLog.module.css"
 
 import Modal from "./Modal"
+import modalStyle from "../UI/Modal.module.css"
 
 const QuestLog = () => {
-
     const [viewQuest, setViewQuest] = useState("")
     
     const playerCtx = useContext(PlayerContext)
@@ -25,56 +25,63 @@ const QuestLog = () => {
     }
 
 return (
-<Modal open = {playerCtx.isQuestLogOpen}>
-    <div className={styles.questWrapperDiv}>
-        <p onClick={closeQuestLogHandler}>Close</p>
-        <div className={styles.questLogHeader}>
-            <h1>Quest Log</h1>
-            <div className={styles.questSortMenu}>
-                <p>Active</p>
-                <p>Complete</p>
+    <Modal open = {playerCtx.isQuestLogOpen} className={modalStyle.questModal}>
+        <div className={styles.questWrapperDiv}>
+            <div className={styles.questLogHeader}>
+                <button onClick={closeQuestLogHandler}>Close</button>
+                <h1>Quest Log</h1>
+                <div className={styles.questSortMenu}>
+                    <p>Active</p>
+                    <p>Tracking</p>
+                    <p>Complete</p>
+                </div>
+                <div className={styles.headerBelt}>
+        <div className={styles.beltDiamond} />
+    </div>
             </div>
-        </div>
-        {/* Quest Title Bar*/}
-        {questLog.map((quest) => 
-            <div className={styles.questNameCard}>
-                <div key = {quest.id} onClick={() => questDetailsHandler(quest.id)}>
+{/* Quest Title Bar*/}
+            {questLog.map((quest) => 
+            <div className={styles.questNameCard} onClick={() => questDetailsHandler(quest.id)}>
+                 <div className={styles.sectionDivider}>
                     <h2>{quest.name}</h2>
-                    <p>Track</p>
                 </div>
+                <p>Track</p>
             </div>
-        )}              
-        {/* Quest Details */}
-        {selectedQuest && 
-            <div className={styles.questDetailsWrapper}>
-                <div>
+            )} 
+{/* Quest Details */}
+            <div className={styles.questDetailsWrapper}>              
+            {selectedQuest && 
+                <div key={selectedQuest.id} className={styles.questDescription}>
                     <p>{selectedQuest.description}</p>
-                    <p>Requested by: {selectedQuest.npcGiver}</p>
+                    <p><span>Requested by:</span> {selectedQuest.npcGiver}</p>
                 </div>
-            </div>
-        }
-        {/* Quest Objectives */}
-        {selectedQuest && selectedQuest.objectives.map((obj) =>
-            <div className={styles.questDetailsWrapper}>
-                <div>
-                    <h2>Objectives</h2>
+            }
+{/* Quest Objectives */}
+            {selectedQuest && selectedQuest.objectives.map((obj) =>
+                <div className={styles.questObjectivesWrapper}>
+                    <div className={styles.sectionDivider}><h2>Objectives</h2></div>
+                    <ul className={styles.objectiveList}>
+                        <li key={obj.id}>
+                            {obj.name}: {obj.description}
+                        </li>
+                    </ul>
                 </div>
-                <ul className={styles.objectiveList}>
-                    <li key={obj.id}>
-                        {obj.name}: {obj.description}
-                    </li>
-                </ul>
-            </div>
-        )}
-        {selectedQuest && selectedQuest.rewards.map((reward) =>
-            <div className={styles.questRewardsWrapper}>
-                <h3>Rewards</h3>
-                <p>{reward.name}</p>
-            </div>
-        )}
-  </div>
- </Modal> 
- )
+            )}
+            {selectedQuest && selectedQuest.rewards.map((reward) =>
+                <div className={styles.questRewardsWrapper}>
+                    <h2>Rewards</h2>
+                    <ul>
+                        <li>{reward.name}</li>
+                    </ul>
+                </div>
+            )}
+            </div> 
+             
+        </div>
+        
+        
+    </Modal> 
+)
 }
 
 export default QuestLog

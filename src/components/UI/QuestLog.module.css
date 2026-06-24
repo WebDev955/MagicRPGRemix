@@ -2,48 +2,152 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 6px; 
-    border: solid red 1px   
+    align-items: center;
+    background-color: #993300;
+    border: solid black 3px;
+    border-radius: 25px;
+    padding-bottom: 50px;
+
 }
-.questLogHeader {
+.questLogHeader { 
+    padding: 15px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: lightblue;
-    
 }
+.questLogHeader button {
+    background-color: white;
+    border: solid black 2px;
+    font-size: 15px;
+    width: 100px;
+}
+.questLogHeader h1 {
+    padding-left: 15px
+}
+.headerBelt {    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 25px;    
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    margin-right: -10px;
+    background: rgb(0, 0, 0);
+}
+.beltDiamond {
+    width: 20px;
+    height: 20px;
+    background: yellow;
+    transform: rotate(45deg);
+    position: absolute;
+}
+
 .questSortMenu {
     width: 100%;
     display: flex;
-    flex-direction: horizontal;
-    gap: 6px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    font-size: larger;
+}
+
+.questSortMenu p {
+    background-color: #708090;
+    padding: 8px;
+    border: solid black 2px;
+    border-radius: 10px;
 }
 .questNameCard {
-    width: 100%;
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
-    background-color: lightgreen;
-    border: solid black 1px
+    align-items: center;
+    background-color: rgba(255, 223, 223, 0.842) ;
+    border: solid black 2px;
+    width: 90%;
+
+}
+.sectionDivider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.sectionDivider::before,
+.sectionDivider::after  {
+    content: "";
+    flex: 1;
+    height: 15px;
+    background: rgba(255, 0, 0, 0.54);
+    border-top: solid rgb(0, 0, 0) 3px;
+    border-bottom: solid rgb(0, 0, 0) 3px;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
 
 .questDetailsWrapper {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color:#FFDEAD;
+    border: solid black 2px;
+}
+
+.questDescription {
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: lightsalmon;
-    border: solid black 1px
+    justify-content: center;
+    padding-left: 15px;
+    font-style: italic;
+    font-size: larger;
+}
+
+.questDescription span {
+    font-weight: 600;
+}
+.questDescription p:last-child {
+    margin: 0
 }
 .questObjectivesWrapper {
-    width: 100%;
+    width: 95%;
     display: flex;
+    align-items: center;
     flex-direction: column;
-    background-color: lightsalmon;
+    margin-top: 10px;
 }
+.questObjectivesWrapper h2 {
+    margin: 0;
+}
+
+.objectiveList ul{
+    margin: 0;
+    list-style: none;
+}
+
+.objectiveList li { 
+list-style-type: none;
+  background-image: url('../../assets/ObjectiveDiamond.png');
+  background-repeat: no-repeat;
+  background-position: left center; 
+  background-size: 25px 25px;       
+  padding-left: 40px;       
+}
+
 .questRewardsWrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: lightgoldenrodyellow;
-    border: solid 1px black
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.questRewardsWrapper h2 {
+    margin: 0;
+}
+.questRewardsWrapper ul {
+    margin: 0;
 }

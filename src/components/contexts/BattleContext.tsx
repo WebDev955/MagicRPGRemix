@@ -1,8 +1,13 @@
-import {createContext, useState} from "react";
+import {createContext, useState, useContext} from "react";
 import type { ReactNode } from "react";
 
 //IMPORT - Utils
 import {createBattler, calculateDamage, determineBattleOver} from "../Battles/battleUtils"
+
+//IMPORT - CONTEXT
+import { PlayerContext } from "./PlayerContext";
+import { GlobalProgress } from "./GlobalPrgressContext";
+import { SceneContext } from "./SceneContext";
 
 
 //IMPORT - TYPES
@@ -15,7 +20,6 @@ import type {SpellType} from "../../types/SpellTypes";
 // -------------------------
 // TYPES
 // -------------------------
-
 type LastActionType = {
     caster: string | undefined,
     spellName: string | undefined,
@@ -45,9 +49,8 @@ type BattleContextType = {
     enemyTurn: (enemy: EnemyType) => void,
     enemyAction: (enemy: EnemyType) => void
     
-
     determineTurn: (btlrPlayer:battlerType, enemy:battlerType) => "player" | "enemy"
-    ///activeBattler: battlerType,
+    //activeBattler: battlerType,
     castSpell: (spell: SpellType) => void,    
     //defend: () => void,
     //bag: () => void,
@@ -56,11 +59,14 @@ type BattleContextType = {
     //rewardsXP: () => void
 };
 
+type Props = {
+    children: ReactNode;
+};
+
 // -------------------------
 // CONTEXT
 // -------------------------
 export const BattleContext = createContext<BattleContextType>({
-    
     battle: false,
     battleReady: false,
     battleState: {
@@ -69,7 +75,6 @@ export const BattleContext = createContext<BattleContextType>({
         currentTurn: "player" ,
         isBattleOver: false,
         lastAction: null,
-        
     },
     activeBattler: {} as battlerType,
     startBattle: () => {},
@@ -87,26 +92,35 @@ export const BattleContext = createContext<BattleContextType>({
     //run: () => {},
 });
 
+
 // -------------------------
 // PROVIDER
 //  Only in Provider is where you create functions and estbalish state.
 // -------------------------
-type Props = {
-    children: ReactNode;
-};
+
 
 const BattleContextProvider = ({children}:Props) => {
+//Player Context - quest data to update
+    const playerCtx = useContext(PlayerContext)
+    const questLog = playerCtx.questLog
+    const updateQuest = playerCtx.updateQuest
+//Global Context - updated global flags based on battle
+    const globalCtx = useContext(GlobalProgress)
+    const globalFlags = globalCtx.gameFlags
+//Scene Context - quest related ID
+    const sceneCtx = useContext(SceneContext)
+    const relatedQuest = sceneCtx.battle.relatedQuest
 
-const [battle, setBattle] = useState(false)
-const [battleReady, setBattleReady] = useState(false)
+    const [battle, setBattle] = useState(false)
+    const [battleReady, setBattleReady] = useState(false)
 
-const [battleState, setBattleState] = useState<BattleState>({
-        player: {} as battlerType,
-        enemy: {} as battlerType,
-        currentTurn: "player",
-        isBattleOver: false,
-        lastAction: null
-    })
+    const [battleState, setBattleState] = useState<BattleState>({
+            player: {} as battlerType,
+            enemy: {} as battlerType,
+            currentTurn: "player",
+            isBattleOver: false,
+            lastAction: null
+        })
 
     // Derived: who's the active battler based on currentTurn
     const activeBattler =
@@ -114,13 +128,13 @@ const [battleState, setBattleState] = useState<BattleState>({
             ? battleState.player
             : battleState.enemy;
 
-const determineTurn = (btlrPlayer:battlerType, btlrEnemy:battlerType) => {
-        if (btlrPlayer.stats.speed > btlrEnemy.stats.speed ) {
-            return "player"
-        } else {
-            return "enemy"
+    const determineTurn = (btlrPlayer:battlerType, btlrEnemy:battlerType) => {
+            if (btlrPlayer.stats.speed > btlrEnemy.stats.speed ) {
+                return "player"
+            } else {
+                return "enemy"
+            }
         }
-    }
     
 /*** 1. START BATTLE *****/    
 const startBattle = (player:PlayerContextType, enemy:EnemyType) => {
@@ -140,7 +154,7 @@ const startBattle = (player:PlayerContextType, enemy:EnemyType) => {
 }
 
 const castSpell = (spell:SpellType) => {
-//Set Caster and Target
+    //Set Caster and Target
     const caster = battleState.currentTurn === "player"
         ? battleState.player
         : battleState.enemy
@@ -173,6 +187,8 @@ const castSpell = (spell:SpellType) => {
 //Updates after turn
     const isBattleOver = determineBattleOver(updatedCaster, updatedTarget)
 
+  
+
     setBattleState(prev => ({
         ...prev,        
         player: prev.currentTurn === "player" ? updatedCaster : updatedTarget,
@@ -185,7 +201,14 @@ const castSpell = (spell:SpellType) => {
             damageDealt: spell.power,
             targetName: target.name
          }
-    }));
+    }));     
+      
+    if (isBattleOver === true){
+        if (relatedQuest === null) return
+        updateQuest(relatedQuest) 
+        console.log("Quest Updated", questLog)
+    }
+    
 }
 
 const enemyAction = (enemy: EnemyType) => { 
@@ -229,9 +252,9 @@ const enemyAction = (enemy: EnemyType) => {
             damageDealt: choosenSpell.power,
             targetName: target.name
          }
+
     }));
 }
-
 
 const enemyTurn = (enemy: EnemyType) => {
     enemyAction(enemy)

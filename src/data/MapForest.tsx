@@ -16,17 +16,14 @@ export const CastleMap:React.FC = () => {
     const playerLocation = scene.playerLocation
 
     const cellEvent = (eventType:string|null, sceneId: string, bgImg: string,
-	    npcId:string|null, enemyId: string|null, villageId: string|null, mapType: string, gridCord:string) => {
-        console.log("clicked:", gridCord, "eventType:", eventType)
+	    npcId:string|null, enemyId: string|null, villageId: string|null, mapType: string, gridCord:string, relatedQuest: string | null) => {
+
         if (eventType === "battle"){
             if (enemyId) {
-                scene.renderBattle(enemyId, gridCord)
-            } else {console.log("Battle cell has no enemyId assigned")
-                
-            }
-            
+                scene.renderBattle(enemyId, gridCord, relatedQuest)
+            }   
         } else {
-            scene.renderScene(eventType, sceneId, bgImg, npcId, villageId, mapType, gridCord)
+            scene.renderScene(eventType, sceneId, bgImg, npcId, villageId, mapType, gridCord, relatedQuest)
             alert(`You moved to spot ${gridCord}`)
         }
     }
@@ -41,7 +38,7 @@ export const CastleMap:React.FC = () => {
                                 key = {cell.gridCord} 
                                 onClick = {() => cellEvent (
                                     cell.eventType, cell.sceneId, cell.bgImg, cell.npcId,
-                                    cell.enemyId, cell.villageId, cell.mapType, cell.gridCord
+                                    cell.enemyId, cell.villageId, cell.mapType, cell.gridCord, cell.relatedQuest
                                 )} 
                                 className={style.cell}
                                 >
@@ -62,14 +59,14 @@ export const ForestMap:React.FC = () => {
      const playerLocation = scene.playerLocation
 
     const cellEvent = (eventType:string|null, sceneId: string, bgImg: string,
-	    npcId:string|null, enemyId: string|null, villageId: string|null, mapType:string, gridCord: string) => {
+	    npcId:string|null, enemyId: string|null, villageId: string|null, mapType:string, gridCord: string, relatedQuest: string | null) => {
  
         if (eventType === "battle"){
             if (enemyId) {
-                scene.renderBattle(enemyId, gridCord)
+                scene.renderBattle(enemyId, gridCord, relatedQuest )
             } else {console.log("Battle cell has no enemyId assigned")}
         } else {
-            scene.renderScene(eventType, sceneId, bgImg, npcId, villageId, mapType, gridCord)
+            scene.renderScene(eventType, sceneId, bgImg, npcId, villageId, mapType, gridCord, relatedQuest)
             alert(`You moved to spot ${gridCord}`)
         }
     }
@@ -85,7 +82,7 @@ return (
                                 onClick = {(e) =>{
                                 e.preventDefault()
                                 cellEvent (cell.eventType, cell.sceneId, cell.bgImg, cell.npcId,
-                                    cell.enemyId, cell.villageId, cell.mapType, cell.gridCord
+                                    cell.enemyId, cell.villageId, cell.mapType, cell.gridCord, cell.relatedQuest
                                     )
                                 }}
                             >

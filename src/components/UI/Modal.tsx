@@ -12,7 +12,7 @@ type Props = {
 };
 
 //useRef => 
-const Modal = ({children, open, onClose, className}: Props) => {
+const Modal = ({children, open, className, onClose}: Props) => {
     const dialog =  useRef<HTMLDialogElement | null>(null)
     
     useEffect(() => {
@@ -25,7 +25,6 @@ const Modal = ({children, open, onClose, className}: Props) => {
         } else {
             modal.close();
         }
-
         return () => {
             modal.close();
         };

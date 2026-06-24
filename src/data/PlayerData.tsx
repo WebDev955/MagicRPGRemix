@@ -74,6 +74,7 @@ export type PlayerContextType = {
     isMonsterLogOpen: boolean,
     
     addNewQuest: (questId:string) => void;
+    updateQuest: (questId:string) => void;
     openQuestLog: () => void,
     isQuestLogOpen: boolean
 

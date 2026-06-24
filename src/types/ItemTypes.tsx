@@ -9,7 +9,7 @@ export type itemListType = {
     spells: SpellType[],
     potions: potionType[],
     materials: materialType[],
-    lootDrops: LootDropType[]
+    lootDrops?: LootDropType[]
 }
 
 

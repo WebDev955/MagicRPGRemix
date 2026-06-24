@@ -27,7 +27,8 @@ export const QuestList:QuestType[] = [
   {
     id: "quest_000",
     name: "Battle Tutorial",
-    description: "Explore the castle. Find your first battle to learn.",npcGiver: "WiseWizard",
+    description: "Explore the castle. Find your first battle to learn.",
+    npcGiver: "WiseWizard",
     objectives: [{
       id: "quest_000_obj_01",
       name: "Find the Slime",

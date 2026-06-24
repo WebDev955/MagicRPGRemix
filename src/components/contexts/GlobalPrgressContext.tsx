@@ -13,7 +13,6 @@ type questsComplete = string[];
 
 type TutorialFlags = {
     tutorialQuestAcquired: boolean,
-    castleMapAccess: boolean,
     tutorialBattleDone: boolean,
     tutorialQuestComplete: boolean,
     forestMapAcquired: boolean,
@@ -62,7 +61,6 @@ export const GlobalProgress =  createContext<GlobalProgressType>({
     gameFlags: {
         tutorialFlags: {
             tutorialQuestAcquired: false,
-            castleMapAccess: false,
             tutorialBattleDone: false,
             tutorialQuestComplete: false,
             forestMapAcquired: false,
@@ -99,7 +97,6 @@ export const GlobalProgressContextProvider = ({children}:Props) => {
     const [gameFlags, setGameFlags] = useState<GameFlags>({
         tutorialFlags: {
             tutorialQuestAcquired: false,
-            castleMapAccess: false,
             tutorialBattleDone: false,
             tutorialQuestComplete: false,
             forestMapAcquired: false,

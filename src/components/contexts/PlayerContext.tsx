@@ -13,6 +13,7 @@ import slimeImg from "../../assets/Slime.png"
 //IMPORTS - CONEXT
 import {AccountContext} from "./AccountContext";
 import { arcaneElement} from "../../types/ElementTypes";
+import QuestLog from "../UI/QuestLog";
 
 
 //import type { Quest } from "../../data/questData";
@@ -61,6 +62,7 @@ export const PlayerContext = createContext<PlayerContextType>({
     isMonsterLogOpen: false,
 
     addNewQuest: () => {},
+    updateQuest : () => {},
     openQuestLog: () => {},
     isQuestLogOpen: false,
     
@@ -119,8 +121,19 @@ export function PlayerContextProvider({children}:Props){
              return [...prevQuests, foundQuest]
         })
         alert(`${foundQuest.name} added to Quest Log!`)
-      
     }
+                   
+    const updateQuest = (questId: string) => {
+        setQuestLog(prevQuests => {
+            return prevQuests.map(quest => {
+                if (quest.id === questId) {
+                    return { ...quest, isQuestComplete: true }
+                } else {
+                    return quest
+                }
+            })
+        })
+    }    
  
 /****** TOTAL DEFENSE FROM EQUIPPED ITEMS**************/
 const contextStats = useMemo(() => {
@@ -208,6 +221,7 @@ const contextStats = useMemo(() => {
         
         questLog,
         addNewQuest,
+        updateQuest,
         isQuestLogOpen,
         openQuestLog,
         

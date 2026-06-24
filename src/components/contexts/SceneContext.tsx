@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 type sceneType = {
     eventType: string | null,
     sceneId: string,
+    relatedQuest: string | null, 
     bgImg: string,
     npcId: string | null,
     villageId: string | null,
@@ -14,6 +15,7 @@ type sceneType = {
 type battleType = {
     enemyId: string,
     battleActive: boolean,
+    relatedQuest: string | null
 };
 
 type currentMapType = string
@@ -33,9 +35,10 @@ export type SceneProviderType = {
         villageId: string  | null,
         mapType: string,
         gridCord: string,
+        relatedQuest: string | null, 
         ) => void;
     
-    renderBattle : (enemyId: string, playerLocation: string) => void,
+    renderBattle : (enemyId: string, playerLocation: string, relatedQuest: string | null) => void,
 
     exitBattle: () => void,
     exitScene: () => void,
@@ -62,6 +65,7 @@ export const SceneContext = createContext<SceneProviderType>({
         eventType: "",
         sceneId: "",
         bgImg: "",
+        relatedQuest: null, 
         npcId: null,
         villageId: null,
     },
@@ -69,6 +73,7 @@ export const SceneContext = createContext<SceneProviderType>({
     battle: {
         enemyId: "",
         battleActive: false,
+        relatedQuest: null
     }
 })
 	
@@ -79,6 +84,7 @@ export function SceneContextProvider({children}:Props){
         eventType: null,
         sceneId: "",
         bgImg: "",
+        relatedQuest: null, 
         npcId: null,
         villageId: null,
      })
@@ -97,17 +103,19 @@ export function SceneContextProvider({children}:Props){
     const [battle, setBattle] = useState<battleType>({
         enemyId: "",
         battleActive: false,
+        relatedQuest: null
      })     
 	 
 	const renderScene = (eventType: string|null, sceneId: string, bgImg: string, 
-        npcId: string | null, villageId: string | null, mapType:string,  gridCord: string) => {
+        npcId: string | null, villageId: string | null, mapType:string,  gridCord: string, relatedQuest: string | null) => {
         
         const newScene:sceneType = {
             eventType: eventType,
             sceneId: sceneId,
             bgImg: bgImg,
             npcId: npcId,
-            villageId: villageId
+            villageId: villageId,
+            relatedQuest: relatedQuest
         }
         setIsSceneOpen(!isSceneOpen)
         setScene(newScene)
@@ -115,10 +123,11 @@ export function SceneContextProvider({children}:Props){
         setCurrentMap(mapType)
 	}
 
-    const renderBattle = (enemyId: string, gridCord: string) => {
+    const renderBattle = (enemyId: string, gridCord: string, relatedQuest: string | null) => {
         const newBattle:battleType = {
             enemyId: enemyId,
-            battleActive: true 
+            battleActive: true, 
+            relatedQuest: relatedQuest
         }
         setBattle(newBattle)
         setCurrentMap(currentMap)
@@ -128,7 +137,8 @@ export function SceneContextProvider({children}:Props){
     const exitBattle = () => {
         setBattle({
             enemyId:"",
-            battleActive: false
+            battleActive: false,
+            relatedQuest: null
         })
     } 
 
@@ -139,6 +149,7 @@ export function SceneContextProvider({children}:Props){
             bgImg: "",
             npcId: null,
             villageId: null,
+            relatedQuest: null,
         })
     }
 	

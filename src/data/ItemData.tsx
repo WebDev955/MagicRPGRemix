@@ -1,9 +1,6 @@
 import { aquaElement, pyroElement } from "../types/ElementTypes"
 import type { itemListType } from "../types/ItemTypes"
 
-
-
-//TODO Import TYPES from --> 
 export const itemList:itemListType = {
     armor: [
         {
