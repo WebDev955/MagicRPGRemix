@@ -106,7 +106,7 @@ const BattleContextProvider = ({children}:Props) => {
     const updateQuest = playerCtx.updateQuest
 //Global Context - updated global flags based on battle
     const globalCtx = useContext(GlobalProgress)
-    const globalFlags = globalCtx.gameFlags
+    //const globalFlags = globalCtx.gameFlags
 //Scene Context - quest related ID
     const sceneCtx = useContext(SceneContext)
     const relatedQuest = sceneCtx.battle.relatedQuest

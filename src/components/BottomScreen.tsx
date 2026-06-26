@@ -4,29 +4,25 @@ import { SceneContext } from "./contexts/SceneContext"
 //import {SceneContext} from "...";
 import {CastleMap, ForestMap} from "../data/MapForest"
 
+import style from "../components/BottomScreen.module.css"
 
 const BottomScreen = () => {
  const sceneCtx = useContext(SceneContext)
  const activeMap = sceneCtx.currentMap
 
-
   return (
-    <div>
-      
+    <main className={style.mainWrapper}>
       {activeMap === "castle" &&
         <>
-          <h3>The Castle</h3>
           <CastleMap/>
         </>
       } 
-
       {activeMap === "forest" &&
         <>
-          <h3>The Forest</h3>
           <ForestMap/>
         </>
       }
-    </div>
+    </main>
  )
 
 }

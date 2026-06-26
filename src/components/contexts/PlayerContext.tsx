@@ -13,7 +13,7 @@ import slimeImg from "../../assets/Slime.png"
 //IMPORTS - CONEXT
 import {AccountContext} from "./AccountContext";
 import { arcaneElement} from "../../types/ElementTypes";
-import QuestLog from "../UI/QuestLog";
+//import QuestLog from "../UI/QuestLog";
 
 
 //import type { Quest } from "../../data/questData";

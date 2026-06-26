@@ -1,0 +1,47 @@
+.parentDiv{
+    max-width: 100%;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    background-color: burlywood;
+}
+
+.nameAndLocation {
+  display: flex; 
+  flex-direction: row;
+  align-items:center;
+  justify-content: space-evenly;
+  color: black;
+  margin: 5px;
+}
+.nameAndLocation h2,
+.nameAndLocation h3 {
+  margin: 0;
+}
+
+.menuStatsDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;align-items: center; 
+    gap: 10px;
+    color: rgb(228, 77, 77);
+    font-size: small;
+}
+.menuStatsDiv h3 {
+  margin: 0;
+}
+.health{
+    color: red;
+    outline: auto;
+    padding: 5px;
+    background-color: aliceblue;
+}
+
+.magic{
+    color: blue;
+    outline: auto;
+    padding: 5px;
+    background-color: aliceblue;
+}
+

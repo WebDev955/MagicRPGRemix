@@ -1,6 +1,6 @@
 //Import - HOOKS
 import { useContext } from "react"
-import styles from "../TopScreen.module.css"
+import styles from "./TopScreen.module.css"
 //Import - CONTEXT
 import {SceneContext} from "../components/contexts/SceneContext.tsx"
 //IMPORT - DATA 
@@ -23,8 +23,6 @@ const TopScreen = () => {
   const exitSceneHandler = () => {
     sceneCtx.exitScene()
   }
-
-
 
   return (
     <div className={styles.parentDiv}>
