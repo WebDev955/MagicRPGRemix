@@ -39,7 +39,7 @@ const TopMenu:React.FC = () => {
                 <PlayerInfoMenu/>
             </div>  
             <p onClick= {() => openMenuHandler(!openMenu)}>Open Menu</p>
-            {openMenu && 
+            {openMenu &&
                 <div className={styles.menuDivButtons}>
                     <figure className={styles.menuButton}>
                         <img src={Backpack}onClick={openInventoryHandler} />

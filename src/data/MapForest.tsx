@@ -24,7 +24,6 @@ export const CastleMap:React.FC = () => {
             }   
         } else {
             scene.renderScene(eventType, sceneId, bgImg, npcId, villageId, mapType, gridCord, relatedQuest)
-            alert(`You moved to spot ${gridCord}`)
         }
     }
 
@@ -67,7 +66,6 @@ export const ForestMap:React.FC = () => {
             } else {console.log("Battle cell has no enemyId assigned")}
         } else {
             scene.renderScene(eventType, sceneId, bgImg, npcId, villageId, mapType, gridCord, relatedQuest)
-            alert(`You moved to spot ${gridCord}`)
         }
     }
 return (

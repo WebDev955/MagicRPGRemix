@@ -6,32 +6,9 @@
     background-color: rgba(245, 245, 245, 0.31);
     z-index: 10;
     position: relative;
-}
-.menuStatsDiv {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    gap: 10px;
-    align-items: center; 
-    color: rgb(228, 77, 77);
-    font-size: small;
-    padding-right: 10px;
-
-}
-.health{
-    color: red;
-    outline: auto;
-    padding: 5px;
-    background-color: aliceblue;
+    border: solid black 5px;
 }
 
-.magic{
-    color: blue;
-    outline: auto;
-    padding: 5px;
-    background-color: aliceblue;
-}
 
 .menuDivButtons {
     width: 100%;
@@ -56,6 +33,6 @@
 }
 
 .menuButton img{
-    width: 40px;
+    width: 38px;
 }
 

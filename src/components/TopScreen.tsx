@@ -11,13 +11,11 @@ import Battle from "./Battles/Battle.tsx"
 import Dialogue from "./UI/Dialogue.tsx"
 import TopMenu from "./UI/TopMenu.tsx"
 
-
 const TopScreen = () => {
   const sceneCtx = useContext(SceneContext)
   const scene = sceneCtx.scene
   const battle = sceneCtx.battle
   const currentMap = sceneCtx.currentMap
-console.log(currentMap)
   const npcFound = NpcList.find((npc) => npc.id === scene.npcId)
   const sceneFound = ScenesList.find((s) => s.sceneId === scene.sceneId)
   const theme = sceneFound?.theme || "default"
@@ -34,7 +32,6 @@ console.log(currentMap)
         {currentMap === "forest" && <div className={styles.tutorial}/>}
       </div>
 {/*EVENTs DISPLAY*/}
-
     {(scene?.eventType || battle?.battleActive) &&
       <div className={styles.eventsWrapper}>
         {scene?.eventType === "npc" &&
@@ -51,18 +48,17 @@ console.log(currentMap)
             />
           </div>
         }
-        {scene?.eventType === "village" &&  "Village Scene Content"}
-        {battle?.battleActive === true &&  <Battle/>}
+        {scene?.eventType === "village" && "Village Scene Content"}
+        {battle?.battleActive === true && <Battle/>}
       </div>
-}
-
-    {/* TOP MENU — floats over backdrop, hidden during events */}
+    }
+{/* TOP MENU — floats over backdrop, hidden during events */}
     {!scene?.eventType && !battle?.battleActive &&
       <div className={styles.topMenuWrapper}>
         <TopMenu/>
       </div>
     }
-    </div>
+  </div>
  )
 }
 export default TopScreen
