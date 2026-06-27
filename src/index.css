@@ -3,13 +3,13 @@
 }
 
 :root {
-  color-scheme: light dark;
+  color-scheme: dark light;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color: rgba(255, 255, 255, 0.87);
-  background-color: grey;
+  background-color: rgb(115, 104, 104);
 
  --max-mobile-width: 430px;
   font-synthesis: none;
@@ -20,9 +20,6 @@
 
 body {
   margin: 0;
-  color-scheme: light dark;
-  background-color: canvas;
-  color: canvastext;
 }
 
 h1 {
@@ -30,3 +27,9 @@ h1 {
   line-height: 1.1;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: #1a1a1a;
+    color: white;
+  }
+}
