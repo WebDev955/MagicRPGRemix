@@ -13,8 +13,6 @@ type MapCell = {
 };
  
 type mapArrayType = MapCell[][]
-
-
  
 export const castleMapArray: mapArrayType = [
   // Row 0

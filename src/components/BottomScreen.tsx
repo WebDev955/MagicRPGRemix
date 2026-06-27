@@ -11,7 +11,7 @@ const BottomScreen = () => {
  const activeMap = sceneCtx.currentMap
 
   return (
-    <main className={style.mainWrapper}>
+    <main className={style.bottomParentWrapper}>
       {activeMap === "castle" &&
         <>
           <CastleMap/>

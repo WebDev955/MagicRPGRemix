@@ -106,10 +106,18 @@ export function SceneContextProvider({children}:Props){
         relatedQuest: null
      })     
 	 
-	const renderScene = (eventType: string|null, sceneId: string, bgImg: string, 
-        npcId: string | null, villageId: string | null, mapType:string,  gridCord: string, relatedQuest: string | null) => {
+	const renderScene = (
+        eventType: string|null, 
+        sceneId: string, 
+        bgImg: string, 
+        npcId: string | null,
+        villageId: string | null, 
+        mapType:string,  
+        gridCord: string, 
+        relatedQuest: string | null
+        ) => {
         
-        const newScene:sceneType = {
+            const newScene:sceneType = {
             eventType: eventType,
             sceneId: sceneId,
             bgImg: bgImg,

@@ -29,15 +29,16 @@ const TopMenu:React.FC = () => {
         playerContext.openQuestLog()
     }
     const openMenuHandler = (boolean:boolean) => {
+           console.log("clicked", boolean)
         setOpenMenu(boolean)
     }
     
     return(
-        <div className={styles.parentDiv}>
-            <p onClick= {() => openMenuHandler(!openMenu)}>Open Menu</p> 
+        <div className={styles.topScreenMenuWrapper}>
             <div>
                 <PlayerInfoMenu/>
-            </div>
+            </div>  
+            <p onClick= {() => openMenuHandler(!openMenu)}>Open Menu</p>
             {openMenu && 
                 <div className={styles.menuDivButtons}>
                     <figure className={styles.menuButton}>

@@ -12,18 +12,19 @@ const PlayerInfoMenu:React.FC = () => {
     const playerContext = useContext(PlayerContext)
     const sceneCtx = useContext(SceneContext)
     const currentMap = sceneCtx.currentMap
+    const mapCord = sceneCtx.playerLocation
 
     return(
         <div className={style.parentDiv}>
-            <div className={style.nameAndLocation}>
+            <div className={style.nameAndStats}>
                 <h2>{"Harry Potter"}</h2>
-                <p>Current Map: {currentMap}</p>
+                <div className={style.menuStatsDiv}>
+                    <h3 className={style.health}>Hp: {playerContext.stats.hp}</h3>
+                    <h3 className={style.health}>Df: {playerContext.stats.def}</h3>
+                    <h3 className={style.magic}>Magic: {playerContext.stats.mp}</h3>
+                </div>
             </div>
-            <div className={style.menuStatsDiv}>
-                <h3 className={style.health}>Hp: {playerContext.stats.hp}</h3>
-                <h3 className={style.health}>Df: {playerContext.stats.def}</h3>
-                <h3 className={style.magic}>Magic: {playerContext.stats.mp}</h3>
-            </div>
+            <p>Current Map: {currentMap} : {mapCord}</p>
        </div>
       )
 }

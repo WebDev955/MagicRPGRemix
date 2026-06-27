@@ -5,7 +5,7 @@
     background: url("../assets/CastleMap.png");
     background-size: cover;
     background-repeat: no-repeat;
-    overflow-x: visible;
+    overflow: hidden;
 }
 
 .parentDiv_Forest {

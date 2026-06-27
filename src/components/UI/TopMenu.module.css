@@ -1,11 +1,12 @@
-.parentDiv{
-    max-width: 100%;
+.topScreenMenuWrapper{
+    width: 100%;
     display: flex; 
     flex-direction: column;
-    align-items: center;
-    background-color: burlywood;
+    justify-content: space-around;
+    background-color: rgba(245, 245, 245, 0.31);
+    z-index: 10;
+    position: relative;
 }
-
 .menuStatsDiv {
     width: 100%;
     display: flex;
@@ -18,7 +19,6 @@
     padding-right: 10px;
 
 }
-
 .health{
     color: red;
     outline: auto;
