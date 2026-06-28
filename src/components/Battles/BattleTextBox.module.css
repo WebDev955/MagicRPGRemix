@@ -1,0 +1,25 @@
+.battleTextBoxWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  width: 100%;
+  background-color: rgba(245, 245, 245, 0.399);
+  padding: 3px;
+  border-top: solid black 2px;
+  border-bottom: solid black 2px;
+
+}
+
+.lastActionsWrapper {
+  font-size: larger;
+}
+.lastActionsWrapper p {
+  margin: 0;
+}
+
+
+.lastActionsWrapper span{
+  color: black;
+  font-weight: 600;
+}

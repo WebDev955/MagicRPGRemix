@@ -49,7 +49,8 @@ const TopScreen = () => {
           </div>
         }
         {scene?.eventType === "village" && "Village Scene Content"}
-        {battle?.battleActive === true && <Battle/>}
+        {/*{battle?.battleActive === true && <Battle/>} */}
+        
       </div>
     }
 {/* TOP MENU — floats over backdrop, hidden during events */}

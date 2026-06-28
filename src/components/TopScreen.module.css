@@ -2,6 +2,7 @@
     width: 100%;
     height: 100%;
     position: relative;
+    overflow: hidden;
 }
 
 .backdropWrapper {
@@ -30,8 +31,8 @@
 .eventsWrapper{
     position: absolute;
     inset: 0; 
-    z-index: 20;  
-
+    z-index: 20; 
+     overflow-y: auto; 
 }
 
 .exit {

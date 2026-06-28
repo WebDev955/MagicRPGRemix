@@ -14,7 +14,6 @@ type Props = {
 //useRef => 
 const Modal = ({children, open, className, onClose}: Props) => {
     const dialog =  useRef<HTMLDialogElement | null>(null)
-    
     useEffect(() => {
         const modal = dialog.current;
 
@@ -31,8 +30,11 @@ const Modal = ({children, open, className, onClose}: Props) => {
     }, [open]);
 
     return createPortal (
-        <dialog onClose={onClose} ref={dialog} className={`${style.dialog} ${className || ""}`}
->
+        <dialog 
+            onClose={onClose} 
+            ref={dialog} 
+            className={`${style.dialog} ${className || ""}`}
+        >
             {children} 
         </dialog>,
         document.getElementById('modal') as HTMLElement

@@ -23,7 +23,6 @@ const EnemyUI:React.FC = () => {
             </div>
             <div className={styles.enemyImgs}>
                 <img src={Slime} width = "75px"/>
-                <img src={Slime} width = "75px"/>
             </div>
         </div>
     )

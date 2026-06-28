@@ -22,7 +22,7 @@ export type battlerType = {
     lootDrops: LootDropType[] | null
 }
 
-    //Function - pull in data for battlers, playerCtx and enemy data 
+//Function - pull in data for battlers, playerCtx and enemy data 
 export const createBattler = (player:PlayerContextType, enemy:EnemyType) => {
     const btlrPlayer = {
         name: player.playerName,
@@ -40,19 +40,15 @@ export const createBattler = (player:PlayerContextType, enemy:EnemyType) => {
         potions:[...enemy.recovery],
         lootDrops: [...enemy.lootDrops]
     }
-        
         return { player: btlrPlayer, enemy: btlrEnemy}
     }
 
-
+//Determine spell, calcuate damege for spell, cast on targe
 export const castSpell = (caster: battlerType,  spellId: string) => {
     const spell = caster.spells.find(s => s.id === spellId);
     if(!spell) return
     calculateDamage(spell)
 }
-
-
- 
 
 export const calculateDamage = (spell:SpellType) => {
     return spell.power
@@ -87,8 +83,5 @@ export const determineBattleOver = (caster:battlerType, target:battlerType) => {
         return false
     }
 }
-        
 
-
-//}
 

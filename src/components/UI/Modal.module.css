@@ -2,22 +2,25 @@
     width: 99%;
     overflow-x: hidden
 }
-
 .signUpModal {
     border: solid 5px red;
 }
-
 .inventoryModal {
     border: solid 3px black;
     height: 90vh;
     background-color: lightgray;
- 
 }
-
 .questModal {
     border: solid 3px black;
     height: 90vh;
     background-color: rgba(245, 245, 245, 0.407)
+}
+.battleModal {
+    border: solid 3px black;
+    height: 100vh;
+    max-width: 430px;
+    background-color: rgba(176, 174, 174, 0.595);
+    padding: 10px;
 }
 
 .monsterLogModal {

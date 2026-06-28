@@ -12,6 +12,7 @@ import {EnemyList} from "../../data/EnemyData"
 import BattleTheme2 from "../../assets/Battle.mp3"
 //IMPORTS - STYLES
 import styles from "./Battle.module.css"
+import BattleTextBox from "./BattleTextBox"
 
 const Battle:React.FC = () => { 
     //Context Data   
@@ -72,22 +73,17 @@ const Battle:React.FC = () => {
     return(
         <>
         {battleReady === true &&
-            <div className= {styles.parentDiv}>
-                <audio ref={audioRef} src={BattleTheme2} loop />
-                <EnemyUI/>
-                <PlayerUI/>
-                {lastAction && (
-                    <p>{lastAction.caster} cast {lastAction.spellName} on {lastAction.targetName}. It hit for {lastAction.damageDealt} points!</p>
-                )}
-            
-            </div>
-
-             
+            <div className= {styles.battleWrapperDiv}>
+                {/*<audio ref={audioRef} src={BattleTheme2} loop /> */}
+                <div className={styles.UiWrapper}>
+                    <EnemyUI/>
+                    <BattleTextBox/>
+                    <PlayerUI/>
+                </div>
+            </div>    
         }
         </>
-
     )
-    
 }
 
 export default Battle

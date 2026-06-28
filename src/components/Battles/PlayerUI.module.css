@@ -3,12 +3,57 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 250px;
+    height: 400px;
 }
+
+.spellSelectionWrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.selectedSpellWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    background-color: rgba(245, 245, 245, 0.566);
+    gap: 10px; 
+    border-top: solid black 2px;
+    border-bottom: solid black 2px;
+    padding: 10px;
+    
+}
+
+.castBtn {
+    grid-column: 2 / 5;
+    text-align: center;
+    background-color: rgb(1, 188, 251);
+    padding: 5px;
+    border: solid black 2px;
+    border-radius: 25px;
+}
+
+.selectedSpellWrapper p {
+    margin: 0;
+
+}
+
 
 .spellImgs{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.spellImgs figcaption{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 8px;
 }
@@ -18,7 +63,6 @@
     border: 3px solid whitesmoke 
 
 }
-
 .playerBtlMenu{
     position: absolute;
     bottom: 0;
@@ -28,9 +72,8 @@
     flex-direction: row;
     justify-content: space-between;
     color: black;
-    border-top: solid black 2px;
+  
     bottom: 1px;
-
 }
 
 .playerOptions {

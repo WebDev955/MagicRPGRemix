@@ -154,7 +154,7 @@ const startBattle = (player:PlayerContextType, enemy:EnemyType) => {
 }
 
 const castSpell = (spell:SpellType) => {
-    //Set Caster and Target
+//Set Caster and Target
     const caster = battleState.currentTurn === "player"
         ? battleState.player
         : battleState.enemy
@@ -165,7 +165,6 @@ const castSpell = (spell:SpellType) => {
     const spellBuff = spell.buff
     const spellDebuff = spell.debuff
     const spellDamage = calculateDamage(spell)
-
 //Update Caster and Target after spell/turn action 
     const updatedCaster = {
         ...caster,
@@ -179,15 +178,13 @@ const castSpell = (spell:SpellType) => {
         ...target,
         stats: {
             ...target.stats,
-            hp: target.stats.hp - spellDamage,
+            hp: Math.max(0, target.stats.hp - spellDamage),
             debuffs: [...target.stats.debuffs, spellDebuff].filter(Boolean) as string[]
         }
     };
 
 //Updates after turn
     const isBattleOver = determineBattleOver(updatedCaster, updatedTarget)
-
-  
 
     setBattleState(prev => ({
         ...prev,        
@@ -237,8 +234,7 @@ const enemyAction = (enemy: EnemyType) => {
             debuffs: [...target.stats.debuffs, spellDebuff].filter(Boolean) as string[]
         }
     };
-
-//After turn updatea
+//After turn update
     const isBattleOver = determineBattleOver(updatedCaster, updatedTarget)
     setBattleState(prev => ({
         ...prev,
@@ -252,7 +248,6 @@ const enemyAction = (enemy: EnemyType) => {
             damageDealt: choosenSpell.power,
             targetName: target.name
          }
-
     }));
 }
 
