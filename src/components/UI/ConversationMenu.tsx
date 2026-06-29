@@ -5,7 +5,7 @@ import { GlobalProgress } from "../contexts/GlobalPrgressContext";
 import { ConversationContext } from "../contexts/ConversationContext"
 import { PlayerContext } from "../contexts/PlayerContext";
 import { SceneContext } from "../contexts/SceneContext";
-import styles from "../UI/ConversationMenu.module.css"
+import styles from "./ConversationMenu.module.css"
 //import { PlayerContext } from "../contexts/PlayerContext";
 
 //DEFTINE CONVERSATION PROPS

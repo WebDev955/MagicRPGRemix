@@ -1,7 +1,7 @@
 //IMPORTS - HOOKS 
 import {useContext, useState} from "react"
 //IMPORTS - COMPONENTS
-import Inventory from "./Bag/Inventory"
+import Inventory from "../Bag/Inventory"
 import MonsterLog from "./MonsterLog"
 import QuestLog from "./QuestLog"
 import PlayerInfoMenu from "./PlayerInfoMenu"

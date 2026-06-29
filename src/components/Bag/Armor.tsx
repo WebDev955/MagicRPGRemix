@@ -1,13 +1,13 @@
 //IMPORTS - HOOKS
 import {useState, useContext } from "react"
 //IMPORTS - COMPONENTS
-import Button from "../Button"
+import Button from "../UI/Button"
 //IMPORTS - CONTEXT
-import {PlayerContext} from "../../contexts/PlayerContext"
+import {PlayerContext} from "../contexts/PlayerContext"
 //IMPORTS - STYLE
-import style from "../../UI/Bag/Inventory.module.css"
+import style from "./Inventory.module.css"
 //IMPORTS - TYPES/DATA
-import type { EquipableItem } from "../../../data/PlayerData"
+import type { EquipableItem } from "../../data/PlayerData"
 
 const InventoryItems = () => {
     //ESTABLISH DEFAULT STATE

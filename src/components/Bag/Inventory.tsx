@@ -1,14 +1,14 @@
 //IMPORTS - HOOKS
 import { useContext, useState} from "react"
 //IMPORTS - COMPONENETS
-import Modal from "../Modal"
-import Armor from "../Bag/Armor"
-import Button from "../Button"
+import Modal from "../UI/Modal"
+import Armor from "./Armor"
+import Button from "../UI/Button"
 //IMPORTS - CONTEXT
-import { PlayerContext } from "../../contexts/PlayerContext"
+import { PlayerContext } from "../contexts/PlayerContext"
 //IMPORTS - STYLE
-import style from "../Modal.module.css"
-import styles from "../../UI/Bag/Inventory.module.css"
+import style from "../UI/Modal.module.css"
+import styles from "./Inventory.module.css"
 
 const Inventory = () => {
     //ESTABLISH STATE
