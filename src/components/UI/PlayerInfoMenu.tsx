@@ -1,37 +1,18 @@
-//HOOKS
-import {useContext, useState} from "react"
-//IMPORTS - COMPONENTS
-//IMPORT - GRAPHICS 
-//STYLES
+//IMPORTS - HOOKS
+import {useContext} from "react"
+//IMPORTS - STYLES
 import styles from "./PlayerInfoMenu.module.css"
-//IMPORT - Context
+//IMPORT - CONTEXT
 import { PlayerContext } from "../contexts/PlayerContext"
 import { SceneContext } from "../contexts/SceneContext"
 
-import Backpack from "../../assets/Backpack.png"
-import QuestLogIcon from "../../assets/QuestLog.png"
-import MonsterLogIcon from "../../assets/MonsterLog.png"
-import Inventory from "./Bag/Inventory"
-import QuestLog from "./QuestLog"
-import MonsterLog from "./MonsterLog"
-
-
 const PlayerInfoMenu:React.FC = () => {
+    //ESTABLSIH CONTEXT
     const playerContext = useContext(PlayerContext)
     const sceneCtx = useContext(SceneContext)
+    //DERIVE DATA FROM CONTEXT
     const currentMap = sceneCtx.currentMap
     const mapCord = sceneCtx.playerLocation
-
-
-        const openInventoryHandler = () =>{
-        playerContext.openInventory()
-    }
-    const openMonsterLog = () => {
-        playerContext.openMonsterLog()
-    }
-    const openQuestLog = () => {
-        playerContext.openQuestLog()
-    }
 
     return(
         <div className={styles.parentWrapper}>
@@ -47,5 +28,4 @@ const PlayerInfoMenu:React.FC = () => {
        </div>
       )
 }
-
 export default PlayerInfoMenu

@@ -1,11 +1,13 @@
-//import Context
+//IMPORTS - CONTEXT
 import type { PlayerContextType} from "../../data/PlayerData"
+//IMPORTS - TYPES
 import type { EnemyType, LootDropType } from "../../types/EnemyTypes"
 import type { ElementType } from "../../types/ElementTypes"
 import type { SpellType } from "../../types/SpellTypes"
 import type { potionType } from "../../types/ItemTypes"
 import type { RecoveryType } from "../../types/EnemyTypes"
 
+//Create battler types with imported TYPES
 export type battlerType = {
     name: string,
     element: ElementType | undefined,
@@ -43,7 +45,7 @@ export const createBattler = (player:PlayerContextType, enemy:EnemyType) => {
         return { player: btlrPlayer, enemy: btlrEnemy}
     }
 
-//Determine spell, calcuate damege for spell, cast on targe
+//Determine spell -> calcuate damege for spell -> cast on target
 export const castSpell = (caster: battlerType,  spellId: string) => {
     const spell = caster.spells.find(s => s.id === spellId);
     if(!spell) return
@@ -69,8 +71,7 @@ export const calculateDamage = (spell:SpellType) => {
         }
     */}
 }
-
-
+//Determine if battle is over based on HP conditions
 export const determineBattleOver = (caster:battlerType, target:battlerType) => {
     if (caster.stats.hp <= 0){
         return true
@@ -83,5 +84,3 @@ export const determineBattleOver = (caster:battlerType, target:battlerType) => {
         return false
     }
 }
-
-

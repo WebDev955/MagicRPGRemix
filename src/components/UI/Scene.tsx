@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import ConversationMenu from "./ConversationMenu";
 import { ConversationContext } from "../contexts/ConversationContext";
+
 //import { GlobalProgress } from "../contexts/GlobalPrgressContext";
 import styles from "../UI/Dialogue.module.css"
 
-type DialogueProps = {
+type SceneProps = {
     npcQuest: string | undefined
     defaultText: string;
     loreText: string;
@@ -14,7 +15,7 @@ type DialogueProps = {
     npcPortrait: string | undefined;
 }
 
-const Dialogue: React.FC<DialogueProps> = ({
+const Scene: React.FC<SceneProps> = ({
     npcQuest,
     defaultText,
     loreText,
@@ -25,6 +26,7 @@ const Dialogue: React.FC<DialogueProps> = ({
 }) => {
 
     const convoCtx = useContext(ConversationContext)
+
     //const globalCtx = useContext(GlobalProgress);
     //const gameFlag = globalCtx.gameFlags
 
@@ -52,7 +54,6 @@ const Dialogue: React.FC<DialogueProps> = ({
                         {convoCtx.renderDialogue === "questCompleted" &&
                             <p className={styles.dialougeText}>{questCompleteText}</p>
                         }
-
                     </div>
                 </div>
             </div>
@@ -60,4 +61,4 @@ const Dialogue: React.FC<DialogueProps> = ({
     )
 }
 
-export default Dialogue
+export default Scene

@@ -1,14 +1,15 @@
-//CONTEXT
+//IMPORTS - CONTEXT
 import { useContext } from "react"
 import { SceneContext } from "./contexts/SceneContext"
-//import {SceneContext} from "...";
+//IMPORT - DATA
 import {CastleMap, ForestMap} from "../data/MapForest"
-
+//IMPORT - STYLE
 import style from "../components/BottomScreen.module.css"
 
 const BottomScreen = () => {
- const sceneCtx = useContext(SceneContext)
- const activeMap = sceneCtx.currentMap
+  //ESTABLISH CONTEXT
+  const sceneCtx = useContext(SceneContext)
+  const activeMap = sceneCtx.currentMap
 
   return (
     <main className={style.bottomParentWrapper}>
@@ -24,7 +25,6 @@ const BottomScreen = () => {
       }
     </main>
  )
-
 }
 
 export default BottomScreen

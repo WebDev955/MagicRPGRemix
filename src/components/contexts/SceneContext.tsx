@@ -1,8 +1,8 @@
-//IMPORT - Hooks
+//IMPORT - HOOOKS
 import { createContext, useState} from "react";
 import type { ReactNode } from "react";
 
-//Type Definitions 
+//TYPE DEFINITIONS
 type sceneType = {
     eventType: string | null,
     sceneId: string,
@@ -11,13 +11,11 @@ type sceneType = {
     npcId: string | null,
     villageId: string | null,
 };
-
 type battleType = {
     enemyId: string,
     battleActive: boolean,
     relatedQuest: string | null
 };
-
 type currentMapType = string
 type playerLocationType = string
 type isSceneOpenType = boolean
@@ -38,7 +36,7 @@ export type SceneProviderType = {
         relatedQuest: string | null, 
         ) => void;
     
-    renderBattle : (enemyId: string, playerLocation: string, relatedQuest: string | null) => void,
+    renderBattle: (enemyId: string, playerLocation: string, relatedQuest: string | null) => void,
 
     exitBattle: () => void,
     exitScene: () => void,
@@ -50,7 +48,7 @@ export type SceneProviderType = {
     isSceneOpen: isSceneOpenType
 };
 
-//Template for Scenes
+//TEMPLATE FOR SCENES
 export const SceneContext = createContext<SceneProviderType>({
 	renderScene: () => {},
     renderBattle: () => {},
@@ -79,7 +77,7 @@ export const SceneContext = createContext<SceneProviderType>({
 	
 //Provider - where you create functions and estbalish state
 export function SceneContextProvider({children}:Props){
-
+    //SCENE STATE
 	 const [scene, setScene] = useState<sceneType>({
         eventType: null,
         sceneId: "",
@@ -89,23 +87,18 @@ export function SceneContextProvider({children}:Props){
         villageId: null,
      })
 
-     const [currentMap, setCurrentMap] = useState<currentMapType>(
-        "castle"
-     )
-    const [playerLocation, setPlayerLocation] = useState<playerLocationType>(
-        "6,3"
-     )
+    //MAP STATE
+    const [currentMap, setCurrentMap] = useState<currentMapType>("castle")
+    const [playerLocation, setPlayerLocation] = useState<playerLocationType>("6,3")
 
-    const [isSceneOpen, setIsSceneOpen] = useState<isSceneOpenType>(
-        false
-    )
+    const [isSceneOpen, setIsSceneOpen] = useState<isSceneOpenType>(false)
 
     const [battle, setBattle] = useState<battleType>({
         enemyId: "",
         battleActive: false,
         relatedQuest: null
      })     
-	 
+	//SCENE RENDER FUNCTION
 	const renderScene = (
         eventType: string|null, 
         sceneId: string, 
@@ -116,7 +109,6 @@ export function SceneContextProvider({children}:Props){
         gridCord: string, 
         relatedQuest: string | null
         ) => {
-        
             const newScene:sceneType = {
             eventType: eventType,
             sceneId: sceneId,
@@ -130,7 +122,7 @@ export function SceneContextProvider({children}:Props){
         setPlayerLocation(gridCord)
         setCurrentMap(mapType)
 	}
-
+//BATTLE RENDER FUNCTION
     const renderBattle = (enemyId: string, gridCord: string, relatedQuest: string | null) => {
         const newBattle:battleType = {
             enemyId: enemyId,

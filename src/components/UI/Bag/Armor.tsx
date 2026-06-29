@@ -1,27 +1,31 @@
+//IMPORTS - HOOKS
 import {useState, useContext } from "react"
-import {PlayerContext} from "../../contexts/PlayerContext"
-import style from "../../UI/Bag/Inventory.module.css"
-import type { EquipableItem } from "../../../data/PlayerData"
+//IMPORTS - COMPONENTS
 import Button from "../Button"
+//IMPORTS - CONTEXT
+import {PlayerContext} from "../../contexts/PlayerContext"
+//IMPORTS - STYLE
+import style from "../../UI/Bag/Inventory.module.css"
+//IMPORTS - TYPES/DATA
+import type { EquipableItem } from "../../../data/PlayerData"
 
 const InventoryItems = () => {
+    //ESTABLISH DEFAULT STATE
+    const [renderArmor, setRenderArmor] = useState("")
+    //ESTABLISH CONTEXT
+    const playerCtx = useContext(PlayerContext)
+    //DERIVE DATA FROM CONTEXT
+    const armor = playerCtx.bagTest.armor
+    //const weapons = playerCtx.inventoryTest.weapons
+    //const spells = playerCtx.inventoryTest.spells
+    //const potions = playerCtx.inventoryTest.potions
 
-const [renderArmor, setRenderArmor] = useState("")
-
-const playerCtx = useContext(PlayerContext)
-const armor = playerCtx.bagTest.armor
-//const weapons = playerCtx.inventoryTest.weapons
-//const spells = playerCtx.inventoryTest.spells
-//const potions = playerCtx.inventoryTest.potions
-
-  
-      function equipItem(item:EquipableItem){
-          playerCtx.equipItem(item)
-      }
-        function unequipItem(item:EquipableItem){
-          playerCtx.unequipItem(item)
-      }
-  
+    function equipItem(item:EquipableItem){
+        playerCtx.equipItem(item)
+    }
+    function unequipItem(item:EquipableItem){
+        playerCtx.unequipItem(item)
+    }
     const displayArmor = (value:string) => {
         setRenderArmor(value)
     } 

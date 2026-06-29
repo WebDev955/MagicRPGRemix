@@ -4,50 +4,43 @@ import { useState, useContext } from "react"
 import StoneTablet from "../../assets/StoneTablet.png"
 //IMPORTS - Styles
 import styles from "./PlayerUI.module.css"
-
 //IMPORTS - Components
 import { BattleContext } from "../contexts/BattleContext"
 import { SceneContext } from "../contexts/SceneContext"
 import type { SpellType } from "../../types/SpellTypes"
 
-import BattleTextBox from "./BattleTextBox"
-
-
 const PlayerUI:React.FC = () => {   
+//Establish Default States
+    const [showSpells, setShowSpells] = useState(false)
+    const [selectedSpell, setSelectedSpell] = useState<SpellType | null>(null)
+//Context
     const battleCtx = useContext(BattleContext)
     const sceneCtx = useContext(SceneContext)
+//Derive data from context
     const player = battleCtx.battleState.player
     const spells = player.spells
     const exitBattle = sceneCtx.exitBattle
-    //const lastAction = battleCtx.battleState.lastAction
 
-    const [showSpells, setShowSpells] = useState(false)
-    const [selectedSpell, setSelectedSpell] = useState<SpellType | null>(null)
-
-
-    //const [playerAction, setPlayerAction]  = useState(false)
-
+//FUNCTIONS
+    //Sepll selection
     function displaySpells(){
         setShowSpells(!showSpells)
         setSelectedSpell(null)
     }
-
+    //Sepll info based on selected spell
     const spellInfoHandler = (spell: SpellType) => {
         setSelectedSpell(spell)
     }
-
+    //Cast spell on target
     function handleCastHandler(selectedSpell: SpellType){
         battleCtx.castSpell(selectedSpell)
         setSelectedSpell(null)
         setShowSpells(!showSpells)
-
         //setPlayerAction(!playerAction)
     }
-
     const runHandler = () => {
         exitBattle()
     }
-
     return (
         <div className= {styles.playerDiv}> 
             <div className= {styles.playerBtlMenu}>
@@ -74,7 +67,6 @@ const PlayerUI:React.FC = () => {
                     </div>
                     <div>
                         {selectedSpell && 
-                        
                             <div className={styles.selectedSpellWrapper}id={selectedSpell.id}>
                                 <p>{selectedSpell.name}</p>
                                 <p>Power: {selectedSpell.power}pts.</p>

@@ -11,6 +11,7 @@ type monstersFought = string[];
 type questsActive = string[];
 type questsComplete = string[];
 
+//CHAPTER TYPE FLAG DEFINITIONS
 type TutorialFlags = {
     tutorialQuestAcquired: boolean,
     tutorialBattleDone: boolean,
@@ -18,19 +19,18 @@ type TutorialFlags = {
     forestMapAcquired: boolean,
     tutorialCompleted: boolean,
 };
-
 type Chapter1Flags = {
    foundVillage: boolean,
    acceptedCaveQuest: boolean,
    caveBossDefeated: boolean,
    chapter1Complete: boolean,
 }
-
+//GAME WIDE FLAGS DEFINITION
 type GameFlags = {
     tutorialFlags: TutorialFlags,
     chapter1Flags: Chapter1Flags 
   };
-
+//GLOBAL TYPE DEFINITION
 type GlobalProgressType ={
     mapsUnlocked: mapsUnlocked;
     npcsMet: npcsMet;
@@ -39,7 +39,6 @@ type GlobalProgressType ={
     questsComplete: questsComplete
     gameFlags: GameFlags;
     setFlag: <C extends keyof GameFlags>(chapter: C, flagName: keyof GameFlags[C]) => void;
-            // not this -> (chapter: object, flagName: string) => void;
     addNewMap: (mapId: string) => void;
     addMetNpc: (npcId: string) => void;
     addNewMons: (monsterId: string) => void;
@@ -51,7 +50,7 @@ type Props = {
     children: ReactNode;
 };
 
-//Template for Player
+//TEMPLATE FOR NEW PLAYER
 export const GlobalProgress =  createContext<GlobalProgressType>({
     mapsUnlocked: [],
     npcsMet: [],
@@ -82,9 +81,9 @@ export const GlobalProgress =  createContext<GlobalProgressType>({
     addCompletedQuest : () => {}
 });
 
-//Only in Provider is where you create functions and estbalish state
+//create functions and estbalish default state
 export const GlobalProgressContextProvider = ({children}:Props) => {
-    
+
 /*****************************************
   GLOBAL UPDATE FUNCTIONS              
 ***************************************/
@@ -125,7 +124,6 @@ export const GlobalProgressContextProvider = ({children}:Props) => {
             [...prevMons, monsId]
         )
     }
-
     const addActiveQuest = (questId: string) => {
         setQuestsActive(prevQuest => 
             [...prevQuest, questId]
@@ -149,26 +147,20 @@ export const GlobalProgressContextProvider = ({children}:Props) => {
         }))
     }
 
-    
 /**************************************
     END UPDATE FUNCTIONS
 **************************************/
     const GlobalProgressCtx:GlobalProgressType = {
         gameFlags,
         setFlag,
-
         mapsUnlocked,
         addNewMap,
-
         npcsMet,
         addMetNpc,
-
         monstersFought,
         addNewMons, 
-
         questsActive,
         addActiveQuest,
-
         questsComplete,
         addCompletedQuest,
     }

@@ -1,24 +1,20 @@
+//IMPORT - HOOKS 
 import {createContext, useState, useContext} from "react";
 import type { ReactNode } from "react";
-
-//IMPORT - Utils
+//IMPORT - UTILS
 import {createBattler, calculateDamage, determineBattleOver} from "../Battles/battleUtils"
-
 //IMPORT - CONTEXT
 import { PlayerContext } from "./PlayerContext";
 import { GlobalProgress } from "./GlobalPrgressContext";
 import { SceneContext } from "./SceneContext";
-
-
 //IMPORT - TYPES
 import type {battlerType} from "../Battles/battleUtils"
 import type {PlayerContextType} from "../../data/PlayerData"
 import type {EnemyType} from "../../types/EnemyTypes"
 import type {SpellType} from "../../types/SpellTypes";
 
-
 // -------------------------
-// TYPES
+// TYPE DEFINITIONS
 // -------------------------
 type LastActionType = {
     caster: string | undefined,
@@ -26,7 +22,6 @@ type LastActionType = {
     damageDealt: number | undefined,
     targetName: string | undefined
 }
-
 type BattleState = {
     player: battlerType,
     enemy: battlerType,
@@ -64,7 +59,7 @@ type Props = {
 };
 
 // -------------------------
-// CONTEXT
+// CONTEXT                 
 // -------------------------
 export const BattleContext = createContext<BattleContextType>({
     battle: false,
@@ -95,10 +90,8 @@ export const BattleContext = createContext<BattleContextType>({
 
 // -------------------------
 // PROVIDER
-//  Only in Provider is where you create functions and estbalish state.
+// Create functions, establish state
 // -------------------------
-
-
 const BattleContextProvider = ({children}:Props) => {
 //Player Context - quest data to update
     const playerCtx = useContext(PlayerContext)
@@ -136,13 +129,16 @@ const BattleContextProvider = ({children}:Props) => {
             }
         }
     
-/*** 1. START BATTLE *****/    
+// -------------------------
+// 1. START BATTLE                
+// -------------------------
 const startBattle = (player:PlayerContextType, enemy:EnemyType) => {
-    setBattle(true)
-    const {player: btlrPlayer, enemy: btlrEnemy} = createBattler(player, enemy);
-    
-    const firstTurn = determineTurn(btlrPlayer, btlrEnemy)
 
+    setBattle(true)
+
+    const {player: btlrPlayer, enemy: btlrEnemy} = createBattler(player, enemy);
+    const firstTurn = determineTurn(btlrPlayer, btlrEnemy)
+    
     setBattleState({
         player: btlrPlayer,
         enemy: btlrEnemy,
@@ -153,6 +149,9 @@ const startBattle = (player:PlayerContextType, enemy:EnemyType) => {
     setBattleReady(true)
 }
 
+// -------------------------
+// 2. CAST SPELL              
+// -------------------------
 const castSpell = (spell:SpellType) => {
 //Set Caster and Target
     const caster = battleState.currentTurn === "player"
@@ -207,11 +206,13 @@ const castSpell = (spell:SpellType) => {
     }
     
 }
-
+// -------------------------
+// 3. ENEMY ACTION                
+// -------------------------
 const enemyAction = (enemy: EnemyType) => { 
     const caster = battleState.enemy
     const target = battleState.player
-//set and select Spell data
+//set and select Spell data, randomly selected spell
     const spells = enemy.spells
     const randomSpellIndex = Math.floor(Math.random() * spells.length)
     const choosenSpell = spells[randomSpellIndex]
@@ -256,22 +257,23 @@ const enemyTurn = (enemy: EnemyType) => {
 }
 
 /**********************
- 2. BATTLER HELPER FUNCTIONS
-***********************/
-//const isBattleOver = (btlrPlayer:Object, btlrEnemy:Object) => {
-    //if (btlrPlayer.HP === 0){
-        //return btlrPlayer
-    //}
-    //if (btlrEnemy.HP === 0){
+ 4. END BATTLE FUNCTIONS (WORK IN PROGRESS)
+***********************
+const isBattleOver = (btlrPlayer:Object, btlrEnemy:Object) => {
+    if (btlrPlayer.HP === 0){
+        return btlrPlayer
+    }
+    if (btlrEnemy.HP === 0){
         //determineXp()
         //determineRewards() 
         //return btlrEnemy
-    //}
-    //else { 
-        //(btlrPlayer.HP && btlrEnemy.HP > 0){
-        //return 
-      //}
-    //}  
+    }
+    else { 
+        (btlrPlayer.HP && btlrEnemy.HP > 0){
+        return 
+      }
+    } 
+//
 /**********************
  ACCOUNT CONTEXT OBJECT
 ***********************/

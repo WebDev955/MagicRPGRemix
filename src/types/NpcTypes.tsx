@@ -1,7 +1,8 @@
-//IMPORT
+//IMPORT - IMAGES
 import WizardImg from "../assets/WizardEditNoBG.png"
 import portrait from "../assets/WizardPortrait.png"
 
+//TYPE DEFINITIONS
 type dialogueOptions = {
  defaultText: string 
  loreText: string,
@@ -9,12 +10,10 @@ type dialogueOptions = {
  questAcceptedText: string,
  questCompleteText: string, 
 }
-
 type Position = {
   x: number;
   y: number;
 };
-
 type NPC = {
   id: string;
   questId?: string;
@@ -48,5 +47,4 @@ export const NpcList:NPC[] = [
     movementType: "static",
 		interactionType: "talk",
 	},
-  
 ]

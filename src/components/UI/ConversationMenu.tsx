@@ -1,11 +1,14 @@
+//IMPORTS - HOOKS
 import { useContext, useEffect } from "react"
-//import { PlayerContext } from "../contexts/PlayerContext";
+//IMPORTS - CONTEXT
 import { GlobalProgress } from "../contexts/GlobalPrgressContext";
 import { ConversationContext } from "../contexts/ConversationContext"
 import { PlayerContext } from "../contexts/PlayerContext";
+import { SceneContext } from "../contexts/SceneContext";
 import styles from "../UI/ConversationMenu.module.css"
+//import { PlayerContext } from "../contexts/PlayerContext";
 
-
+//DEFTINE CONVERSATION PROPS
 type ConversationProps = {
     npcQuest: string | undefined
 }
@@ -13,13 +16,19 @@ type ConversationProps = {
 const ConversationMenu: React.FC<ConversationProps> = ({
         npcQuest
 }) => {
-
+    //ESTABLHISH CONTEXT
     const globalCtx = useContext(GlobalProgress);
     const playerCtx = useContext(PlayerContext);
+    const sceneCtx = useContext(SceneContext);
     const convoCtx = useContext(ConversationContext);
+    //DERIVE DATA FROM CONTEXT
     const ifQuestDialogue = convoCtx.renderDialogue === "quest"
     const questInProgress = globalCtx.gameFlags.tutorialFlags.tutorialQuestAcquired
-
+  
+    const exitSceneHandler = () => {
+        sceneCtx.exitScene()
+  }
+    //UPDATE CONTEXTS BAASED ON ADDED QUEST
     const acceptQuestHandler = (npcQuest:string) => {
         globalCtx.addActiveQuest(npcQuest)
         playerCtx.addNewQuest(npcQuest)
@@ -27,6 +36,7 @@ const ConversationMenu: React.FC<ConversationProps> = ({
         globalCtx.setFlag("tutorialFlags", "tutorialQuestAcquired")
          
     }
+//CHECK TO MAKE SURE QUESTS ARE ACCEPTED AND CONTEXTS UPDATED
 useEffect(() => {
     console.log("Active quests updated:", globalCtx.questsActive)
     console.log("Quest Log Updated:", playerCtx.questLog)
@@ -54,6 +64,7 @@ useEffect(() => {
                 {ifQuestDialogue && npcQuest &&
                     <p className={styles.acceptQuest}onClick={() => acceptQuestHandler(npcQuest)}>Accept Quest</p>
                 }
+                <p onClick={exitSceneHandler}>Goodbye!</p>
 
             </div>
         </div>

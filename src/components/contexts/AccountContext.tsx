@@ -1,12 +1,13 @@
+//IMPORT - HOOKS
 import { createContext, useState} from "react";
 import type { ReactNode } from "react";
 
+// CREATE TYPES 
 type UserAccount = {
     playerName: string | undefined;
     password: string | undefined;
     email: string | undefined;
 }
-
 type AccountContextType = {
     userAccount: UserAccount;
     isCreatingAccount: boolean;
@@ -16,15 +17,10 @@ type AccountContextType = {
     startCreatingAccount: () => void;
     stopCreatingAccount: () => void;
 }
-
 type Props = {
     children: ReactNode;
 };
 
-
-//NO SATE/HOOKS when creating context
-//its just a template
-// eslint-disable-next-line react-refresh/only-export-components
 export const AccountContext = createContext<AccountContextType>({
     userAccount: {
         playerName: undefined,
@@ -76,15 +72,11 @@ const AccountContextProvider = ({children}:Props) => {
 /**********************
  LOGIN/LOGOUT 
 ***********************/
-    
     //STATE - open/closes Login  Modal
     //const [isLoggingIn, setIsLoggingIn] = useState(false)
     
     //STATE - display current player location/Tutorial at start
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-
-
-
 
 /**********************
  ACCOUNT CONTEXT OBJECT

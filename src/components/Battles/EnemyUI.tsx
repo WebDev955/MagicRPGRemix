@@ -1,17 +1,18 @@
-//IMPORTS - Hooks
+//IMPORTS - HOOKS
 import { useContext } from "react"
 import { BattleContext } from "../contexts/BattleContext"
-//IMPORTS - Images
+//IMPORTS - IMAGES
 import Slime from "../../assets/Slime.png"
-//IMPORTS - STyles
+//IMPORTS - STYLES
 import styles from "./EnemyUI.module.css"
-//import 
-//IMPORTS - Components
+
 
 const EnemyUI:React.FC = () => {    
-    const battleCtx = useContext(BattleContext)
-    const enemy = battleCtx.battleState.enemy
-    if (!enemy) return
+//Create Context
+    const battleCtx = useContext(BattleContext);
+//Derive date from contex
+    const enemy = battleCtx.battleState.enemy;
+    if (!enemy) return;
 
     return (
         <div className= {styles.enemyDiv}>

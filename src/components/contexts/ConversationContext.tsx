@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 
 	
 //Type Definitions 
-
 type ConversationProviderType = {
     renderDialogue: string,
     displayDialogue: (value: string) => void,
@@ -35,7 +34,6 @@ PLAYER CONTEXT OBJECT
           renderDialogue,
           displayDialogue
 		}
-
 	return (
 	    <ConversationContext.Provider value={convoCtx}>
 	        {children}

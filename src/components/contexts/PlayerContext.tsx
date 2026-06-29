@@ -6,16 +6,12 @@ import { type QuestLogType, type EquipableItem, type PlayerContextType } from ".
 import { basicCast, Splash, Flames } from "../../data/SpellsData";
 //IMPORT - DATA
 import { QuestList } from "../../data/QuestData";
-
-
 import slimeImg from "../../assets/Slime.png"
 
 //IMPORTS - CONEXT
 import {AccountContext} from "./AccountContext";
 import { arcaneElement} from "../../types/ElementTypes";
 //import QuestLog from "../UI/QuestLog";
-
-
 //import type { Quest } from "../../data/questData";
 
 type Props = {
@@ -24,7 +20,6 @@ type Props = {
 
 //Template for Player
 export const PlayerContext = createContext<PlayerContextType>({
-    
     playerName: "",
     equipedItems: [],
     monsterLog: [],

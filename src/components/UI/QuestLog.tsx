@@ -1,29 +1,31 @@
-//IMPORTS 
+//IMPORTS - HOOKS
 import {useState, useContext} from "react"
-import {PlayerContext} from "../contexts/PlayerContext"
-import styles from "../UI/QuestLog.module.css"
-
+//IMPORTS - COMPONENTS
 import Modal from "./Modal"
+//IMPORTS - CONTEXTS
+import {PlayerContext} from "../contexts/PlayerContext"
+//IMPORTS - STYLES 
+import styles from "../UI/QuestLog.module.css"
 import modalStyle from "../UI/Modal.module.css"
 
 const QuestLog = () => {
+    //ESTABLISH STATE
     const [viewQuest, setViewQuest] = useState("")
-    
+    //ESTABLISH CONTEXT
     const playerCtx = useContext(PlayerContext)
+    //DERIVE DATA FROM CONTEXT
     const questLog = playerCtx.questLog
     const selectedQuest = questLog.find (quest => quest.id === viewQuest )
 
     const closeQuestLogHandler = () => { 
         playerCtx.openQuestLog()
     } 
-
- const questDetailsHandler = (questId:string) => {
-    if (viewQuest === questId) { 
-        setViewQuest(""); return
+    const questDetailsHandler = (questId:string) => {
+        if (viewQuest === questId) { 
+            setViewQuest(""); return
+        }
+            setViewQuest(questId)
     }
-        setViewQuest(questId)
-    }
-
 return (
     <Modal open = {playerCtx.isQuestLogOpen} className={modalStyle.questModal}>
         <div className={styles.questWrapperDiv}>
@@ -76,10 +78,7 @@ return (
                 </div>
             )}
             </div> 
-             
         </div>
-        
-        
     </Modal> 
 )
 }

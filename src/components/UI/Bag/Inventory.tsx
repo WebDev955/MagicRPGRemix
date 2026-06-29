@@ -1,19 +1,25 @@
+//IMPORTS - HOOKS
 import { useContext, useState} from "react"
-import { PlayerContext } from "../../contexts/PlayerContext"
+//IMPORTS - COMPONENETS
 import Modal from "../Modal"
 import Armor from "../Bag/Armor"
 import Button from "../Button"
-
+//IMPORTS - CONTEXT
+import { PlayerContext } from "../../contexts/PlayerContext"
+//IMPORTS - STYLE
 import style from "../Modal.module.css"
 import styles from "../../UI/Bag/Inventory.module.css"
+
 const Inventory = () => {
+    //ESTABLISH STATE
     const [renderContent, setRenderContent]= useState("")
+    //ESTABLISH CONTEXT
     const playerCtx = useContext(PlayerContext)
 
     const closeInventoryHandler = () => {
           playerCtx.openInventory()
       }
-
+    //DISPLAY CATEGORY BASED ON ITEM TYPE SELECTED
     const displayItems = (value:string) => {
         setRenderContent(value)
     }

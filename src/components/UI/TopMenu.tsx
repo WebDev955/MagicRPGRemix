@@ -1,4 +1,4 @@
-//HOOKS
+//IMPORTS - HOOKS 
 import {useContext, useState} from "react"
 //IMPORTS - COMPONENTS
 import Inventory from "./Bag/Inventory"
@@ -9,14 +9,15 @@ import PlayerInfoMenu from "./PlayerInfoMenu"
 import Backpack from "../../assets/Backpack.png"
 import QuestLogIcon from "../../assets/QuestLog.png"
 import MonsterLogIcon from "../../assets/MonsterLog.png"
-//STYLES
+//IMPORTS - STYLES
 import styles from "./TopMenu.module.css"
-//IMPORT - Context
+//IMPORT - CONTEXT
 import { PlayerContext } from "../contexts/PlayerContext"
 
 const TopMenu:React.FC = () => {
+    //ESTABLISH STATE
     const [openMenu, setOpenMenu] = useState(false)
-
+    //ESTABLISH CONTEXT
     const playerContext = useContext(PlayerContext)
 
     const openInventoryHandler = () =>{

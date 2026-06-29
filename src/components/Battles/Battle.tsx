@@ -7,20 +7,19 @@ import PlayerUI from "./PlayerUI"
 import { BattleContext } from "../contexts/BattleContext"
 import { PlayerContext } from "../contexts/PlayerContext"
 import { SceneContext } from "../contexts/SceneContext"
+//IMPORT - DATA
 import {EnemyList} from "../../data/EnemyData"
-//import BattleTheme from "../../assets/Normal  Battle.mp3"
 import BattleTheme2 from "../../assets/Battle.mp3"
 //IMPORTS - STYLES
 import styles from "./Battle.module.css"
 import BattleTextBox from "./BattleTextBox"
 
 const Battle:React.FC = () => { 
-    //Context Data   
+//Context Data   
     const battleCtx = useContext(BattleContext)
     const playerCtx = useContext(PlayerContext)
     const sceneCtx = useContext (SceneContext)
-
-    //Data to run battle
+//Derived data to run battle
     const runBattle = battleCtx.startBattle
     const battleReady = battleCtx.battleReady
     const battleEnemy = sceneCtx.battle
@@ -28,13 +27,12 @@ const Battle:React.FC = () => {
     const currentTurn = battleCtx.battleState.currentTurn
     const endBattle = battleCtx.battleState.isBattleOver
     const exitBattle = sceneCtx.exitBattle
-
-    //End Turn
+//End Turn
     const lastAction = battleCtx.battleState.lastAction 
-
-    //Audio
+//Audio
     const audioRef = useRef<HTMLAudioElement | null>(null)
-
+//Rendering Effects
+//Check for enemy found
     useEffect(() => {
         if (!enemyFound) {
             console.warn("Enemy not found:", battleEnemy.enemyId)
@@ -47,7 +45,7 @@ const Battle:React.FC = () => {
         }  
 
     },[])
-
+//Check state of battle, determine turn or end battle
     useEffect (() => {
         if (!battleReady) return
         if (!enemyFound) return
@@ -59,7 +57,7 @@ const Battle:React.FC = () => {
         }, 3000) 
         return () => clearTimeout(timer)
     }, [currentTurn, endBattle])
-
+//End battle 
     useEffect (() => {
         if (!endBattle) return
         const endBattleTimer = setTimeout (() => {
@@ -74,7 +72,7 @@ const Battle:React.FC = () => {
         <>
         {battleReady === true &&
             <div className= {styles.battleWrapperDiv}>
-                {/*<audio ref={audioRef} src={BattleTheme2} loop /> */}
+                <audio ref={audioRef} src={BattleTheme2} loop />
                 <div className={styles.UiWrapper}>
                     <EnemyUI/>
                     <BattleTextBox/>

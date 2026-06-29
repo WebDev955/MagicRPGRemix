@@ -6,9 +6,9 @@ import { BattleContext } from "../contexts/BattleContext"
 import styles from "./BattleTextBox.module.css"
 
 const BattleTextBox:React.FC = () => { 
-    //Context Data   
+//Context Data   
     const battleCtx = useContext(BattleContext)
-    //End Turn
+//Derived context data
     const lastAction = battleCtx.battleState.lastAction 
 
     return(
