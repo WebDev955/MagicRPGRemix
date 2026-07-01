@@ -23,7 +23,6 @@ const PlayerCreationForm = () => {
         const email = formData.get('email') as string
         const password = formData.get('password') as string
         
-
         const newAccountData = {
             playerName,
             email,
@@ -31,6 +30,8 @@ const PlayerCreationForm = () => {
         }
         
         accountCtx.createAccount(newAccountData)
+        console.log(newAccountData)
+        console.log(accountCtx.createAccount)
         accountCtx.stopCreatingAccount()
     }
 

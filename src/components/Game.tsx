@@ -36,7 +36,8 @@ const Game = () => {
    </Modal>
 
 {/*EVENTs DISPLAY*/}
-    <Modal open = {!!scene?.eventType} className={modalStyle.npcModal}>
+    <Modal open = {scene?.eventType === "npc" || scene?.eventType === "village"}
+    className={modalStyle.npcModal}>
     {(scene?.eventType || battle?.battleActive) &&
       <div className={styles.eventsWrapper}>
         {scene?.eventType === "npc" &&

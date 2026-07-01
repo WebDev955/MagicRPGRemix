@@ -36,3 +36,9 @@
     width: 38px;
 }
 
+.settings {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    
+}

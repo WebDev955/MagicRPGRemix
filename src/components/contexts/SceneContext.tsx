@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 
 //TYPE DEFINITIONS
 type sceneType = {
-    eventType: string | null,
+    eventType: "npc" | "village" | "battle" | "gridTransition" | null
     sceneId: string,
     relatedQuest: string | null, 
     bgImg: string,

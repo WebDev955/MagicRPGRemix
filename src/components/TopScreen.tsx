@@ -20,7 +20,7 @@ const TopScreen = () => {
 {/*BACKDROP DISPLAY*/}
       <div className={styles.backdropWrapper}>
         {currentMap === "castle" && <div className={styles.tutorial}/>}
-        {currentMap === "forest" && <div className={styles.tutorial}/>}
+        {currentMap === "forest" && <div className={styles.forest}/>}
       </div>
 {/* TOP MENU */}
     {!scene?.eventType && !battle?.battleActive &&

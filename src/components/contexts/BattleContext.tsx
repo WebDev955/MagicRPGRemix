@@ -95,6 +95,7 @@ export const BattleContext = createContext<BattleContextType>({
 const BattleContextProvider = ({children}:Props) => {
 //Player Context - quest data to update
     const playerCtx = useContext(PlayerContext)
+    const playerName = playerCtx.playerName;
     const questLog = playerCtx.questLog
     const updateQuest = playerCtx.updateQuest
 //Global Context - updated global flags based on battle
@@ -110,20 +111,20 @@ const BattleContextProvider = ({children}:Props) => {
     const [battleState, setBattleState] = useState<BattleState>({
             player: {} as battlerType,
             enemy: {} as battlerType,
-            currentTurn: "player",
+            currentTurn: playerName,
             isBattleOver: false,
             lastAction: null
         })
 
     // Derived: who's the active battler based on currentTurn
     const activeBattler =
-        battleState.currentTurn === "player" 
+        battleState.currentTurn === playerName
             ? battleState.player
             : battleState.enemy;
 
     const determineTurn = (btlrPlayer:battlerType, btlrEnemy:battlerType) => {
             if (btlrPlayer.stats.speed > btlrEnemy.stats.speed ) {
-                return "player"
+                return playerName
             } else {
                 return "enemy"
             }

@@ -11,13 +11,14 @@ const PlayerInfoMenu:React.FC = () => {
     const playerContext = useContext(PlayerContext)
     const sceneCtx = useContext(SceneContext)
     //DERIVE DATA FROM CONTEXT
+    const playerName = playerContext.playerName;
     const currentMap = sceneCtx.currentMap
     const mapCord = sceneCtx.playerLocation
 
     return(
         <div className={styles.parentWrapper}>
             <div className={styles.statsWrapper}>
-                <h2>{"Harry Potter"}</h2>
+                <h2>{playerName}</h2>
                 <h3 className={styles.health}>Hp: {playerContext.stats.hp}</h3>
                 <h3 className={styles.health}>Df: {playerContext.stats.def}</h3>
                 <h3 className={styles.magic}>Magic: {playerContext.stats.mp}</h3> 

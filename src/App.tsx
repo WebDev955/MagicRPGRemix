@@ -1,7 +1,10 @@
-import './App.css'
-//import NewGame from "../src/components/GameProgression/GameStatus/NewGame"
+//IMPORTS - HOOKS
+import { useContext, useEffect } from 'react'
+//IMPORTS - Components 
 import TitleScreen from './components/TitleScreen'
-
+import Game from './components/Game'
+//IMPORTS - Style
+import './App.css'
 //Imports - Context
 import AccountContextProvider, { AccountContext } from './components/contexts/AccountContext' 
 import BattleContextProvider from "./components/contexts/BattleContext"
@@ -10,41 +13,46 @@ import SceneContextProvider from "./components/contexts/SceneContext"
 import ConversationContextProvider from './components/contexts/ConversationContext'
 import { GlobalProgressContextProvider } from './components/contexts/GlobalPrgressContext'
 
-import Game from './components/Game'
 
 
-import { useContext } from 'react'
+
+
+
+function App() {
+    return (
+      <AccountContextProvider>
+        <GlobalProgressContextProvider>
+          <PlayerContextProvider>
+              <SceneContextProvider>
+                <ConversationContextProvider>
+                  <BattleContextProvider>
+                      <AppContent/>
+                </BattleContextProvider>
+              </ConversationContextProvider>
+            </SceneContextProvider>
+          </PlayerContextProvider>
+        </GlobalProgressContextProvider>
+      </AccountContextProvider>
+    )
+}
 
 function AppContent() {
   const accountCtx = useContext(AccountContext)
+  const playerLoggedIn = accountCtx.isLoggedIn
+
+ console.log(playerLoggedIn)
   
   return (
-      <>
-       {accountCtx.isLoggedIn
-        ? <Game/>
-        : <TitleScreen/>
-      }
-    </>
-  )
-}
-
-  function App() {
-    return (
-  <AccountContextProvider>
-    <GlobalProgressContextProvider>
-      <PlayerContextProvider>
-          <SceneContextProvider>
-            <ConversationContextProvider>
-              <BattleContextProvider>
-                  <AppContent/>
-            </BattleContextProvider>
-          </ConversationContextProvider>
-        </SceneContextProvider>
-      </PlayerContextProvider>
-    </GlobalProgressContextProvider>
-  </AccountContextProvider>
+        <>
+          {playerLoggedIn
+            ? <Game/>
+            : <TitleScreen/>
+          }
+      </>
     )
 }
+
+  
   
 
 export default App

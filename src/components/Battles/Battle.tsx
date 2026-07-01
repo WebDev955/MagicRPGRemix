@@ -10,6 +10,8 @@ import { SceneContext } from "../contexts/SceneContext"
 //IMPORT - DATA
 import {EnemyList} from "../../data/EnemyData"
 import BattleTheme2 from "../../assets/Battle.mp3"
+import BattleTheme from "../../assets/Normal  Battle.mp3"
+import NormalBattle from "../../assets/NormalBattle2.mp3"
 //IMPORTS - STYLES
 import styles from "./Battle.module.css"
 import BattleTextBox from "./BattleTextBox"
@@ -33,17 +35,16 @@ const Battle:React.FC = () => {
     const audioRef = useRef<HTMLAudioElement | null>(null)
 //Rendering Effects
 //Check for enemy found
-    useEffect(() => {
+    useEffect(() => {      
+        if (audioRef.current) {
+            audioRef.current.volume = 0.1
+            audioRef.current.play()
+        }  
         if (!enemyFound) {
             console.warn("Enemy not found:", battleEnemy.enemyId)
             return
         }
         runBattle(playerCtx, enemyFound)
-        if (audioRef.current) {
-            audioRef.current.volume = 0.1
-            audioRef.current.play()
-        }  
-
     },[])
 //Check state of battle, determine turn or end battle
     useEffect (() => {
@@ -72,7 +73,7 @@ const Battle:React.FC = () => {
         <>
         {battleReady === true &&
             <div className= {styles.battleWrapperDiv}>
-                <audio ref={audioRef} src={BattleTheme2} loop />
+                <audio ref={audioRef} src={NormalBattle} loop />
                 <div className={styles.UiWrapper}>
                     <EnemyUI/>
                     <BattleTextBox/>

@@ -1,5 +1,5 @@
 //IMPORTS - HOOK
-import { createContext, useState, useContext, useCallback, useMemo } from "react";
+import {createContext, useState, useContext, useCallback, useMemo } from "react";
 import type {ReactNode} from "react"
 //IMPORT - TYPES
 import { type QuestLogType, type EquipableItem, type PlayerContextType } from "../../data/PlayerData";
@@ -69,7 +69,7 @@ export const PlayerContext = createContext<PlayerContextType>({
 //Only in Provider is where you create functions and estbalish state
 export function PlayerContextProvider({children}:Props){
     const acctCtx = useContext(AccountContext)
-    const playerName = acctCtx.userAccount.playerName || "player"
+    const playerName = acctCtx.userAccount.playerName;
 
 /****************************************
     EQUIP - UNEQUIP ITEMS                         

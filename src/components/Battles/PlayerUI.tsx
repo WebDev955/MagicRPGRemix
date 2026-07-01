@@ -1,12 +1,14 @@
 //IMPORTS - Hooks
-import { useState, useContext } from "react"
+import { useState, useContext, useRef } from "react"
 //IMPORTS - Images
 import StoneTablet from "../../assets/StoneTablet.png"
 //IMPORTS - Styles
 import styles from "./PlayerUI.module.css"
+import SpellHit from "../../assets/SpellHit.mp3"
 //IMPORTS - Components
 import { BattleContext } from "../contexts/BattleContext"
 import { SceneContext } from "../contexts/SceneContext"
+import { PlayerContext } from "../contexts/PlayerContext"
 import type { SpellType } from "../../types/SpellTypes"
 
 const PlayerUI:React.FC = () => {   
@@ -31,18 +33,32 @@ const PlayerUI:React.FC = () => {
     const spellInfoHandler = (spell: SpellType) => {
         setSelectedSpell(spell)
     }
+    const attackAudio = useRef<HTMLAudioElement | null>(null)
+
     //Cast spell on target
     function handleCastHandler(selectedSpell: SpellType){
         battleCtx.castSpell(selectedSpell)
         setSelectedSpell(null)
         setShowSpells(!showSpells)
         //setPlayerAction(!playerAction)
+        
+        if (attackAudio.current) {
+                attackAudio.current.volume = 0.1
+                attackAudio.current.play()
+            }  
+
     }
     const runHandler = () => {
         exitBattle()
     }
+
+  
+
+
+
     return (
-        <div className= {styles.playerDiv}> 
+        <div className= {styles.playerDiv}>
+            <audio ref={attackAudio} src={SpellHit}/>
             <div className= {styles.playerBtlMenu}>
                 <div className= {styles.playerOptions}>
                     <button onClick={displaySpells}>Cast</button>

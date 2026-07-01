@@ -1,12 +1,12 @@
 //IMPORT - HOOKS
-import { createContext, useState} from "react";
+import { createContext, useEffect, useState} from "react";
 import type { ReactNode } from "react";
 
 // CREATE TYPES 
 type UserAccount = {
     playerName: string | undefined;
+    email: string | undefined;  
     password: string | undefined;
-    email: string | undefined;
 }
 type AccountContextType = {
     userAccount: UserAccount;
@@ -16,6 +16,7 @@ type AccountContextType = {
     createAccount: (data: UserAccount) => void;
     startCreatingAccount: () => void;
     stopCreatingAccount: () => void;
+    logOut: () => void;
 }
 type Props = {
     children: ReactNode;
@@ -34,15 +35,16 @@ export const AccountContext = createContext<AccountContextType>({
     createAccount: () => {},
     startCreatingAccount: () => {},
     stopCreatingAccount: () => {},
+    logOut: () => {},
     //startLoggingIn: () => {},
     //stopLoggingIn: () => {},
     //verifyLogin: () => {},
-    //logOut: () => {}
+    
 });
 
 //Only in Provider is where you create functions and estbalish state
 const AccountContextProvider = ({children}:Props) => {
-    const [userAccount, setUserAccount] = useState({
+    const [userAccount, setUserAccount] = useState<UserAccount>({
         playerName: undefined,
         password: undefined,
         email: undefined,
@@ -64,9 +66,9 @@ const AccountContextProvider = ({children}:Props) => {
 
     //Function - create and store user account info, login user 
     function createAccount(newAccountData: UserAccount){
-        setUserAccount(userAccount)
-        localStorage.setItem("user", JSON.stringify(newAccountData))
-        setIsLoggedIn(!isLoggedIn)
+        localStorage.setItem("userPlayer", JSON.stringify(newAccountData)) 
+        setUserAccount(newAccountData)
+        setIsLoggedIn(true)
     }
     
 /**********************
@@ -77,6 +79,19 @@ const AccountContextProvider = ({children}:Props) => {
     
     //STATE - display current player location/Tutorial at start
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    const logOut = () => {
+        setIsLoggedIn(false)
+    }
+
+   useEffect(() => {
+    const savedUser = localStorage.getItem("userPlayer")
+        if (savedUser) {
+            setUserAccount(JSON.parse(savedUser))      
+            setIsLoggedIn(true)
+        }
+        return
+  },[]);
 
 /**********************
  ACCOUNT CONTEXT OBJECT
@@ -89,6 +104,7 @@ const AccountContextProvider = ({children}:Props) => {
         startCreatingAccount,
         stopCreatingAccount,
         createAccount,
+        logOut
     }
 
 return (
