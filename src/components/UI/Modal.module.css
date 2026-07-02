@@ -1,6 +1,7 @@
 .dialog {
-    width: 99%;
+    width:100%;
     overflow-x: hidden
+  
 }
 .signUpModal {
     border: solid 5px red;
@@ -27,12 +28,12 @@
 
 /* EVENT MODALS */
 .battleModal {
-    border: solid 3px black;
     height: 100vh;
     max-width: 430px;
     background-color: rgba(176, 174, 174, 0.595);
     padding: 10px;
 }
+
 .npcModal {
     border: solid 3px black;
     height: 100vh;

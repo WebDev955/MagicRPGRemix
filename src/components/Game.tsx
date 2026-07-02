@@ -32,7 +32,9 @@ const Game = () => {
     <section className={styles.bottomScreen}><BottomScreen/></section>
 
     <Modal open = {battle?.battleActive === true} className={modalStyle.battleModal}>
-      {battle?.battleActive === true && <Battle/>}
+      {battle?.battleActive === true && 
+        <Battle/>
+        }
    </Modal>
 
 {/*EVENTs DISPLAY*/}

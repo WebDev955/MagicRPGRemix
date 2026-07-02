@@ -1,8 +1,10 @@
 .enemyDiv {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height:200px;
+    height: 180px;
+    
 }
 
 .enemyStats {
@@ -30,6 +32,12 @@
     align-items: center;
     gap: 8px;
 }
+
+.enemyAttacking {
+   transform: scale(1.5);
+}
+
+
 
 .enemyImgs img:hover {
     transform: scale(1.2);

@@ -55,8 +55,9 @@ export const castSpell = (caster: battlerType,  spellId: string) => {
 export const calculateDamage = (spell:SpellType) => {
     return spell.power
    {/*  COMARING ELEMENTS FOR DAMAGE
+        Psudeo Code for now
 
-        if (spell.element > target.element){
+        if (spell.element.typeAdvantage > target.element.typeDisadvantage){
             spell.damage x 1.5 -= target.hp
             alert(`{target} took Xpts damage`)
 

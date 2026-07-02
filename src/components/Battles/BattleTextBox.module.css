@@ -1,4 +1,5 @@
 .battleTextBoxWrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +9,7 @@
   padding: 3px;
   border-top: solid black 2px;
   border-bottom: solid black 2px;
-
+  margin-top: 10px;
 }
 
 .lastActionsWrapper {
@@ -17,7 +18,6 @@
 .lastActionsWrapper p {
   margin: 0;
 }
-
 
 .lastActionsWrapper span{
   color: black;

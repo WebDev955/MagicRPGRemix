@@ -52,10 +52,6 @@ const PlayerUI:React.FC = () => {
         exitBattle()
     }
 
-  
-
-
-
     return (
         <div className= {styles.playerDiv}>
             <audio ref={attackAudio} src={SpellHit}/>

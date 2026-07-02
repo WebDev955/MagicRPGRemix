@@ -1,5 +1,5 @@
 //IMPORT - HOOKS 
-import {createContext, useState, useContext} from "react";
+import {createContext, useState, useContext, useRef, useEffect} from "react";
 import type { ReactNode } from "react";
 //IMPORT - UTILS
 import {createBattler, calculateDamage, determineBattleOver} from "../Battles/battleUtils"
@@ -25,7 +25,8 @@ type LastActionType = {
 type BattleState = {
     player: battlerType,
     enemy: battlerType,
-    currentTurn: "player" | "enemy",
+    currentTurn: string | null,
+    isAttacking: boolean,
     isBattleOver: boolean,
     lastAction: LastActionType | null,
 }
@@ -43,7 +44,6 @@ type BattleContextType = {
 
     enemyTurn: (enemy: EnemyType) => void,
     enemyAction: (enemy: EnemyType) => void
-    
     determineTurn: (btlrPlayer:battlerType, enemy:battlerType) => "player" | "enemy"
     //activeBattler: battlerType,
     castSpell: (spell: SpellType) => void,    
@@ -68,6 +68,7 @@ export const BattleContext = createContext<BattleContextType>({
         player: {} as battlerType,
         enemy: {} as battlerType,
         currentTurn: "player" ,
+        isAttacking: false,
         isBattleOver: false,
         lastAction: null,
     },
@@ -98,7 +99,7 @@ const BattleContextProvider = ({children}:Props) => {
     const playerName = playerCtx.playerName;
     const questLog = playerCtx.questLog
     const updateQuest = playerCtx.updateQuest
-//Global Context - updated global flags based on battle
+//Global Context - update global flags based on battle
     const globalCtx = useContext(GlobalProgress)
     //const globalFlags = globalCtx.gameFlags
 //Scene Context - quest related ID
@@ -111,9 +112,10 @@ const BattleContextProvider = ({children}:Props) => {
     const [battleState, setBattleState] = useState<BattleState>({
             player: {} as battlerType,
             enemy: {} as battlerType,
-            currentTurn: playerName,
+            currentTurn: null,
+            isAttacking: false,
             isBattleOver: false,
-            lastAction: null
+            lastAction: null,
         })
 
     // Derived: who's the active battler based on currentTurn
@@ -124,7 +126,7 @@ const BattleContextProvider = ({children}:Props) => {
 
     const determineTurn = (btlrPlayer:battlerType, btlrEnemy:battlerType) => {
             if (btlrPlayer.stats.speed > btlrEnemy.stats.speed ) {
-                return playerName
+                return "player"
             } else {
                 return "enemy"
             }
@@ -144,6 +146,7 @@ const startBattle = (player:PlayerContextType, enemy:EnemyType) => {
         player: btlrPlayer,
         enemy: btlrEnemy,
         currentTurn: firstTurn,
+        isAttacking: false,
         isBattleOver: false,
         lastAction: null
     })
@@ -154,6 +157,10 @@ const startBattle = (player:PlayerContextType, enemy:EnemyType) => {
 // 2. CAST SPELL              
 // -------------------------
 const castSpell = (spell:SpellType) => {
+    setBattleState(prev => ({
+        ...prev,        
+        isAttacking: true,
+    }));   
 //Set Caster and Target
     const caster = battleState.currentTurn === "player"
         ? battleState.player
@@ -191,6 +198,7 @@ const castSpell = (spell:SpellType) => {
         player: prev.currentTurn === "player" ? updatedCaster : updatedTarget,
         enemy: prev.currentTurn === "player" ? updatedTarget : updatedCaster,
         currentTurn: prev.currentTurn === "player" ? "enemy" : "player",
+        isAttacking: false,
         isBattleOver: isBattleOver,
         lastAction:{
             caster: caster.name,
@@ -211,6 +219,7 @@ const castSpell = (spell:SpellType) => {
 // 3. ENEMY ACTION                
 // -------------------------
 const enemyAction = (enemy: EnemyType) => { 
+
     const caster = battleState.enemy
     const target = battleState.player
 //set and select Spell data, randomly selected spell
@@ -243,6 +252,7 @@ const enemyAction = (enemy: EnemyType) => {
         player: updatedTarget,
         enemy: updatedCaster,
         currentTurn: "player",
+        isAttacking: false,
         isBattleOver: isBattleOver,
         lastAction: {
             caster: caster.name,
@@ -254,7 +264,14 @@ const enemyAction = (enemy: EnemyType) => {
 }
 
 const enemyTurn = (enemy: EnemyType) => {
-    enemyAction(enemy)
+    setBattleState(prev => ({
+        ...prev,        
+        isAttacking: true,
+    }));  
+     setTimeout(() => {
+        enemyAction(enemy)
+    }, 600)
+ 
 }
 
 /**********************

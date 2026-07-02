@@ -27,6 +27,7 @@ const Battle:React.FC = () => {
     const battleEnemy = sceneCtx.battle
     const enemyFound = EnemyList.find((monster) => monster.id === battleEnemy.enemyId)
     const currentTurn = battleCtx.battleState.currentTurn
+        console.log(currentTurn)
     const endBattle = battleCtx.battleState.isBattleOver
     const exitBattle = sceneCtx.exitBattle
 //End Turn
@@ -36,15 +37,16 @@ const Battle:React.FC = () => {
 //Rendering Effects
 //Check for enemy found
     useEffect(() => {      
-        if (audioRef.current) {
-            audioRef.current.volume = 0.1
-            audioRef.current.play()
-        }  
         if (!enemyFound) {
             console.warn("Enemy not found:", battleEnemy.enemyId)
             return
         }
-        runBattle(playerCtx, enemyFound)
+        runBattle(playerCtx, enemyFound)        
+        
+        if (audioRef.current) {
+            audioRef.current.volume = 0.1
+            audioRef.current.play()
+        }  
     },[])
 //Check state of battle, determine turn or end battle
     useEffect (() => {
@@ -53,9 +55,9 @@ const Battle:React.FC = () => {
         if (endBattle) return 
         const timer = setTimeout (() => {
             if (currentTurn === "enemy") {
-                    battleCtx.enemyTurn(enemyFound)
-            }
-        }, 3000) 
+                    battleCtx.enemyTurn(enemyFound)  
+            } 
+        }, 3500) 
         return () => clearTimeout(timer)
     }, [currentTurn, endBattle])
 //End battle 
@@ -66,7 +68,6 @@ const Battle:React.FC = () => {
                 exitBattle()
         }}, 3000) 
         return () => clearTimeout(endBattleTimer)
-
     },[endBattle])
 
     return(
