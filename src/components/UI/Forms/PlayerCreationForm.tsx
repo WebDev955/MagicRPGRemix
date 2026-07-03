@@ -36,7 +36,6 @@ const PlayerCreationForm = () => {
     }
 
     return(
-        <Modal open={accountCtx.isCreatingAccount} className={Modalstyle.signUpModal}>
             <form onSubmit={handleSubmit} className= {style.formWrapper}>
                 <Button>Close</Button>
                 <section className={style.welcomeWrapper}>
@@ -50,7 +49,7 @@ const PlayerCreationForm = () => {
                 />
             <Button type="submit">Create Player!</Button>
         </form> 
-    </Modal>
+
     )
 }
 
