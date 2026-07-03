@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-self: flex-end;
-    width: 70%;
+    width: 80%;
     margin-top: 10px;
     margin-right: 10px;
 }
@@ -11,6 +11,7 @@
     background-color: hsla(0, 0%, 0%, 0.322);
     border: solid 2px black;
     padding: 5px;
+    font-size: 15px;
 }
 
 .conversationOption {
@@ -18,7 +19,15 @@
     border: solid black 1px;
     background-color: cadetblue;
     padding: 5px;
+    font-weight: 600;
 }
+ .questActive {
+    color: black;
+    border: solid black 1px;
+    background-color: lightgreen;
+    padding: 5px;
+}
+
 .acceptQuest {
     color: black;
     border: solid black 1px;

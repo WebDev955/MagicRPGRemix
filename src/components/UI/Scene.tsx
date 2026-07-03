@@ -1,9 +1,14 @@
+//IMPORT - HOOKS
 import { useContext } from "react";
-import ConversationMenu from "./ConversationMenu";
+//IMPORT - CONTEXT
 import { ConversationContext } from "../contexts/ConversationContext";
-
+//IMPORT - COMPONENTS
+import ConversationMenu from "./ConversationMenu";
 //import { GlobalProgress } from "../contexts/GlobalPrgressContext";
-import styles from "../UI/Dialogue.module.css"
+//IMPORT - STYLES/IMAGES
+import styles from "../UI/Scene.module.css"
+import BackArrow from "../../assets/BackArrow.svg"
+import ForwardArrow from "../../assets/ForwardArrow.svg"
 
 type SceneProps = {
     npcQuest: string | undefined
@@ -24,18 +29,15 @@ const Scene: React.FC<SceneProps> = ({
     questCompleteText,
     npcPortrait
 }) => {
-
     const convoCtx = useContext(ConversationContext)
-
     //const globalCtx = useContext(GlobalProgress);
     //const gameFlag = globalCtx.gameFlags
-
     return (
-        <div className={styles.dialogueParentDiv}>
+        <div className={styles.sceneWrapperDiv}>
             <ConversationMenu
                 npcQuest = {npcQuest}
-            />
-            <div className={styles.dialogueRow}>
+        />
+            <div className={styles.dialogueWrapper}>
                 <div className={styles.scrollContainer}>
                     <img className={styles.portrait} src={npcPortrait} />
                     <div className={styles.textBox}>
@@ -55,6 +57,10 @@ const Scene: React.FC<SceneProps> = ({
                             <p className={styles.dialougeText}>{questCompleteText}</p>
                         }
                     </div>
+                </div>
+                <div className={styles.processDialogueWrapper}>   
+                    <img src={BackArrow} width="40"/>
+                    <img src={ForwardArrow} width="40"/>
                 </div>
             </div>
         </div>

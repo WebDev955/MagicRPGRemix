@@ -38,27 +38,7 @@ const Game = () => {
    </Modal>
 
 {/*EVENTs DISPLAY*/}
-    <Modal open = {scene?.eventType === "npc" || scene?.eventType === "village"}
-    className={modalStyle.npcModal}>
-    {(scene?.eventType || battle?.battleActive) &&
-      <div className={styles.eventsWrapper}>
-        {scene?.eventType === "npc" &&
-          <div className={styles[theme] || styles.default}>
-            <Scene
-              npcQuest = {npcFound?.questId}
-              defaultText = {npcFound?.dialogue?.defaultText || "No Text Found"}
-              loreText =  {npcFound?.dialogue?.loreText|| "No Text Found"}
-              questOfferText =  {npcFound?.dialogue?.questOfferText|| "No Text Found"}
-              questAcceptedText =  {npcFound?.dialogue?.questAcceptedText|| "No Text Found"}
-              questCompleteText =  {npcFound?.dialogue?.questCompleteText|| "No Text Found"}
-              npcPortrait = {npcFound?.portrait}
-            />
-          </div>
-        }
-        {scene?.eventType === "village" && "Village Scene Content"}
-      </div>
-    }
-    </Modal>
+ 
   </div>
 )
 }

@@ -6,7 +6,7 @@ import { type QuestLogType, type EquipableItem, type PlayerContextType } from ".
 import { basicCast, Splash, Flames } from "../../data/SpellsData";
 //IMPORT - DATA
 import { QuestList } from "../../data/QuestData";
-import slimeImg from "../../assets/Slime.png"
+import slimeImg from "../../assets/SlimeMonster.svg"
 
 //IMPORTS - CONEXT
 import {AccountContext} from "./AccountContext";

@@ -1,7 +1,11 @@
 .dialog {
-    width:100%;
-    overflow-x: hidden
-  
+    width: 100%;
+    height:100vh;
+    overflow-x: hidden;
+    margin-top: 0;
+    margin-bottom: 0;
+    border: none;
+    padding: 0;
 }
 .signUpModal {
     border: solid 5px red;
@@ -10,8 +14,9 @@
 /* UI MODALS */
 .inventoryModal {
     border: solid 3px black;
-    height: 90vh;
+    height: 100vh;
     background-color: lightgray;
+    margin-top: 15px;
 }
 .questModal {
     border: solid 3px black;
@@ -21,24 +26,26 @@
 
 .monsterLogModal {
     border: solid 3px black;
-    height: 90vh;
+    height: 100vh;
     background: url("../../assets/LeatherTexture.jpg");
     background-size: cover;
+    margin-top: 15px;
 }
 
 /* EVENT MODALS */
 .battleModal {
+
     height: 100vh;
     max-width: 430px;
     background-color: rgba(176, 174, 174, 0.595);
     padding: 10px;
+    border: solid 2px black;
 }
 
 .npcModal {
-    border: solid 3px black;
     height: 100vh;
     max-width: 430px;
-    background-color: rgba(161, 161, 161, 0.524);
-    padding: 10px;
+    background-color: rgba(161, 161, 161, 0.186);
+    padding: 5px;
 }
 

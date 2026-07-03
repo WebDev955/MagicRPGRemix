@@ -58,14 +58,15 @@ useEffect(() => {
                 </p>
 
                 {questInProgress === true  &&
-                    <p>"What do I need to do again?"</p>
+                    <p className={styles.questActive}>"What do I need to do again?"</p>
                 }
 
                 {ifQuestDialogue && npcQuest &&
                     <p className={styles.acceptQuest}onClick={() => acceptQuestHandler(npcQuest)}>Accept Quest</p>
                 }
-                <p onClick={exitSceneHandler}>Goodbye!</p>
-
+                <p className={styles.conversationOption} onClick={exitSceneHandler}>
+                    Goodbye!
+                </p>
             </div>
         </div>
     )

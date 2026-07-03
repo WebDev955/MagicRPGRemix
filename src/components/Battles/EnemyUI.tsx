@@ -2,7 +2,7 @@
 import { useContext, useRef, useEffect } from "react"
 import { BattleContext } from "../contexts/BattleContext"
 //IMPORTS - IMAGES
-import Slime from "../../assets/Slime.png"
+import Slime from "../../assets/SlimeMonster.svg"
 //IMPORTS - STYLES
 import styles from "./EnemyUI.module.css"
 import SpellHit from "../../assets/SpellHit.mp3"
@@ -29,7 +29,7 @@ const EnemyUI:React.FC = () => {
                 <p>Lv: {"3"}</p>
             </div>
             <div className={`${styles.enemyImgs} ${enemyAttacking ? styles.enemyAttacking : ""}`}>
-                <img src={Slime} width = "75px"/>
+                <img src={Slime} width = "110"/>
             </div>
         </div>
     )

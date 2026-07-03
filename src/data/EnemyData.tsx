@@ -1,7 +1,7 @@
 import type { EnemyType } from "../types/EnemyTypes"
 import { arcaneElement } from "../types/ElementTypes"
 
-import slimeImg from "../assets/Slime.png"
+import slimeImg from "../assets/SlimeMonster.svg"
 
 
 export const EnemyList:EnemyType[] = [
