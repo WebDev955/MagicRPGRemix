@@ -3,17 +3,17 @@ import { useContext } from "react"
 //IMPORTS - COMPONENTS
 import TopScreen from "./TopScreen"
 import BottomScreen from "./BottomScreen"
-import Battle from "./Battles/Battle"
-import Scene from "./UI/Scene"
-import Modal from "./UI/Modal"
+import Battle from "../Battles/Battle"
+import Scene from "../menus/Scene"
+import Modal from "../UI/Modal"
 //IMPORTS - STYLE
 import styles from "./Game.module.css"
-import modalStyle from "./UI/Modal.module.css"
+import modalStyle from "../UI/Modal.module.css"
 //IMPORTS - CONTEXT
-import { SceneContext } from "./contexts/SceneContext"
+import { SceneContext } from "../contexts/SceneContext"
 //IMPORTS - DATA
-import { NpcList } from "../data/NpcData"
-import { ScenesList } from "../data/SceneData"
+import { NpcList } from "../../data/NpcData"
+import { ScenesList } from "../../data/SceneData"
  
 
 const Game = () => {

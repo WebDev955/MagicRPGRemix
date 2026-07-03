@@ -11,7 +11,7 @@ import slimeImg from "../../assets/SlimeMonster.svg"
 //IMPORTS - CONEXT
 import {AccountContext} from "./AccountContext";
 import { arcaneElement} from "../../types/ElementTypes";
-//import QuestLog from "../UI/QuestLog";
+//import QuestLog from "../menus/QuestLog";
 //import type { Quest } from "../../data/questData";
 
 type Props = {

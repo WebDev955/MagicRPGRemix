@@ -1,10 +1,10 @@
 //IMPORTS - CONTEXT
 import { useContext } from "react"
-import { SceneContext } from "./contexts/SceneContext"
+import { SceneContext } from "../contexts/SceneContext"
 //IMPORT - DATA
-import {CastleMap, ForestMap} from "../data/MapForest"
+import {CastleMap, ForestMap} from "../../data/MapForest"
 //IMPORT - STYLE
-import style from "../components/BottomScreen.module.css"
+import style from "./BottomScreen.module.css"
 
 const BottomScreen = () => {
   //ESTABLISH CONTEXT

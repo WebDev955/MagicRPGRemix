@@ -1,11 +1,11 @@
 //IMPORTS - HOOKS
 import {useState, useContext} from "react"
 //IMPORTS - COMPONENTS
-import Modal from "./Modal"
+import Modal from "../UI/Modal"
 //IMPORTS - CONTEXTS
 import {PlayerContext} from "../contexts/PlayerContext"
-//IMPORTS - STYLES 
-import styles from "../UI/QuestLog.module.css"
+//IMPORTS - STYLES
+import styles from "./QuestLog.module.css"
 import modalStyle from "../UI/Modal.module.css"
 
 const QuestLog = () => {

@@ -1,8 +1,8 @@
 //IMPORTS - HOOKS
 import { useContext, useEffect } from 'react'
 //IMPORTS - Components 
-import TitleScreen from './components/TitleScreen'
-import Game from './components/Game'
+import TitleScreen from './components/screens/TitleScreen'
+import Game from './components/screens/Game'
 //IMPORTS - Style
 import './App.css'
 //Imports - Context

@@ -6,7 +6,7 @@ import { ConversationContext } from "../contexts/ConversationContext";
 import ConversationMenu from "./ConversationMenu";
 //import { GlobalProgress } from "../contexts/GlobalPrgressContext";
 //IMPORT - STYLES/IMAGES
-import styles from "../UI/Scene.module.css"
+import styles from "./Scene.module.css"
 import BackArrow from "../../assets/BackArrow.svg"
 import ForwardArrow from "../../assets/ForwardArrow.svg"
 

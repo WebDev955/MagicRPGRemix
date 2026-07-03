@@ -1,2 +1,11 @@
 - paperTexture
 	<a href="https://www.vecteezy.com/free-vector/vintage-world-map">Vintage World Map Vectors by Vecteezy</a>
+
+-SlimeMonster
+	https://pixabay.com/vectors/blob-goo-animal-green-eyes-161097/
+	-author: OpenClipart-Vectors
+
+-ForestBackground
+	<a href="https://www.vecteezy.com/free-vector/goblin">Goblin Vectors by Vecteezy</a>
+	- author Ahmad Mujib
+

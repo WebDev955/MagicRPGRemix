@@ -1,14 +1,14 @@
 //HOOKS - HOOKS
 import {useContext, useEffect, useRef} from "react";
 //IMPORTS - COMPONENTS 
-import PlayerCreationForm from "./UI/Forms/PlayerCreationForm"
-import Button from "./UI/Button";
-import Modal from "./UI/Modal";
+import PlayerCreationForm from "../UI/Forms/PlayerCreationForm"
+import Button from "../UI/Button";
+import Modal from "../UI/Modal";
 //IMPORT - CONTEXT
-import { AccountContext } from "../components/contexts/AccountContext"
+import { AccountContext } from "../contexts/AccountContext"
 //IMPORT - STYLES/MUSIC
-import TitleTheme from "../assets/TitleTheme.mp3"
-import modalStyle from "./UI/Modal.module.css"
+import TitleTheme from "../../assets/TitleTheme.mp3"
+import modalStyle from "../UI/Modal.module.css"
 
 const TitleScreen = () => { 
     

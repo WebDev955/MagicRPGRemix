@@ -3,9 +3,9 @@ import {useContext, useState} from "react"
 //IMPORT - CONTEXT
 import {PlayerContext} from "../contexts/PlayerContext"
 //IMPORTS - COMPONENTS
-import Modal from "./Modal"
+import Modal from "../UI/Modal"
 //IMPORTS - STYLE
-import styles from "../UI/MonsterLog.module.css"
+import styles from "./MonsterLog.module.css"
 import modalStyle from "../UI/Modal.module.css"
 
 const MonsterLog = () => {

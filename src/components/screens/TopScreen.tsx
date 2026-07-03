@@ -1,15 +1,15 @@
 //Import - HOOKS
 import { useContext } from "react"
 //IMPORT - CONTEXT
-import {SceneContext} from "../components/contexts/SceneContext.tsx"
-//IMpORT - COMPNENTS 
-import TopMenu from "./UI/TopMenu.tsx"
-import Scene from "./UI/Scene.tsx"
-  import Modal from "./UI/Modal.tsx"
-  import modalStyle from "../components/UI/Modal.module.css"
+import {SceneContext} from "../contexts/SceneContext.tsx"
+//IMpORT - COMPNENTS
+import TopMenu from "../menus/TopMenu.tsx"
+import Scene from "../menus/Scene.tsx"
+  import Modal from "../UI/Modal.tsx"
+  import modalStyle from "../UI/Modal.module.css"
 //IMPORT - TYPES/DATA
-import { NpcList } from "../data/NpcData"
-import { ScenesList } from "../data/SceneData"
+import { NpcList } from "../../data/NpcData"
+import { ScenesList } from "../../data/SceneData"
 //IMPORT - STYLE
 import styles from "./TopScreen.module.css"
 
