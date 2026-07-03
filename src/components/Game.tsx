@@ -34,7 +34,7 @@ const Game = () => {
     <Modal open = {battle?.battleActive === true} className={modalStyle.battleModal}>
       {battle?.battleActive === true && 
         <Battle/>
-        }
+      }
    </Modal>
 
 {/*EVENTs DISPLAY*/}

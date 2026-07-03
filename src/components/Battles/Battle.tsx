@@ -23,6 +23,7 @@ const Battle:React.FC = () => {
     const sceneCtx = useContext (SceneContext)
 //Derived data to run battle
     const runBattle = battleCtx.startBattle
+    const battleActive = sceneCtx.battle.battleActive
     const battleReady = battleCtx.battleReady
     const battleEnemy = sceneCtx.battle
     const enemyFound = EnemyList.find((monster) => monster.id === battleEnemy.enemyId)
@@ -36,17 +37,25 @@ const Battle:React.FC = () => {
     const audioRef = useRef<HTMLAudioElement | null>(null)
 //Rendering Effects
 //Check for enemy found
+
+  
+      
+useEffect(() => {      
+        if (battleReady) {
+           if (audioRef.current) {
+            audioRef.current.volume = 0.1
+            audioRef.current.play()
+            }  
+        }       
+    },[battleReady])
+
     useEffect(() => {      
         if (!enemyFound) {
             console.warn("Enemy not found:", battleEnemy.enemyId)
             return
         }
         runBattle(playerCtx, enemyFound)        
-        
-        if (audioRef.current) {
-            audioRef.current.volume = 0.1
-            audioRef.current.play()
-        }  
+      
     },[])
 //Check state of battle, determine turn or end battle
     useEffect (() => {

@@ -21,6 +21,7 @@ export const CastleMap:React.FC = () => {
         if (eventType === "battle"){
             if (enemyId) {
                 scene.renderBattle(enemyId, gridCord, relatedQuest)
+                
             }   
         } else {
             scene.renderScene(eventType, sceneId, bgImg, npcId, villageId, mapType, gridCord, relatedQuest)

@@ -9,8 +9,8 @@ import Button from "../Button"
 import Input from "../Input"
 import Modal from "../Modal"
 //IMPORT - Styles
-import style from "../../UI/Modal.module.css"
-
+import Modalstyle from "../../UI/Modal.module.css"
+import style from "../../UI/Forms/PlayerCreationForm.module.css"
 
 const PlayerCreationForm = () => {
     //const playerContext = useContext(PlayerContext)
@@ -36,32 +36,21 @@ const PlayerCreationForm = () => {
     }
 
     return(
-        <>
-            <Modal open={accountCtx.isCreatingAccount} className={style.signUpModal}>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <Button>Close</Button>
-                        <h2>Create Account</h2>
-                        <Input
-                            label= "Player Name: "
-                            id = "playerName"
-                            name="playerName" 
-                        />
-                        <Input
-                            label= "Email: "
-                            id = "email"
-                            name="email"
-                        />
-                        <Input
-                            label= "Password: "
-                            id = "password"
-                            name="password"
-                        />
-                        <Button type="submit">Create Player!</Button>
-                    </div>
-                </form> 
-            </Modal>
-        </>
+        <Modal open={accountCtx.isCreatingAccount} className={Modalstyle.signUpModal}>
+            <form onSubmit={handleSubmit} className= {style.formWrapper}>
+                <Button>Close</Button>
+                <section className={style.welcomeWrapper}>
+                    <p>"Ah, so you have chosen to join us? Please provide us your name and your lessons shall begin!"</p>
+                  
+                </section>
+                <Input
+                    label= "Player Name: "
+                    id = "playerName"
+                    name="playerName" 
+                />
+            <Button type="submit">Create Player!</Button>
+        </form> 
+    </Modal>
     )
 }
 

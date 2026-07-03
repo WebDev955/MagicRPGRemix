@@ -1,0 +1,23 @@
+.formWrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-items: flex-start;
+  padding: 10px;
+}
+
+.formWrapper Input {
+  margin-bottom: 15px;
+}
+
+.welcomeWrapper {
+  display: flex;
+  direction: column;
+  align-items: center;
+  font-family: "Fondamento", cursive;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 25px;
+  text-align:justify;
+  color: rgb(0, 0, 0)
+}
