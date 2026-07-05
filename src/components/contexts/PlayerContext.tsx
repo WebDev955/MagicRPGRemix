@@ -179,13 +179,13 @@ const contextStats = useMemo(() => {
         spells : [basicCast, Splash, Flames],
         armor : [
             {id: "hat_1", name: "Novice Mage Hat",  category: "Hats", description: "Well worn mage hat.", def: 2},
-            {id: "hat_1", name: "Novice Mage Hat",  category: "Hats", description: "Well worn mage hat.", def: 2},
-            {id: "hat_1", name: "Novice Mage Hat",  category: "Hats", description: "Well worn mage hat.", def: 2},
-            {id: "hat_1", name: "Novice Mage Hat",  category: "Hats", description: "Well worn mage hat.", def: 2},
+            {id: "glasses_1", name: "Novice Mage Glasses",  category: "Glasses", description: "Average spectacles.", def: 2},
+            {id: "robes_1", name: "Novice Mage Robe",  category: "Robes", description: "Some comfy defense.", def: 2},
+            {id: "boots_1", name: "Novice Mage Boots",  category: "Boots", description: "Warm boots.", def: 2},
         ],
         weapons : [
             {id: "wand_1", name: "Starter Wand", description: "Starter wand for novice mages.", category:"wand", powerBoost: 0.2},
-            {id: "wand_1", name: "Starter Wand", description: "Starter wand for novice mages.", category:"wand", powerBoost: 0.2},
+            {id: "staff_1", name: "Starter Staff", description: "Starter staff for novice mages.", category:"staff", powerBoost: 0.5},
         ],
         potions : [
             {id:"healthPot_1", name: "Basic Health Potion", category: "Hp Restore", restorePts: 10, bonusEffect: "None"},

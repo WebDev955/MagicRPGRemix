@@ -1,7 +1,5 @@
 //IMPORTS - HOOKS
 import {useState, useContext } from "react"
-//IMPORTS - COMPONENTS
-import Button from "../UI/Button"
 //IMPORTS - CONTEXT
 import {PlayerContext} from "../contexts/PlayerContext"
 //IMPORTS - STYLE
@@ -59,11 +57,11 @@ return (
         }
         {renderArmor === "Glasses" && (
             armor.filter(armor => armor.category === renderArmor).map((glasses) => (
-                <div key={glasses.id}>
-                    <div>
+                <div key={glasses.id} className={style.selectedCategoryItemWrapper}>
+                    <div className={style.selectedCategoryItemTitle}>
                         <h2>{glasses.name}</h2>
-                            <Button onClick={() => equipItem(glasses)}>Equip</Button>
-                            <Button onClick={() => unequipItem(glasses)}>Equip</Button>
+                            <p onClick={() => equipItem(glasses)}>Equip</p>
+                            <p onClick={() => unequipItem(glasses)}>Unequip</p>
                         </div>
                         <div>
                             <p>Defense: {glasses.def}</p>
@@ -77,11 +75,11 @@ return (
         }
         {renderArmor === "Robes" && (
             armor.filter(armor => armor.category === renderArmor).map((robe) => (
-                <div key={robe.id}>
-                    <div>
+                <div key={robe.id} className={style.selectedCategoryItemWrapper}>
+                    <div className={style.selectedCategoryItemTitle}>
                         <h2>{robe.name}</h2>
-                            <Button onClick={() => equipItem(robe)}>Equip</Button>
-                            <Button onClick={() => unequipItem(robe)}>Equip</Button>
+                            <p onClick={() => equipItem(robe)}>Equip</p>
+                            <p onClick={() => unequipItem(robe)}>Unequip</p>
                         </div>
                         <div>
                             <p>Defense: {robe.def}</p>
@@ -95,11 +93,11 @@ return (
         }
         {renderArmor === "Boots" && (
             armor.filter(armor => armor.category === renderArmor).map((boot) => (
-                <div key={boot.id}>
-                    <div>
+                <div key={boot.id} className={style.selectedCategoryItemWrapper}>
+                    <div className={style.selectedCategoryItemTitle}>
                         <h2>{boot.name}</h2>
-                            <Button onClick={() => equipItem(boot)}>Equip</Button>
-                            <Button onClick={() => unequipItem(boot)}>Equip</Button>
+                            <p onClick={() => equipItem(boot)}>Equip</p>
+                            <p onClick={() => unequipItem(boot)}>Unequip</p>
                         </div>
                         <div>
                             <p>Defense: {boot.def}</p>

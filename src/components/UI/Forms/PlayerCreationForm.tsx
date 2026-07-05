@@ -14,7 +14,7 @@ import style from "../../UI/Forms/PlayerCreationForm.module.css"
 
 const PlayerCreationForm = () => {
     //const playerContext = useContext(PlayerContext)
-    const accountCtx = useContext(AccountContext)!; // "!" tellls TypeScript "Trust me, it exissts"
+    const accountCtx = useContext(AccountContext); 
 
     function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>){
         event.preventDefault()
@@ -40,7 +40,6 @@ const PlayerCreationForm = () => {
                 <Button>Close</Button>
                 <section className={style.welcomeWrapper}>
                     <p>"Ah, so you have chosen to join us? Please provide us your name and your lessons shall begin!"</p>
-                  
                 </section>
                 <Input
                     label= "Player Name: "
@@ -49,7 +48,6 @@ const PlayerCreationForm = () => {
                 />
             <Button type="submit">Create Player!</Button>
         </form> 
-
     )
 }
 

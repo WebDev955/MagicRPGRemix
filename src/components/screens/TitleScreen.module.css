@@ -1,0 +1,40 @@
+.titleScreenWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  min-height: 100%;
+  gap: 24px;
+  padding: 24px;
+  text-align: center;
+  background: url("../../assets/TitleScreenBackground.svg") no-repeat center / cover;
+ 
+}
+
+.titleScreenWrapper p {
+  font-family: "Fondamento", cursive;
+  color: gold;
+  font-size:60px;
+  text-decoration: underline;
+  margin: 0;
+}
+
+.titleMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  width: 200%;
+  gap: 20px;
+  background-color: rgba(240, 248, 255, 0.306);
+  padding: 20px;
+  box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.titleMenu Button {
+  background: url("../../assets/paperTexture.jpg") no-repeat center / cover;
+  font-family:"Fondamento", cursive;
+  font-size: 20px;
+}

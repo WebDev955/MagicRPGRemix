@@ -3,16 +3,15 @@ import {useContext, useEffect, useRef} from "react";
 //IMPORTS - COMPONENTS 
 import PlayerCreationForm from "../UI/Forms/PlayerCreationForm"
 import Button from "../UI/Button";
-import Modal from "../UI/Modal";
+import Modal from "../UI/Modal"
 //IMPORT - CONTEXT
 import { AccountContext } from "../contexts/AccountContext"
 //IMPORT - STYLES/MUSIC
 import TitleTheme from "../../assets/TitleTheme.mp3"
 import modalStyle from "../UI/Modal.module.css"
+import style from "./TitleScreen.module.css"
 
 const TitleScreen = () => { 
-    
-    
     const accountCtx = useContext(AccountContext)
     const handleCreateAccount = () => {
          if (audioRef.current) {
@@ -25,15 +24,17 @@ const TitleScreen = () => {
    const audioRef = useRef<HTMLAudioElement | null>(null)
     
     return (
-        <div>
+        <main className = {style.titleScreenWrapper}>
             <audio ref={audioRef} src={TitleTheme} loop/>
-            <h1>Magic RPG</h1>
-            <Button onClick={handleCreateAccount} >New Game</Button>
-            <Button>Login</Button>
+            <p>Magic RPG</p>
+            <section className={style.titleMenu}>
+                <Button onClick={handleCreateAccount}>Enroll</Button>
+                <Button>Continue Studies</Button>
+            </section>
             <Modal open={accountCtx.isCreatingAccount} className={modalStyle.signUpModal}>
                 <PlayerCreationForm/>
             </Modal>
-        </div>
+        </main>
     )
 }
 

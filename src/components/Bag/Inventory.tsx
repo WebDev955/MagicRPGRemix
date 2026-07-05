@@ -3,6 +3,9 @@ import { useContext, useState} from "react"
 //IMPORTS - COMPONENETS
 import Modal from "../UI/Modal"
 import Armor from "./Armor"
+import Weapons from "./Weapons"
+import Spells from "./Spells"
+import Potions from "./Potions"
 import Button from "../UI/Button"
 //IMPORTS - CONTEXT
 import { PlayerContext } from "../contexts/PlayerContext"
@@ -28,18 +31,26 @@ const playerContext = useContext(PlayerContext)!
 
     return(
         <Modal open = {playerContext.isInventoryOpen} className={style.inventoryModal}>
-            <Button onClick={closeInventoryHandler}>Close</Button>
-            <p>Gold: {playerCtx.bagTest.gold}</p>
+            <div className={styles.topBarDiv}>
+                <Button onClick={closeInventoryHandler} className={styles.closeButton}>Close</Button>
+                <p className={styles.goldStat}>Gold: {playerCtx.bagTest.gold}</p>
+            </div>
+
+            <div className={styles.playerStatsDiv}>
+                <p className={styles.hpStat}>HP: {playerCtx.stats.hp}</p>
+                <p className={styles.defStat}>Def: {playerCtx.stats.def}</p>
+                <p className={styles.magicStat}>Magic: {playerCtx.stats.mp}</p>
+            </div>
             <div className={styles.categorySelctionDiv}>
                 <p onClick={()=>displayItems("armor")}>Armor</p>
                 <p onClick={()=>displayItems("weapon")}>Weapons</p> 
                 <p onClick={()=>displayItems("spell")}>Spell</p> 
-                <p onClick={()=>displayItems("potion")}>Recovery</p> 
+                <p onClick={()=>displayItems("potion")}>Potions</p> 
             </div>
             {renderContent === "armor" && <Armor/>}
-            {renderContent === "weapon" && <h1>Weapons Selection</h1>}
-            {renderContent === "spell" && <h1>Spells Selection</h1>}
-            {renderContent === "potion" && <h1>Potion Selection</h1>}
+            {renderContent === "weapon" && <Weapons/>}
+            {renderContent === "spell" && <Spells/>}
+            {renderContent === "potion" && <Potions/>}
         </Modal>
     )
 }
