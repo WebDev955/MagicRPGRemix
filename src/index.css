@@ -3,11 +3,10 @@
 }
 
 :root {
-  color-scheme: dark light;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.87);
+  color: #1a1a1a;
   background-color: rgb(115, 104, 104);
   --descriptive-text: "Winky Rough", sans-serif;
   --menu-text: "Nova Oval", system-ui;
@@ -34,12 +33,4 @@ h1   {
 
 h2, h3 {
   font-family: "Fondamento", cursive;
-}
-
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    background-color: #1a1a1a;
-    color: white;
-  }
 }

@@ -4,6 +4,7 @@
     padding: 10px;
     background: url("../../../assets/paperTexture.jpg");
     border:  solid black 3px;
+    color: black;
 }
 
 .playersGuideWrapper p {
