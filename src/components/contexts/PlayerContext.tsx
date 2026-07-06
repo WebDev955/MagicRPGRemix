@@ -64,6 +64,9 @@ export const PlayerContext = createContext<PlayerContextType>({
     equipItem: () => {},
     unequipItem: () => {},
 
+    openPlayerGuide: () => {},
+    isPlayerGuideOpen: false,
+
 })
 
 //Only in Provider is where you create functions and estbalish state
@@ -79,6 +82,7 @@ export function PlayerContextProvider({children}:Props){
     const [isMonsterLogOpen, setIsMonsterLogOpen] = useState(false)
     const [questLog, setQuestLog] = useState<QuestLogType[]>([])
     const [isQuestLogOpen, setIsQuestLogOpen] = useState(false)
+    const [isPlayerGuideOpen, setIsPlayerGuideOpen] = useState(false)
 
     
     const openInventory = () => {
@@ -90,6 +94,10 @@ export function PlayerContextProvider({children}:Props){
     const openQuestLog = () =>{
         setIsQuestLogOpen(!isQuestLogOpen)
     }
+    const openPlayerGuide = () => {
+        setIsPlayerGuideOpen(!isPlayerGuideOpen)
+    }
+    
 
     const equipItem = (item: EquipableItem) => {
         setEquipedItems(prevItems => {
@@ -219,6 +227,8 @@ const contextStats = useMemo(() => {
         updateQuest,
         isQuestLogOpen,
         openQuestLog,
+        isPlayerGuideOpen,
+        openPlayerGuide,
         
     }
 

@@ -6,19 +6,22 @@
     justify-content: space-around;
     background-color: rgba(245, 245, 245, 0.326);
     z-index: 10;
-    border: solid black 5px;    
-
+    box-shadow: 
+    inset 5px 5px 10px rgb(201, 131, 0); 
+    background: url("../../assets/paperTexture.jpg") no-repeat center / cover ;
 }
 
 .menuDivButtons {
     width: 100%;
     display: flex;
     flex-direction: row; 
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center; 
     padding: 5px;
     font-size: small;
-    animation: slideDown 2.0s cubic-bezier(0.25, 1, 0.5, 1) forwards 
+    animation: slideDown 2.0s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+
 
 }
 
@@ -38,14 +41,23 @@
     width: 38px;
 }
 
+.menuDivButtons figure:nth-child(1) figcaption,
+.menuDivButtons figure:nth-child(2) figcaption,
+.menuDivButtons figure:nth-child(3) figcaption {
+    font-family: "Fondamento", cursive;
+}
+
 .settings {
+    box-shadow: 
+    inset 5px 5px 10px rgb(201, 131, 0);
     display: flex;
     flex-direction: row;
     justify-content:space-around;
-    background-color: lightcoral; 
+    background: url("../../assets/paperTexture.jpg") no-repeat center / cover;
     border-top: solid black 2px;
     padding: 5px;
     margin-top: 10px;
+    font-family: var(--menu-text);
 }
 
 .settings p {

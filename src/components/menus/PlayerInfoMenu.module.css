@@ -7,6 +7,7 @@
 }
 
 .statsWrapper {
+    
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -27,9 +28,11 @@
 .statsWrapper h2
 .statsWrapper p {
   margin: 0;
+  
 }
 
 .health {
+    font-family: var(--menu-text);
     color: red;
     outline: auto;
     padding: 5px;
@@ -37,6 +40,7 @@
 }
 
 .magic{
+    font-family: var(--menu-text);
     color: blue;
     outline: auto;
     padding: 5px;
@@ -44,6 +48,7 @@
 }
 
 .location {
+    font-family: var(--menu-text);
   display: flex;
   margin-right: 10px;
   justify-content: flex-end;

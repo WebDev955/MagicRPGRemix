@@ -44,6 +44,7 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
+    
 }
 
 .spellImgs figcaption{
@@ -52,11 +53,16 @@
     justify-content: center;
     align-items: center;
     gap: 3px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
 }
-
-.spellImgs img:hover{
-    border-radius: 10px;
-    border: 3px solid whitesmoke 
+.spellImgs figcaption:hover{
+    border-radius: 25px;
+    background-color: rgb(0, 200, 255);
+    box-shadow: 
+        inset 5px 5px 10px rgb(0, 25, 251),
+        inset -5px -5px 10px rgb(77, 95, 249);
+    text-decoration: dashed;
 
 }
 .playerBtlMenu {

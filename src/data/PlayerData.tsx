@@ -72,6 +72,9 @@ export type PlayerContextType = {
 
     openMonsterLog: () => void,
     isMonsterLogOpen: boolean,
+
+    openPlayerGuide: () => void,
+    isPlayerGuideOpen: boolean,
     
     addNewQuest: (questId:string) => void;
     updateQuest: (questId:string) => void;

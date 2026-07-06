@@ -5,10 +5,12 @@ import Inventory from "../Bag/Inventory"
 import MonsterLog from "./MonsterLog"
 import QuestLog from "./QuestLog"
 import PlayerInfoMenu from "./PlayerInfoMenu"
+
 //IMPORT - GRAPHICS 
 import Backpack from "../../assets/Backpack.png"
 import QuestLogIcon from "../../assets/QuestLog.png"
 import MonsterLogIcon from "../../assets/MonsterLog.png"
+import GuideBook from "../../assets/GuideBook.svg"
 //IMPORTS - STYLES
 import styles from "./TopMenu.module.css"
 import CastleBg from "../../assets/TheCastle.mp3"
@@ -16,6 +18,7 @@ import CastleBg from "../../assets/TheCastle.mp3"
 import { PlayerContext } from "../contexts/PlayerContext"
 import { AccountContext } from "../contexts/AccountContext"
 import { castSpell } from "../Battles/battleUtils"
+import PlayersGuide from "./PlayersGuide/PlayersGuide"
 
 const TopMenu:React.FC = () => {
     //ESTABLISH STATE
@@ -34,6 +37,9 @@ const TopMenu:React.FC = () => {
     }
     const openQuestLog = () => {
         playerContext.openQuestLog()
+    }
+    const openPlayerGuide = () => {
+        playerContext.openPlayerGuide()
     }
     const openMenuHandler = (boolean:boolean) => {
            console.log("clicked", boolean)
@@ -83,6 +89,11 @@ const TopMenu:React.FC = () => {
                         <img src={QuestLogIcon}onClick={openQuestLog} />
                         <figcaption>Quests</figcaption>
                         <QuestLog/>
+                    </figure>
+                    <figure className={styles.menuButton} >
+                        <img src={GuideBook}onClick={openPlayerGuide} />
+                        <figcaption>Player Guide</figcaption>
+                        <PlayersGuide/>
                     </figure>
                 </div>
             }

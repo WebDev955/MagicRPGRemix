@@ -3,11 +3,11 @@
     flex-direction: column;
     justify-items: center;
     width: 100%;   
-    background-color: lightseagreen;
+    background: url("../../assets/ForestBattleBG.svg") no-repeat center/cover;
     border: solid black 2px;
-
     animation: pop-in 1.5s forwards cubic-bezier(0.34, 1.56, 0.64, 1);
-} 
+    font-family: var(--menu-text);
+}
 
 @keyframes pop-in {
   0% {

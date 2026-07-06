@@ -8,7 +8,7 @@
 }
 
 .conversationMenu {
-    background-color: hsla(0, 0%, 0%, 0.322);
+    background: url("../../assets/paperTexture.jpg") no-repeat center / cover;
     border: solid 2px black;
     padding: 5px;
     font-size: 15px;
@@ -16,10 +16,14 @@
 
 .conversationOption {
     color: black;
-    border: solid black 1px;
-    background-color: cadetblue;
     padding: 5px;
+    border: solid black 2px;
     font-weight: 600;
+    font-family: var(--menu-text);
+}
+
+.conversationOption:hover {
+    box-shadow: inset 10px 10px 20px rgb(248, 129, 2);
 }
  .questActive {
     color: black;

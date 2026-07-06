@@ -1,0 +1,80 @@
+.elementsOfMagicWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.magicOverview{
+    font-size: 18px;
+  
+}
+.magicOverview p {
+    padding-bottom: 10px;
+}
+
+.spellDetailsWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+}
+
+.spellDetailsWrapper h3{
+    border: solid black 2px;
+    padding: 10px;
+    margin: 5px;
+    font-family:"Fondamento", cursive;
+    font-size: larger;
+}
+
+.default {
+    background-color: aquamarine;
+}
+
+.arcane {
+    background-color: #d8b4fe;
+}
+
+.water {
+    background-color: #90e0ef;
+}
+
+.pyro {
+    background-color: #ff9770;
+}
+
+.herba {
+    background-color: #a3c586;
+}
+
+.lightning {
+    background-color: #fde74c;
+}
+
+.mind {
+    background-color: #f4a6c6;
+}
+
+.shadow {
+    background-color: #a89bd4;
+}
+
+.holy {
+    background-color: #fff4c1;
+}
+.spellDetails{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.spellDetails p:last-child{
+    text-align: justify;
+}
+
+.affinities {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:  center;
+    gap: 20px;
+}

@@ -49,6 +49,13 @@
     margin-top: 15px;
 }
 
+.guideModal {
+    border: solid 3px black;
+    max-width: 95%;
+    height: 90vh;
+    background-color: rgba(245, 245, 245, 0.407)
+}
+
 /* EVENT MODALS */
 .battleModal {
     height: 100vh;

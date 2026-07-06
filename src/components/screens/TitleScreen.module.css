@@ -10,7 +10,6 @@
   padding: 24px;
   text-align: center;
   background: url("../../assets/TitleScreenBackground.svg") no-repeat center / cover;
- 
 }
 
 .titleScreenWrapper p {
@@ -37,4 +36,8 @@
   background: url("../../assets/paperTexture.jpg") no-repeat center / cover;
   font-family:"Fondamento", cursive;
   font-size: 20px;
+  border-radius: 25%;
+  box-shadow: inset 10px 10px 20px rgb(248, 129, 2);
+  padding: 5px;
+
 }

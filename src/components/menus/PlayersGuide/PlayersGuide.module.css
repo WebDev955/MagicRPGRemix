@@ -1,0 +1,12 @@
+.playersGuideWrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: url("../../../assets/paperTexture.jpg");
+    border:  solid black 3px;
+}
+
+.playersGuideWrapper p {
+    margin: 0;
+    font-family: var(--descriptive-text)
+}

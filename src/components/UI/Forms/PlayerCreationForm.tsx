@@ -42,9 +42,10 @@ const PlayerCreationForm = () => {
                     <p>"Ah, so you have chosen to join us? Please provide us your name and your lessons shall begin!"</p>
                 </section>
                 <Input
-                    label= "Player Name: "
+                    label= "Signature: "
                     id = "playerName"
                     name="playerName" 
+                    type="text"
                 />
             <Button type="submit">Create Player!</Button>
         </form> 
