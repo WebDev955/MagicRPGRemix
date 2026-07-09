@@ -1,13 +1,24 @@
 .questWrapperDiv {
     position: relative;
     width: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #993300;
-    border: solid black 3px;
-    border-radius: 25px;
+    background-color: #7a2e0f;
+    background-image:
+        repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.08) 0px, rgba(0, 0, 0, 0.08) 2px, transparent 2px, transparent 6px),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.04) 0px, rgba(255, 255, 255, 0.04) 1px, transparent 1px, transparent 5px),
+        radial-gradient(ellipse at 30% 15%, rgba(255, 180, 120, 0.12), transparent 55%),
+        radial-gradient(ellipse at 75% 90%, rgba(0, 0, 0, 0.35), transparent 60%);
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.55);
+    border-left: solid 15px rgb(0, 0, 0);
+    border-top-left-radius:  25px;
+    border-bottom-left-radius:  25px;
+    
+
     padding-bottom: 50px;
+    margin-top: 3px;
 
 }
 .questLogHeader { 
@@ -25,21 +36,44 @@
 .questLogHeader h1 {
     padding-left: 15px
 }
-.headerBelt {    
+.headerBelt {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    height: 25px;    
+    height: 22px;
     width: calc(100% + 20px);
     margin-left: -10px;
     margin-right: -10px;
-    background: rgb(0, 0, 0);
+    background: linear-gradient(180deg, #3a1f0d 0%, #1c0d04 50%, #3a1f0d 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.headerBelt::before,
+.headerBelt::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #e8c766, #8a6d1f 70%, #5c4813);
+    border: 1px solid #3a2c0a;
+    transform: translateY(-50%);
+}
+.headerBelt::before {
+    left: 14px;
+}
+.headerBelt::after {
+    right: 14px;
 }
 .beltDiamond {
-    width: 20px;
-    height: 20px;
-    background: yellow;
+    width: 18px;
+    height: 18px;
+    background: radial-gradient(circle at 35% 30%, #ffe9a8, #d4af37 55%, #8a6d1f 100%);
+    border: 1px solid #5c4813;
+    box-shadow: 0 0 4px rgba(255, 215, 0, 0.6), inset 0 0 3px rgba(255, 255, 255, 0.5);
     transform: rotate(45deg);
     position: absolute;
 }
@@ -59,14 +93,25 @@
     border: solid black 2px;
     border-radius: 10px;
 }
+.questCardWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 6px;
+}
 .questNameCard {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(255, 223, 223, 0.842) ;
+    background: url("../../assets/paperTexture.jpg") no-repeat center / cover;
     border: solid black 2px;
     width: 90%;
-
+    padding: 4px 8px;
+    cursor: pointer;
+}
+.questNameCard p {
+    margin: 2px 0;
 }
 .sectionDivider {
     display: flex;
@@ -74,6 +119,9 @@
     align-items: center;
     gap: 0.75rem;
     width: 100%;
+}
+.sectionDivider h2 {
+    margin: 4px 0;
 }
 
 .sectionDivider::before,
@@ -93,8 +141,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color:#FFDEAD;
-    border: solid black 2px;
+    background: url("../../assets/paperTexture.jpg") no-repeat center / cover;
+    margin-top: 4px;
 }
 
 .questDescription {

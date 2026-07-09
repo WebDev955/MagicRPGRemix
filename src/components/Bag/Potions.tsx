@@ -19,10 +19,9 @@ const InventoryPotions = () => {
 
 return (
    <div className={style.itemsWrapperDiv}>
-        <h1><center>- Potions -</center></h1>
             <div className={style.categorySubMenu}>
-                <p onClick={()=> displayPotion("Hp Restore")}>Hp Restore</p>
-                <p onClick={()=> displayPotion("Magic Restore")}>Magic Restore</p>
+                <p onClick={()=> displayPotion("Hp Restore")} className={renderPotion === "Hp Restore" ? style.subMenuActive : ""}>Hp Restore</p>
+                <p onClick={()=> displayPotion("Magic Restore")} className={renderPotion === "Magic Restore" ? style.subMenuActive : ""}>Magic Restore</p>
             </div>
         {renderPotion === "Hp Restore" && (
             potions.filter(potion => potion.category === renderPotion).map((potion) => (
@@ -30,7 +29,7 @@ return (
                     <div className={style.selectedCategoryItemTitle}>
                         <h2>{potion.name}</h2>
                         </div>
-                        <div>
+                        <div className={style.selectedCategoryItemDetails}>
                             <p>Restore Points: {potion.restorePts}</p>
                             <p>Bonus Effect: {potion.bonusEffect}</p>
                         </div>
@@ -45,7 +44,7 @@ return (
                     <div className={style.selectedCategoryItemTitle}>
                         <h2>{potion.name}</h2>
                         </div>
-                        <div>
+                        <div className={style.selectedCategoryItemDetails}>
                             <p>Restore Points: {potion.restorePts}</p>
                             <p>Bonus Effect: {potion.bonusEffect}</p>
                         </div>

@@ -4,9 +4,13 @@ import {useState, useContext} from "react"
 import Modal from "../UI/Modal"
 //IMPORTS - CONTEXTS
 import {PlayerContext} from "../contexts/PlayerContext"
+//IMPORTS - TYPES/DATA
+import type { QuestLogType } from "../../data/PlayerData"
 //IMPORTS - STYLES
 import styles from "./QuestLog.module.css"
 import modalStyle from "../UI/Modal.module.css"
+
+//TEMP - MOCK QUESTS FOR PREVIEWING MULTIPLE QUEST LOG ENTRIES
 
 const QuestLog = () => {
     //ESTABLISH STATE
@@ -15,7 +19,6 @@ const QuestLog = () => {
     const playerCtx = useContext(PlayerContext)
     //DERIVE DATA FROM CONTEXT
     const questLog = playerCtx.questLog
-    const selectedQuest = questLog.find (quest => quest.id === viewQuest )
 
     const closeQuestLogHandler = () => { 
         playerCtx.openQuestLog()
@@ -42,42 +45,44 @@ return (
     </div>
             </div>
 {/* Quest Title Bar*/}
-            {questLog.map((quest) => 
-            <div className={styles.questNameCard} onClick={() => questDetailsHandler(quest.id)}>
-                 <div className={styles.sectionDivider}>
-                    <h2>{quest.name}</h2>
+            {questLog.map((quest) =>
+            <div key={quest.id} className={styles.questCardWrapper}>
+                <div className={styles.questNameCard} onClick={() => questDetailsHandler(quest.id)}>
+                     <div className={styles.sectionDivider}>
+                        <h2>{quest.name}</h2>
+                    </div>
+                    <p>Track</p>
                 </div>
-                <p>Track</p>
-            </div>
-            )} 
 {/* Quest Details */}
-            <div className={styles.questDetailsWrapper}>              
-            {selectedQuest && 
-                <div key={selectedQuest.id} className={styles.questDescription}>
-                    <p>{selectedQuest.description}</p>
-                    <p><span>Requested by:</span> {selectedQuest.npcGiver}</p>
-                </div>
-            }
+                {viewQuest === quest.id &&
+                <div className={styles.questDetailsWrapper}>
+                    <div className={styles.questDescription}>
+                        <p>{quest.description}</p>
+                        <p><span>Requested by:</span> {quest.npcGiver}</p>
+                    </div>
 {/* Quest Objectives */}
-            {selectedQuest && selectedQuest.objectives.map((obj) =>
-                <div className={styles.questObjectivesWrapper}>
-                    <div className={styles.sectionDivider}><h2>Objectives</h2></div>
-                    <ul className={styles.objectiveList}>
-                        <li key={obj.id}>
-                            {obj.name}: {obj.description}
-                        </li>
-                    </ul>
+                    {quest.objectives.map((obj) =>
+                        <div key={obj.id} className={styles.questObjectivesWrapper}>
+                            <div className={styles.sectionDivider}><h2>Objectives</h2></div>
+                            <ul className={styles.objectiveList}>
+                                <li>
+                                    {obj.name}: {obj.description}
+                                </li>
+                            </ul>
+                        </div>
+                    )}
+                    {quest.rewards.map((reward) =>
+                        <div key={reward.id} className={styles.questRewardsWrapper}>
+                            <h2>Rewards</h2>
+                            <ul>
+                                <li>{reward.name}</li>
+                            </ul>
+                        </div>
+                    )}
                 </div>
+                }
+            </div>
             )}
-            {selectedQuest && selectedQuest.rewards.map((reward) =>
-                <div className={styles.questRewardsWrapper}>
-                    <h2>Rewards</h2>
-                    <ul>
-                        <li>{reward.name}</li>
-                    </ul>
-                </div>
-            )}
-            </div> 
         </div>
     </Modal> 
 )

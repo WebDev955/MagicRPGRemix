@@ -30,5 +30,17 @@
 }
 
 .stratDetails p {
-    margin: 0;
+    margin-bottom: 8px;
 }
+
+.stratDetails p::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    background-image: url("../../../assets/BulletArrow.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+

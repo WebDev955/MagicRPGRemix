@@ -20,11 +20,11 @@ const PlayerInfoMenu:React.FC = () => {
             <div className={styles.statsWrapper}>
                 <h2>{playerName}</h2>
                 <h3 className={styles.health}>Hp: {playerContext.stats.hp}</h3>
-                <h3 className={styles.health}>Df: {playerContext.stats.def}</h3>
-                <h3 className={styles.magic}>Magic: {playerContext.stats.mp}</h3> 
-            </div> 
-            <div className={styles.location}>
-                <p>Location {currentMap} : {mapCord}</p>
+                <h3 className={styles.def}>Df: {playerContext.stats.def}</h3>
+                <h3 className={styles.magic}>Magic: {playerContext.stats.mp}</h3>
+            </div>
+            <div className={styles.locationRow}>
+                <p className={styles.location}>{currentMap}: {mapCord}</p>
             </div>
        </div>
       )

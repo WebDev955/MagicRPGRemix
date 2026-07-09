@@ -2,13 +2,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 6px;
-}
-
-.itemsWrapperDiv h1 {
-    border-bottom: solid black 2px;
-    margin-top: 0;
-    margin-bottom: 0;
+    padding: 6px 8px;
 }
 
 .categorySelctionDiv {
@@ -22,6 +16,7 @@
 
 .categorySelctionDiv p {
     background-color: antiquewhite;
+    font-family: var(--menu-text);
     padding: 10px;
     border-radius: 10px;
     border: solid 2px black;
@@ -35,12 +30,16 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    gap: 8px;
     margin-top: 0px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
     border-bottom: solid black 2px;
 }
 
 .categorySubMenu p{
     background-color: goldenrod;
+    font-family: var(--menu-text);
     padding: 10px;
     border-radius: 10px;
     border: solid 2px black;
@@ -53,28 +52,48 @@
 .selectedCategoryItemWrapper {
     display: flex;
     flex-direction: column;
+    gap: 4px;
     background-color: cadetblue;
-    border-bottom: 1px solid black;
-    margin-top: none;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin: 6px 0;
+    padding: 6px 8px;
 }
 
 .selectedCategoryItemTitle {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-evenly;
-    margin: none;
+    gap: 8px;
+    margin: 0;
+    padding-bottom: 4px;
     border-bottom: dashed black 1px;
+}
+
+.selectedCategoryItemTitle h2 {
+    margin: 0;
+    font-size: 1.1rem;
 }
 
 .selectedCategoryItemTitle p {
     background-color: coral;
-    border-radius: 10px;
-    padding: 10px;
+    font-family: var(--menu-text);
+    border-radius: 8px;
+    padding: 4px 8px;
     border: 1px solid black;
+    cursor: pointer;
 }
+
 .selectedCategoryItemDetails {
     display: flex;
     flex-direction: column;
+    gap: 1px;
+    padding: 0 2px;
+}
+
+.selectedCategoryItemDetails p {
+    margin: 0;
 }
 
 

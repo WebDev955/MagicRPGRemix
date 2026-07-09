@@ -18,6 +18,7 @@ import type { ElementType } from "../../../types/ElementTypes"
 
 //IMPORTS - STYLE
 import style from "./ElementsOfMagicGuide.module.css"
+import DropDownArrow from "../../../assets/DropDownArrow.svg"
 
 type GuideElement = {
     name: string
@@ -73,13 +74,11 @@ const ElementsOfMagicGuide = () => {
             {elements.map(({ name, data }) => {
                 const hasAffinities = data.strengths !== undefined || data.weakness !== undefined
                 return (
-                    <div key={name}>
-                        <h3
-                            className={style[data.element] || style.default}
-                            onClick={() => displayElementInfo(name)}
-                        >
-                            {name}
-                        </h3>
+                    <div key={name} onClick={() => displayElementInfo(name)} className={style[data.element] || style.default}>
+                        <div className={style.elementHeader}>
+                            <img src={DropDownArrow} className={style.dropDownArrow}/>
+                            <h3>{name}</h3>
+                        </div>
                         {spellInfo === name && (
                             <div className={style.spellDetails}>
                                 {hasAffinities ? (

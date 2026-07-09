@@ -64,10 +64,7 @@ const TopMenu:React.FC = () => {
        
     return(
         <div className={styles.topScreenMenuWrapper}>
-            <audio ref={audioRef} src={CastleBg} loop/>
-            <div>
-                <PlayerInfoMenu/>
-            </div>  
+            <audio ref={audioRef} src={CastleBg} loop/> 
             <div className={styles.settings}>
                 <p onClick= {() => openMenuHandler(!openMenu)}>Open Menu</p>
                 <p onClick ={() => runAudio()}>Toggle Music</p> 
@@ -97,6 +94,9 @@ const TopMenu:React.FC = () => {
                     </figure>
                 </div>
             }
+             <div>
+                <PlayerInfoMenu/>
+            </div> 
         </div>         
     )
 }

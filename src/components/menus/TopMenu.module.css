@@ -1,14 +1,19 @@
 .topScreenMenuWrapper{
     position: relative;
     width: 100%;
-    display: flex; 
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
+    gap: 2px;
     background-color: rgba(245, 245, 245, 0.326);
     z-index: 10;
-    box-shadow: 
-    inset 5px 5px 10px rgb(201, 131, 0); 
-    background: url("../../assets/paperTexture.jpg") no-repeat center / cover ;
+    border: solid 2px black;
+    border-top: solid 5px black;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: inset 5px 5px 10px rgb(201, 131, 0), inset 0 -8px 12px rgba(0, 0, 0, 0.35);
+    background: url("../../assets/paperTexture.jpg") no-repeat center / cover;
+
 }
 
 .menuDivButtons {
@@ -21,42 +26,54 @@
     padding: 5px;
     font-size: small;
     animation: slideDown 2.0s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-
-
 }
 
 .menuButton{
-    background-color: lightskyblue;
-    border-radius: 35%;
-    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin: 0;
+    background-color: antiquewhite;
+    border: solid 2px black;
+    border-radius: 14px;
+    padding: 8px 10px;
     color: black;
-    font-size: larger;
-    font-weight: 600;
-    box-shadow: -2px 8px 19px 1px rgba(0,0,0,0.42);
-    -webkit-box-shadow: -2px 8px 19px 1px rgba(0,0,0,0.42);
-    -moz-box-shadow: -2px 8px 19px 1px rgba(0,0,0,0.42);
+    box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.menuButton:hover {
+    background-color: goldenrod;
+    transform: translateY(-2px);
+    box-shadow: 3px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.menuButton:active {
+    transform: translateY(0);
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
 }
 
 .menuButton img{
-    width: 38px;
+    width: 34px;
+    cursor: pointer;
 }
 
-.menuDivButtons figure:nth-child(1) figcaption,
-.menuDivButtons figure:nth-child(2) figcaption,
-.menuDivButtons figure:nth-child(3) figcaption {
+.menuButton figcaption {
+    margin: 0;
     font-family: "Fondamento", cursive;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
 }
 
 .settings {
-    box-shadow: 
-    inset 5px 5px 10px rgb(201, 131, 0);
     display: flex;
     flex-direction: row;
     justify-content:space-around;
-    background: url("../../assets/paperTexture.jpg") no-repeat center / cover;
-    border-top: solid black 2px;
-    padding: 5px;
-    margin-top: 10px;
+    padding: 4px 5px;
     font-family: var(--menu-text);
 }
 

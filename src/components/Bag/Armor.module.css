@@ -10,8 +10,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    border-bottom: solid black 2px;
     gap: 5px;
+    
 }
 
 .categorySelctionDiv p {
@@ -20,6 +20,7 @@
     padding: 10px;
     border-radius: 10px;
     border: solid 2px black;
+    font-size: 20px;
 }
 
 .categorySelctionDiv p:hover {
@@ -29,11 +30,10 @@
 .categorySubMenu{
     display: flex;
     flex-direction: row;
+    align-content: center;
     justify-content: center;
     gap: 12px;
-    margin-top: 0px;
     margin-bottom: 4px;
-    padding-bottom: 2px;
     border-bottom: solid black 1px;
 }
 
@@ -41,9 +41,9 @@
     font-family: var(--menu-text);
     font-weight: bold;
     color: #1a1a1a;
-    line-height: 1.2;
-    font-size: 22px;
     cursor: pointer;
+    margin-bottom: 5px;
+    font-size: 22px;
 }
 
 .categorySubMenu p:hover{

@@ -13,13 +13,12 @@ const InventorySpells = () => {
 
 return (
    <div className={style.itemsWrapperDiv}>
-        <h1><center>- Spells -</center></h1>
         {spells.map((spell) => (
             <div key={spell.id} className={style.selectedCategoryItemWrapper}>
                 <div className={style.selectedCategoryItemTitle}>
                     <h2>{spell.name}</h2>
                 </div>
-                <div>
+                <div className={style.selectedCategoryItemDetails}>
                     <p>Element: {spell.element.element}</p>
                     <p>MP Cost: {spell.mp}</p>
                     <p>Power: {spell.power}</p>

@@ -1,6 +1,7 @@
 .elementsOfMagicWrapper {
     display: flex;
     flex-direction: column;
+
 }
 
 .magicOverview{
@@ -11,70 +12,120 @@
     padding-bottom: 10px;
 }
 
-.spellDetailsWrapper{
-    display: flex;
-    flex-direction: column;
-    justify-items: flex-start;
+.spellDetailsWrapper {
+
+
+}
+.spellDetailsWrapper h3{
+    font-family:"Fondamento", cursive;
+    font-size: x-large;
+    margin: 0;
+    text-decoration: underline;
 }
 
-.spellDetailsWrapper h3{
-    border: solid black 2px;
-    padding: 10px;
-    margin: 5px;
-    font-family:"Fondamento", cursive;
-    font-size: larger;
+.elementHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    margin-bottom: 8px;
+
+}
+
+.dropDownArrow {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+   
 }
 
 .default {
     background-color: aquamarine;
+    border: solid black 2px;
+    border-radius: 25px;
+    margin-bottom: 10px;
 }
 
 .arcane {
     background-color: #d8b4fe;
+    border: solid black 2px;
+    border-radius: 25px;
+    margin-bottom: 5px;
 }
 
 .water {
     background-color: #90e0ef;
+    border: solid black 2px;
+    border-radius: 25px;
+    margin-bottom: 5px;
 }
 
 .pyro {
     background-color: #ff9770;
+    border: solid black 2px;
+    border-radius: 25px;
+    margin-bottom: 5px;
 }
 
 .herba {
     background-color: #a3c586;
+    border: solid black 2px;
+    border-radius: 25px;
+    margin-bottom: 5px;
 }
 
 .lightning {
     background-color: #fde74c;
+    border: solid black 2px;
+    border-radius: 25px;
+    margin-bottom: 5px;
 }
 
 .mind {
     background-color: #f4a6c6;
+    border: solid black 2px;
+    border-radius: 25px;
+    margin-bottom: 5px;
 }
 
 .shadow {
-    background-color: #a89bd4;
+    background-color: #a89bd4;    
+    border: solid black 2px;
+    border-radius: 25px;
+    margin-bottom: 5px;
 }
 
 .holy {
     background-color: #fff4c1;
+    border: solid black 2px;
+    border-radius: 25px;
+    margin-bottom: 5px;
 }
+
 .spellDetails{
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding:15px;
 }
 
 .spellDetails p:last-child{
     text-align: justify;
 }
 
+
 .affinities {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content:  center;
-    gap: 20px;
+    gap: 30px;
+    border: solid black 2px;
+    padding: 5px;
+    margin-bottom: 5px
 }
+
+

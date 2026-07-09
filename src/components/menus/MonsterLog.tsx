@@ -28,7 +28,7 @@ const MonsterLog = () => {
  return (
     <Modal open = {playerCtx.isMonsterLogOpen} className={modalStyle.monsterLogModal}>
         <div className = {styles.parentDiv}>
-        <p onClick={closeMonsterLogHandler}>Close</p>
+        <p onClick={closeMonsterLogHandler} className={styles.closeButton}>Close</p>
     {/* Sort Menu*/} 
             <div className={styles.sortDiv}>
                 <p>Sort by:</p>
@@ -37,8 +37,8 @@ const MonsterLog = () => {
                 <p>Fought</p> 
             </div>
     {/* Monster Title Bar*/}
-    {monsterLog.map((monster) => 
-            <div key={monster.id} onClick={() => displayInfoHandler(monster.id)} className = {styles.monsterBarDiv}>
+    {monsterLog.map((monster) =>
+            <div key={monster.id} onClick={() => displayInfoHandler(monster.id)} className={`${styles.monsterBarDiv} ${monsterDetails === monster.id ? styles.monsterActive : ""}`}>
                 <p># {monster.monsterNum} - {monster.name}</p>
             </div>
         )}

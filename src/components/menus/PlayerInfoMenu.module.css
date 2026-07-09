@@ -6,62 +6,84 @@
     margin: 0;
 }
 
+.locationRow {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 8px;
+}
+
 .statsWrapper {
-    
     width: 100%;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
-    gap: 10px;
+    align-items: center;
+    gap: 6px;
     color:black;
     font-size: small;
-    padding-top: 10px;
+    padding-top: 2px;
     border-bottom: solid black 0.5px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .statsWrapper h2{
   text-decoration: underline
 }
 
-.statsWrapper h3
-.statsWrapper h2
+.statsWrapper h2,
+.statsWrapper h3,
 .statsWrapper p {
   margin: 0;
-  
+}
+
+.health,
+.def,
+.magic {
+    background-color: #2b2b3d;
+    font-family: var(--menu-text);
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 4px 8px;
+    border-radius: 14px;
 }
 
 .health {
-    font-family: var(--menu-text);
-    color: red;
-    outline: auto;
-    padding: 5px;
-    background-color: aliceblue;
+    color: #ff5555;
+    border: solid 1px #ff5555;
+    box-shadow: 0 0 4px rgba(255, 85, 85, 0.5);
 }
 
-.magic{
-    font-family: var(--menu-text);
-    color: blue;
-    outline: auto;
-    padding: 5px;
-    background-color: aliceblue;
+.def {
+    color: #4caf50;
+    border: solid 1px #4caf50;
+    box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+}
+
+.magic {
+    color: #4da6ff;
+    border: solid 1px #4da6ff;
+    box-shadow: 0 0 4px rgba(77, 166, 255, 0.5);
 }
 
 .location {
-    font-family: var(--menu-text);
-  display: flex;
-  margin-right: 10px;
-  justify-content: flex-end;
-  padding: 5px;
-  border: solid black 2px;
-  border-radius: 25%;
-  font-size: 15px;
-  font-weight: 500;
-  color: black;
-  background-color: lightsalmon
-}
-.location p {
+  font-family: var(--menu-text);
   margin: 0;
+  padding: 4px 8px;
+  border: solid black 1px;
+  border-radius: 14px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: black;
+  background-color: lightsalmon;
 }
 
 .menuDivButtons {
