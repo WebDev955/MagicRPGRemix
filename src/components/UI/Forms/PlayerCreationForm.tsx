@@ -12,6 +12,8 @@ import Modal from "../Modal"
 import Modalstyle from "../../UI/Modal.module.css"
 import style from "../../UI/Forms/PlayerCreationForm.module.css"
 
+
+
 const PlayerCreationForm = () => {
     //const playerContext = useContext(PlayerContext)
     const accountCtx = useContext(AccountContext); 
@@ -24,9 +26,9 @@ const PlayerCreationForm = () => {
         const password = formData.get('password') as string
         
         const newAccountData = {
-            playerName,
-            email,
-            password,
+            playerName, 
+            email, 
+            password
         }
         
         accountCtx.createAccount(newAccountData)

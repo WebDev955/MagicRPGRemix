@@ -97,7 +97,6 @@ const BattleContextProvider = ({children}:Props) => {
 //Player Context - quest data to update
     const playerCtx = useContext(PlayerContext)
     const playerName = playerCtx.playerName;
-    const questLog = playerCtx.questLog
     const updateQuest = playerCtx.updateQuest
 //Global Context - update global flags based on battle
     const globalCtx = useContext(GlobalProgress)
@@ -208,10 +207,10 @@ const castSpell = (spell:SpellType) => {
          }
     }));     
       
-    if (isBattleOver === true){
+    if (isBattleOver === true && battleState.player.stats.hp > 0){
         if (relatedQuest === null) return
-        updateQuest(relatedQuest) 
-        console.log("Quest Updated", questLog)
+        console.log("Quest Updated", relatedQuest)
+        updateQuest(relatedQuest)
     }
     
 }

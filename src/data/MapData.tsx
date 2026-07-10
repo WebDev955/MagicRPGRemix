@@ -2,14 +2,15 @@ type MapCell = {
     gridCord: string,
     gridType: string,
     mapType: string,
-    passable: boolean, 
+    passable: boolean,
     eventType: string | null,
-    relatedQuest: string | null, 
+    relatedQuest: string | null,
     sceneId: string,
     bgImg: string,
     npcId: string | null,
     enemyId: string | null,
     villageId: string | null,
+    requiredQuest?: string | null,
 };
  
 type mapArrayType = MapCell[][]
@@ -90,7 +91,7 @@ export const castleMapArray: mapArrayType = [
     { gridCord: "7,0", gridType: "Tree", mapType: "castle", passable: false, eventType: null,     relatedQuest: null, sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null },
     { gridCord: "7,1", gridType: "Tree", mapType: "castle", passable: false, eventType: null,     relatedQuest: null, sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null },
     { gridCord: "7,2", gridType: "Tree", mapType: "castle", passable: false, eventType: null,     relatedQuest: null, sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null },
-    { gridCord: "7,3", gridType: "Door", mapType: "forest", passable: true,  eventType: "newMap", relatedQuest: null, sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null },
+    { gridCord: "7,3", gridType: "Door", mapType: "forest", passable: false,  eventType: "newMap", relatedQuest: null, sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null, requiredQuest: "quest_000" },
     { gridCord: "7,4", gridType: "Tree", mapType: "castle", passable: false, eventType: null,     relatedQuest: null, sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null },
     { gridCord: "7,5", gridType: "Tree", mapType: "castle", passable: false, eventType: null,     relatedQuest: null, sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null },
     { gridCord: "7,6", gridType: "Tree", mapType: "castle", passable: false, eventType: null,     relatedQuest: null, sceneId: "", bgImg: "", npcId: null, enemyId: null, villageId: null },

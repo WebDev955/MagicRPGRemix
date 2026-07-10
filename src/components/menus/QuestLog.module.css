@@ -113,6 +113,21 @@
 .questNameCard p {
     margin: 2px 0;
 }
+.questStatusRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+.completeBadge {
+    background-color: #4a7c3f;
+    border: solid black 2px;
+    border-radius: 6px;
+    padding: 2px 10px;
+    color: #f4f1e8;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
 .sectionDivider {
     display: flex;
     flex-direction: row;

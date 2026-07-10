@@ -13,7 +13,7 @@ const InventoryWeapons = () => {
     //ESTABLISH CONTEXT
     const playerCtx = useContext(PlayerContext)
     //DERIVE DATA FROM CONTEXT
-    const weapons = playerCtx.bagTest.weapons
+    const weapons = playerCtx.bag.weapons
 
     function equipItem(item:EquipableItem){
         playerCtx.equipItem(item)

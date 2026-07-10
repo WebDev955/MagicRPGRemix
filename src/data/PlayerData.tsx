@@ -3,6 +3,8 @@ import type { SpellType } from "../types/SpellTypes"
 import type { ElementType } from "../types/ElementTypes"
 import type { QuestType } from "./QuestData" 
 
+export type QuestLogType = QuestType
+
 export type EquipableItem = {
     id: string
     name: string, 
@@ -11,8 +13,6 @@ export type EquipableItem = {
     powerBoost?: number
     ability?: string
 }
-export type QuestLogType = QuestType
-
 export type MonsterLogType = {
     name: string,
 	id: string,
@@ -36,14 +36,6 @@ export type BagType = {
     potions: potionType[]
     materials: materialType[],
 }
-export type BagTestType = {
-    gold: number,
-    spells: SpellType[],
-    armor: armorType[],
-    weapons: weaponType[],
-    potions: potionType[]
-    materials: materialType[],
-}
 export type StatsType = {
     hp: number,
     mp: number,
@@ -53,14 +45,12 @@ export type StatsType = {
     buffs: string[],
     debuffs: string[],  
 }
-
 export type PlayerContextType = {
     playerName: string,
     equipedItems: EquipableItem[],
     monsterLog: MonsterLogType[],  
     questLog: QuestLogType[],
     bag: BagType,
-    bagTest: BagTestType,
     stats: StatsType
 
     //Player related Functions//

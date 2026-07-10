@@ -34,7 +34,7 @@ const playerContext = useContext(PlayerContext)!
         <main className={styles.inventoryWrapper}>
             <div className={styles.topBarDiv}>
                 <Button onClick={closeInventoryHandler} className={styles.closeButton}>Close</Button>
-                <p className={styles.goldStat}>Gold: {playerCtx.bagTest.gold}</p>
+                <p className={styles.goldStat}>Gold: {playerCtx.bag.gold}</p>
             </div>
             <div className={styles.playerStatsDiv}>
                 <p className={styles.hpStat}>HP: {playerCtx.stats.hp}</p>

@@ -11,7 +11,7 @@ const InventoryPotions = () => {
     //ESTABLISH CONTEXT
     const playerCtx = useContext(PlayerContext)
     //DERIVE DATA FROM CONTEXT
-    const potions = playerCtx.bagTest.potions
+    const potions = playerCtx.bag.potions
 
     const displayPotion = (value:string) => {
         setRenderPotion(value)

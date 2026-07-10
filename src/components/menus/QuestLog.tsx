@@ -51,7 +51,12 @@ return (
                      <div className={styles.sectionDivider}>
                         <h2>{quest.name}</h2>
                     </div>
-                    <p>Track</p>
+                    <div className={styles.questStatusRow}>
+                        <p>Track</p>
+                        {quest.isQuestComplete &&
+                            <p className={styles.completeBadge}>Complete</p>
+                        }
+                    </div>
                 </div>
 {/* Quest Details */}
                 {viewQuest === quest.id &&

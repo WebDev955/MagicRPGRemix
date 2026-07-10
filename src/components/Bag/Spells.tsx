@@ -9,7 +9,7 @@ const InventorySpells = () => {
     //ESTABLISH CONTEXT
     const playerCtx = useContext(PlayerContext)
     //DERIVE DATA FROM CONTEXT
-    const spells = playerCtx.bagTest.spells
+    const spells = playerCtx.bag.spells
 
 return (
    <div className={style.itemsWrapperDiv}>

@@ -13,7 +13,7 @@ const InventoryItems = () => {
     //ESTABLISH CONTEXT
     const playerCtx = useContext(PlayerContext)
     //DERIVE DATA FROM CONTEXT
-    const armor = playerCtx.bagTest.armor
+    const armor = playerCtx.bag.armor
     //const weapons = playerCtx.inventoryTest.weapons
     //const spells = playerCtx.inventoryTest.spells
     //const potions = playerCtx.inventoryTest.potions
